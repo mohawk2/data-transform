@@ -20,3 +20,39 @@ strings, numbers, booleans, null) into other data.
 * Validate new JSON XML against an XML Schema, probably RELAX NG
 * Validate the JSON-T against a schema to ensure its output will be valid JSON XML
 * Automatically reverse the JSON-T for reversible transformation
+
+## Summary of JSON XML
+
+```json
+{
+  "key 1": true,
+  "key 2": {
+    "subkey": [
+      true,
+      1,
+      null
+    ]
+  }
+}
+```
+
+becomes
+
+```xml
+<object>
+  <member name="key 1">
+    <bool>true</bool>
+  </member>
+  <member name="key 2">
+    <object>
+      <member name="subkey">
+        <array>
+          <bool>true</bool>
+          <num>1</num>
+          <null />
+        </array>
+      </member>
+    </object>
+  </member>
+</object>
+```
