@@ -1,0 +1,62 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+use JSON::MaybeXS qw(JSON is_bool);
+my $j = JSON::MaybeXS->new->allow_nonref->canonical;
+
+my $json = join '', <>;
+my $data = $j->decode($json);
+
+#use Data::Dumper;
+#print Dumper $data;
+
+my $doc = data2xml($data);
+print $doc->toString(1); # pretty
+
+#my $new_json = $j->encode($data);
+#print $new_json;
+
+use XML::LibXML;
+sub data2xml {
+  my ($data) = @_;
+  my $doc = XML::LibXML->createDocument("1.0", "UTF-8");
+  $doc->addChild(item2elt($data));
+  $doc;
+}
+
+sub item2elt {
+  my ($item) = @_;
+  if (ref $item eq 'ARRAY') {
+    my $elt = XML::LibXML::Element->new('array');
+    $elt->addChild(item2elt($_)) for @$item;
+    return $elt;
+  } elsif (ref $item eq 'HASH') {
+    my $elt = XML::LibXML::Element->new('object');
+    for my $key (sort keys %$item) {
+      my $member = XML::LibXML::Element->new('member');
+      $elt->addChild($member);
+      $member->setAttribute('name', $key);
+      $member->addChild(item2elt($item->{$key}));
+    }
+    return $elt;
+  } elsif (is_bool $item) {
+    my $elt = XML::LibXML::Element->new('bool');
+    $elt->appendTextNode($item+0 ? 'true' : 'false');
+    return $elt;
+  } elsif (ref $item) {
+    die "Unknown ref type ".ref $item;
+  } else {
+    return XML::LibXML::Element->new('null') if !defined $item;
+    # if only there were a better way!
+    if ($j->encode($item) =~ /^"/) {
+      my $elt = XML::LibXML::Element->new('str');
+      $elt->appendTextNode($item);
+      return $elt;
+    }
+    my $elt = XML::LibXML::Element->new('num');
+    $elt->appendTextNode($item);
+    return $elt;
+  }
+}

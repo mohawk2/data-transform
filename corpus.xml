@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object>
+  <member name="key 1">
+    <bool>true</bool>
+  </member>
+  <member name="key 2">
+    <object>
+      <member name="subkey">
+        <array>
+          <str>hello</str>
+          <bool>true</bool>
+          <num>1</num>
+          <null/>
+        </array>
+      </member>
+    </object>
+  </member>
+</object>
