@@ -42,15 +42,15 @@ becomes
 ```xml
 <object>
   <member name="key 1">
-    <bool>true</bool>
+    <bool value="true"/>
   </member>
   <member name="key 2">
     <object>
       <member name="subkey">
         <array>
           <str>hello</str>
-          <bool>true</bool>
-          <num>1</num>
+          <bool value="true"/>
+          <num value="1/>
           <null />
         </array>
       </member>

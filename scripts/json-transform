@@ -6,7 +6,7 @@ use warnings;
 use JSON::MaybeXS qw(JSON is_bool);
 my $j = JSON::MaybeXS->new->allow_nonref->canonical;
 
-if (0) {
+if (1) {
 my $json = join '', <>;
 my $data = $j->decode($json);
 
@@ -54,7 +54,7 @@ sub item2elt {
     return $elt;
   } elsif (is_bool $item) {
     my $elt = XML::LibXML::Element->new('bool');
-    $elt->appendTextNode($item+0 ? 'true' : 'false');
+    $elt->setAttribute('value', $item+0 ? 'true' : 'false');
     return $elt;
   } elsif (ref $item) {
     die "Unknown ref type ".ref $item;
@@ -67,7 +67,7 @@ sub item2elt {
       return $elt;
     }
     my $elt = XML::LibXML::Element->new('num');
-    $elt->appendTextNode($item);
+    $elt->setAttribute('value', $item);
     return $elt;
   }
 }
@@ -97,15 +97,14 @@ sub elt2item {
     }
     return \%hash;
   } elsif ($name eq 'bool') {
-    my $value = $elt->firstChild->data;
-    $value =~ s/\s+//g; # zap whitespace
+    my $value = $elt->getAttribute('value');
     return JSON->$value;
   } elsif ($name eq 'null') {
     return undef;
   } elsif ($name eq 'str') {
     return $elt->firstChild->data;
   } elsif ($name eq 'num') {
-    return $elt->firstChild->data + 0;
+    return $elt->getAttribute('value') + 0;
   } else {
     die "Unknown node type $name";
   }
