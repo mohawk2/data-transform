@@ -56,3 +56,10 @@ becomes
   </member>
 </object>
 ```
+
+## Requirements
+
+* A sufficiently-recent Perl
+* `cpanm XML::LibXML XML::LibXSLT JSON::MaybeXS`
+  * note at time of writing, `XML::SAX` requires `unset MAKEFLAGS`
+  * you will need to manually install libxslt, on Redhat: `yum install libxslt-devel`
