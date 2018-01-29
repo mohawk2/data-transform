@@ -28,6 +28,7 @@ strings, numbers, booleans, null) into other data.
   "key 1": true,
   "key 2": {
     "subkey": [
+      "hello",
       true,
       1,
       null
@@ -47,6 +48,7 @@ becomes
     <object>
       <member name="subkey">
         <array>
+          <str>hello</str>
           <bool>true</bool>
           <num>1</num>
           <null />
