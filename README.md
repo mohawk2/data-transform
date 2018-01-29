@@ -23,6 +23,10 @@ has this capability natively.
 * Validate the JSON-T against a schema to ensure its output will be valid JSON XML
 * Automatically reverse the JSON-T for reversible transformation
 
+There will need to be an `Alien::*`
+class made for Saxon 9.8, available from
+[Sourceforge](https://netcologne.dl.sourceforge.net/project/saxon/Saxon-HE/9.8/SaxonHE9-8-0-7J.zip).
+
 ## Summary of JSON XML
 
 ```json
