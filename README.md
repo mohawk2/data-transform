@@ -3,7 +3,9 @@
 ## Concept
 
 To enable transforming arbitrary JSON-able data ("objects", arrays,
-strings, numbers, booleans, null) into other data.
+strings, numbers, booleans, null) into other data. [XSLT
+3.0](https://www.xml.com/articles/2017/02/14/why-you-should-be-using-xslt-30/)
+has this capability natively.
 
 ### What this is not
 
