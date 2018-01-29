@@ -6,6 +6,7 @@ use warnings;
 use JSON::MaybeXS qw(JSON is_bool);
 my $j = JSON::MaybeXS->new->allow_nonref->canonical;
 
+if (0) {
 my $json = join '', <>;
 my $data = $j->decode($json);
 
@@ -14,9 +15,19 @@ my $data = $j->decode($json);
 
 my $doc = data2xml($data);
 print $doc->toString(1); # pretty
+} else {
+my $xml = join '', <>;
+my $parser = XML::LibXML->new({encoding => "UTF-8"});
+my $doc = $parser->load_xml(string => $xml);
 
-#my $new_json = $j->encode($data);
-#print $new_json;
+my $data = xml2data($doc);
+
+#use Data::Dumper;
+#print Dumper $data;
+
+my $new_json = $j->encode($data);
+print $new_json;
+}
 
 use XML::LibXML;
 sub data2xml {
@@ -58,5 +69,44 @@ sub item2elt {
     my $elt = XML::LibXML::Element->new('num');
     $elt->appendTextNode($item);
     return $elt;
+  }
+}
+
+sub xml2data {
+  my ($doc) = @_;
+  my @nodes = $doc->childNodes;
+  die "Should have only one node!" if @nodes != 1;
+  elt2item($nodes[0]);
+}
+
+sub elt2item {
+  my ($elt) = @_;
+  my $name = $elt->nodeName;
+  if ($name eq 'array') {
+    return [ map elt2item($_), grep $_->nodeName ne '#text', $elt->childNodes ];
+  } elsif ($name eq 'object') {
+    my %hash;
+    for my $member ($elt->childNodes) {
+      my $member_name = $member->nodeName;
+      next if $member_name eq '#text'; # whitespace
+      die "Expected 'member', got $member_name" if $member_name ne 'member';
+      my $name = $member->getAttribute('name');
+      my @children = grep $_->nodeName ne '#text', $member->childNodes;
+      die "Expected only 1 child, got ".@children if @children != 1;
+      $hash{$name} = elt2item($children[0]);
+    }
+    return \%hash;
+  } elsif ($name eq 'bool') {
+    my $value = $elt->firstChild->data;
+    $value =~ s/\s+//g; # zap whitespace
+    return JSON->$value;
+  } elsif ($name eq 'null') {
+    return undef;
+  } elsif ($name eq 'str') {
+    return $elt->firstChild->data;
+  } elsif ($name eq 'num') {
+    return $elt->firstChild->data + 0;
+  } else {
+    die "Unknown node type $name";
   }
 }
