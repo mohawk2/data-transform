@@ -66,7 +66,8 @@ sub item2elt {
     return XML::LibXML::Element->new('null') if !defined $item;
     # if only there were a better way!
     if ($j->encode($item) =~ /^"/) {
-      my $elt = XML::LibXML::Element->new('str');
+      my $elt = XML::LibXML::Element->new('string');
+      $elt->setNamespace($NS, 'j');
       $elt->appendTextNode($item);
       return $elt;
     }
