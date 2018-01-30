@@ -52,7 +52,7 @@ becomes
     <j:array key="subkey">
       <j:string>hello</j:string>
       <j:boolean>true</j:boolean>
-      <j:number value="1"/>
+      <j:number>1</j:number>
       <j:null />
     </j:array>
   </j:map>

@@ -77,7 +77,7 @@ sub item2elt {
     }
     my $elt = XML::LibXML::Element->new('number');
     $elt->setNamespace($NS, 'j');
-    $elt->setAttribute('value', $item);
+    $elt->appendTextNode($item);
     return $elt;
   }
 }

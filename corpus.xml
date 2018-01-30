@@ -5,7 +5,7 @@
     <j:array xmlns:j="http://www.w3.org/2005/xpath-functions" key="subkey">
       <j:string xmlns:j="http://www.w3.org/2005/xpath-functions">hello</j:string>
       <j:boolean xmlns:j="http://www.w3.org/2005/xpath-functions">true</j:boolean>
-      <j:number xmlns:j="http://www.w3.org/2005/xpath-functions" value="1"/>
+      <j:number xmlns:j="http://www.w3.org/2005/xpath-functions">1</j:number>
       <j:null xmlns:j="http://www.w3.org/2005/xpath-functions"/>
     </j:array>
   </j:map>
