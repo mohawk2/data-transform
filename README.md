@@ -46,19 +46,19 @@ class made for Saxon 9.8, available from
 becomes
 
 ```xml
-<j:map>
+<j:map xmlns:j="http://www.w3.org/2013/XSL/json">
   <member name="key 1">
     <bool value="true"/>
   </member>
   <member name="key 2">
     <j:map>
       <member name="subkey">
-        <array>
+        <j:array>
           <str>hello</str>
           <bool value="true"/>
           <num value="1/>
           <null />
-        </array>
+        </j:array>
       </member>
     </j:map>
   </member>

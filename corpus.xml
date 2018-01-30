@@ -6,12 +6,12 @@
   <member name="key 2">
     <j:map xmlns:j="http://www.w3.org/2005/xpath-functions">
       <member name="subkey">
-        <array>
+        <j:array xmlns:j="http://www.w3.org/2005/xpath-functions">
           <str>hello</str>
           <bool value="true"/>
           <num value="1"/>
           <null/>
-        </array>
+        </j:array>
       </member>
     </j:map>
   </member>

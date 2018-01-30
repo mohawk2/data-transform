@@ -43,6 +43,7 @@ sub item2elt {
   my ($item) = @_;
   if (ref $item eq 'ARRAY') {
     my $elt = XML::LibXML::Element->new('array');
+    $elt->setNamespace($NS, 'j');
     $elt->addChild(item2elt($_)) for @$item;
     return $elt;
   } elsif (ref $item eq 'HASH') {
