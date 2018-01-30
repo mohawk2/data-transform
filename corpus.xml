@@ -1,12 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <j:map xmlns:j="http://www.w3.org/2005/xpath-functions">
-  <j:boolean xmlns:j="http://www.w3.org/2005/xpath-functions" key="key 1">true</j:boolean>
-  <j:map xmlns:j="http://www.w3.org/2005/xpath-functions" key="key 2">
-    <j:array xmlns:j="http://www.w3.org/2005/xpath-functions" key="subkey">
-      <j:string xmlns:j="http://www.w3.org/2005/xpath-functions">hello</j:string>
-      <j:boolean xmlns:j="http://www.w3.org/2005/xpath-functions">true</j:boolean>
-      <j:number xmlns:j="http://www.w3.org/2005/xpath-functions">1</j:number>
-      <j:null xmlns:j="http://www.w3.org/2005/xpath-functions"/>
+  <j:boolean key="key 1">true</j:boolean>
+  <j:map key="key 2">
+    <j:array key="subkey">
+      <j:string>hello</j:string>
+      <j:boolean>true</j:boolean>
+      <j:number>1</j:number>
+      <j:null></j:null>
     </j:array>
   </j:map>
 </j:map>

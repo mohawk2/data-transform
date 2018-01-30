@@ -16,7 +16,7 @@ my $data = $j->decode($json);
 #print Dumper $data;
 
 my $doc = data2xml($data);
-print $doc->toString(1); # pretty
+print $doc->toStringC14N(1);
 } else {
 my $xml = join '', <>;
 my $parser = XML::LibXML->new({encoding => "UTF-8"});
