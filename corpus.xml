@@ -10,7 +10,7 @@
           <j:string xmlns:j="http://www.w3.org/2005/xpath-functions">hello</j:string>
           <j:boolean xmlns:j="http://www.w3.org/2005/xpath-functions" value="true"/>
           <j:number xmlns:j="http://www.w3.org/2005/xpath-functions" value="1"/>
-          <null/>
+          <j:null xmlns:j="http://www.w3.org/2005/xpath-functions"/>
         </j:array>
       </member>
     </j:map>

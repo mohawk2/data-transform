@@ -64,7 +64,11 @@ sub item2elt {
   } elsif (ref $item) {
     die "Unknown ref type ".ref $item;
   } else {
-    return XML::LibXML::Element->new('null') if !defined $item;
+    if (!defined $item) {
+      my $elt = XML::LibXML::Element->new('null');
+      $elt->setNamespace($NS, 'j');
+      return $elt;
+    }
     # if only there were a better way!
     if ($j->encode($item) =~ /^"/) {
       my $elt = XML::LibXML::Element->new('string');
