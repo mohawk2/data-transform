@@ -47,11 +47,11 @@ becomes
 
 ```xml
 <j:map xmlns:j="http://www.w3.org/2013/XSL/json">
-  <j:boolean key="key 1" value="true"/>
+  <j:boolean key="key 1">true</j:boolean>
   <j:map key="key 2">
     <j:array key="subkey">
       <j:string>hello</j:string>
-      <j:boolean value="true"/>
+      <j:boolean>true</j:boolean>
       <j:number value="1"/>
       <j:null />
     </j:array>

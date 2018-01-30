@@ -58,7 +58,7 @@ sub item2elt {
   } elsif (is_bool $item) {
     my $elt = XML::LibXML::Element->new('boolean');
     $elt->setNamespace($NS, 'j');
-    $elt->setAttribute('value', $item+0 ? 'true' : 'false');
+    $elt->appendTextNode($item+0 ? 'true' : 'false');
     return $elt;
   } elsif (ref $item) {
     die "Unknown ref type ".ref $item;
