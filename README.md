@@ -46,12 +46,12 @@ class made for Saxon 9.8, available from
 becomes
 
 ```xml
-<object>
+<j:map>
   <member name="key 1">
     <bool value="true"/>
   </member>
   <member name="key 2">
-    <object>
+    <j:map>
       <member name="subkey">
         <array>
           <str>hello</str>
@@ -60,9 +60,9 @@ becomes
           <null />
         </array>
       </member>
-    </object>
+    </j:map>
   </member>
-</object>
+</j:map>
 ```
 
 ## Requirements

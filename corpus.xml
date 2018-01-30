@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<object>
+<j:map xmlns:j="http://www.w3.org/2005/xpath-functions">
   <member name="key 1">
     <bool value="true"/>
   </member>
   <member name="key 2">
-    <object>
+    <j:map xmlns:j="http://www.w3.org/2005/xpath-functions">
       <member name="subkey">
         <array>
           <str>hello</str>
@@ -13,6 +13,6 @@
           <null/>
         </array>
       </member>
-    </object>
+    </j:map>
   </member>
-</object>
+</j:map>

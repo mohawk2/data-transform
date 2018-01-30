@@ -3,6 +3,8 @@
 use strict;
 use warnings;
 
+my $NS = 'http://www.w3.org/2005/xpath-functions';
+
 use JSON::MaybeXS qw(JSON is_bool);
 my $j = JSON::MaybeXS->new->allow_nonref->canonical;
 
@@ -44,7 +46,8 @@ sub item2elt {
     $elt->addChild(item2elt($_)) for @$item;
     return $elt;
   } elsif (ref $item eq 'HASH') {
-    my $elt = XML::LibXML::Element->new('object');
+    my $elt = XML::LibXML::Element->new('map');
+    $elt->setNamespace($NS, 'j');
     for my $key (sort keys %$item) {
       my $member = XML::LibXML::Element->new('member');
       $elt->addChild($member);
