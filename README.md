@@ -56,7 +56,7 @@ becomes
         <j:array>
           <j:string>hello</j:string>
           <bool value="true"/>
-          <num value="1/>
+          <j:number value="1"/>
           <null />
         </j:array>
       </member>
