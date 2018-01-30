@@ -71,3 +71,38 @@ becomes
 * `cpanm XML::LibXML XML::LibXSLT JSON::MaybeXS`
   * note at time of writing, `XML::SAX` requires `unset MAKEFLAGS`
   * you will need to manually install libxslt, on Redhat: `yum install libxslt-devel`
+
+## Open-source XSLT implementations
+
+### 1.0
+
+Many, including, in C:
+
+[libxslt](http://xmlsoft.org/libxslt/)
+
+[Xalan-C++](https://xalan.apache.org/xalan-c/)
+
+### 2.0
+
+Xalan-C [promises to do
+this](https://xalan.apache.org/xalan-c/#xsltStandards) in a future
+release.
+
+### 3.0
+
+Only [Saxon 9.8](https://www.saxonica.com/download/download_page.xml), in Java
+
+### XQuery 3.1
+
+[BaseX](http://basex.org/)
+
+## Bibliography
+
+[Transforming JSON using
+XSLT](https://www.saxonica.com/papers/xmlprague-2016mhk.pdf)
+by Michael Kay, Saxonica - [a talk on
+this](https://www.youtube.com/watch?v=hGehtNUrg60)
+
+[Invisible
+XML](https://homepages.cwi.nl/~steven/Talks/2013/08-07-invisible-xml/invisible-xml-3.html)
+by Steven Pemberton, CWI
