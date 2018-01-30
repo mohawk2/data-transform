@@ -13,7 +13,7 @@ has this capability natively.
 
 ## Techniques
 
-* Transform JSON-able input data into "JSON XML", based on [SAP's work](https://help.sap.com/doc/abapdocu_751_index_htm/7.51/en-US/abenabap_json_xml.htm)
+* Transform JSON-able input data into "JSON XML", per [the XSLT 3.0 schema for this](https://www.w3.org/TR/xslt/#schema-for-json)
 * Apply "JSON-T" XSLT to that XML, producing new JSON XML
 * Convert new XML back to JSON-able data
 
