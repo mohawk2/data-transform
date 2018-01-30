@@ -48,14 +48,14 @@ becomes
 ```xml
 <j:map xmlns:j="http://www.w3.org/2013/XSL/json">
   <member name="key 1">
-    <bool value="true"/>
+    <j:boolean value="true"/>
   </member>
   <member name="key 2">
     <j:map>
       <member name="subkey">
         <j:array>
           <j:string>hello</j:string>
-          <bool value="true"/>
+          <j:boolean value="true"/>
           <j:number value="1"/>
           <null />
         </j:array>
