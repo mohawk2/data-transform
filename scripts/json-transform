@@ -50,10 +50,9 @@ sub item2elt {
     my $elt = XML::LibXML::Element->new('map');
     $elt->setNamespace($NS, 'j');
     for my $key (sort keys %$item) {
-      my $member = XML::LibXML::Element->new('member');
-      $elt->addChild($member);
-      $member->setAttribute('name', $key);
-      $member->addChild(item2elt($item->{$key}));
+      my $child = item2elt($item->{$key});
+      $elt->addChild($child);
+      $child->setAttribute('key', $key);
     }
     return $elt;
   } elsif (is_bool $item) {

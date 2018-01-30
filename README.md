@@ -47,21 +47,15 @@ becomes
 
 ```xml
 <j:map xmlns:j="http://www.w3.org/2013/XSL/json">
-  <member name="key 1">
-    <j:boolean value="true"/>
-  </member>
-  <member name="key 2">
-    <j:map>
-      <member name="subkey">
-        <j:array>
-          <j:string>hello</j:string>
-          <j:boolean value="true"/>
-          <j:number value="1"/>
-          <j:null />
-        </j:array>
-      </member>
-    </j:map>
-  </member>
+  <j:boolean key="key 1" value="true"/>
+  <j:map key="key 2">
+    <j:array key="subkey">
+      <j:string>hello</j:string>
+      <j:boolean value="true"/>
+      <j:number value="1"/>
+      <j:null />
+    </j:array>
+  </j:map>
 </j:map>
 ```
 

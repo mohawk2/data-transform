@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <j:map xmlns:j="http://www.w3.org/2005/xpath-functions">
-  <member name="key 1">
-    <j:boolean xmlns:j="http://www.w3.org/2005/xpath-functions" value="true"/>
-  </member>
-  <member name="key 2">
-    <j:map xmlns:j="http://www.w3.org/2005/xpath-functions">
-      <member name="subkey">
-        <j:array xmlns:j="http://www.w3.org/2005/xpath-functions">
-          <j:string xmlns:j="http://www.w3.org/2005/xpath-functions">hello</j:string>
-          <j:boolean xmlns:j="http://www.w3.org/2005/xpath-functions" value="true"/>
-          <j:number xmlns:j="http://www.w3.org/2005/xpath-functions" value="1"/>
-          <j:null xmlns:j="http://www.w3.org/2005/xpath-functions"/>
-        </j:array>
-      </member>
-    </j:map>
-  </member>
+  <j:boolean xmlns:j="http://www.w3.org/2005/xpath-functions" value="true" key="key 1"/>
+  <j:map xmlns:j="http://www.w3.org/2005/xpath-functions" key="key 2">
+    <j:array xmlns:j="http://www.w3.org/2005/xpath-functions" key="subkey">
+      <j:string xmlns:j="http://www.w3.org/2005/xpath-functions">hello</j:string>
+      <j:boolean xmlns:j="http://www.w3.org/2005/xpath-functions" value="true"/>
+      <j:number xmlns:j="http://www.w3.org/2005/xpath-functions" value="1"/>
+      <j:null xmlns:j="http://www.w3.org/2005/xpath-functions"/>
+    </j:array>
+  </j:map>
 </j:map>
