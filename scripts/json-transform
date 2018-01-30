@@ -92,29 +92,28 @@ sub xml2data {
 sub elt2item {
   my ($elt) = @_;
   my $name = $elt->nodeName;
+  my $prefix = $elt->lookupNamespacePrefix($NS);
+  $name =~ s#^$prefix:## if $prefix;
   if ($name eq 'array') {
     return [ map elt2item($_), grep $_->nodeName ne '#text', $elt->childNodes ];
-  } elsif ($name eq 'object') {
+  } elsif ($name eq 'map') {
     my %hash;
-    for my $member ($elt->childNodes) {
+    for my $member (grep $_->nodeName ne '#text', $elt->childNodes) {
       my $member_name = $member->nodeName;
       next if $member_name eq '#text'; # whitespace
-      die "Expected 'member', got $member_name" if $member_name ne 'member';
-      my $name = $member->getAttribute('name');
-      my @children = grep $_->nodeName ne '#text', $member->childNodes;
-      die "Expected only 1 child, got ".@children if @children != 1;
-      $hash{$name} = elt2item($children[0]);
+      my $name = $member->getAttribute('key');
+      $hash{$name} = elt2item($member);
     }
     return \%hash;
-  } elsif ($name eq 'bool') {
-    my $value = $elt->getAttribute('value');
+  } elsif ($name eq 'boolean') {
+    my $value = $elt->firstChild->data;
     return JSON->$value;
   } elsif ($name eq 'null') {
     return undef;
-  } elsif ($name eq 'str') {
+  } elsif ($name eq 'string') {
     return $elt->firstChild->data;
-  } elsif ($name eq 'num') {
-    return $elt->getAttribute('value') + 0;
+  } elsif ($name eq 'number') {
+    return $elt->firstChild->data + 0;
   } else {
     die "Unknown node type $name";
   }
