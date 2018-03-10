@@ -23,10 +23,6 @@ has this capability natively.
 * Validate the JSON-T against a schema to ensure its output will be valid JSON XML
 * Automatically reverse the JSON-T for reversible transformation
 
-There will need to be an `Alien::*`
-class made for Saxon 9.8, available from
-[Sourceforge](https://netcologne.dl.sourceforge.net/project/saxon/Saxon-HE/9.8/SaxonHE9-8-0-7J.zip).
-
 ## Summary of JSON XML
 
 ```json
@@ -62,9 +58,8 @@ becomes
 ## Requirements
 
 * A sufficiently-recent Perl
-* `cpanm XML::LibXML XML::LibXSLT JSON::MaybeXS`
+* `cpanm XML::LibXML XML::Saxon::XSLT3 JSON::MaybeXS`
   * note at time of writing, `XML::SAX` requires `unset MAKEFLAGS`
-  * you will need to manually install libxslt, on Redhat: `yum install libxslt-devel`
 
 ## Open-source XSLT implementations
 
