@@ -17,6 +17,12 @@ has this capability natively.
 * Apply "JSON-T" XSLT to that XML, producing new JSON XML
 * Convert new XML back to JSON-able data
 
+## Using Perl with Saxon 9
+
+```shell
+time perl -MXML::Saxon::XSLT3 -e 'open my $s, "basic.xslt"; $t = XML::Saxon::XSLT3->new($s); open my $x, "input.json"; $t->parameters(jsontext=>[string=>join "", <$x>]); print $t->transform(q{<hi/>})'|xml_pp
+```
+
 ## Further possibilities
 
 * Validate new JSON XML against an XML Schema, probably RELAX NG
