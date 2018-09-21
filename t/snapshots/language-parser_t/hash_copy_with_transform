@@ -1,0 +1,62 @@
+{
+  'transforms' => [
+    {
+      'transformation' => {
+        'exprDestCopy' => [
+          {
+            'destination' => {
+              'locationType' => 'jsonpointer',
+              'value' => '/destination'
+            }
+          },
+          {
+            'source' => [
+              {
+                'exprSingleValue' => [
+                  {
+                    'locationType' => 'jsonpointer',
+                    'value' => '/source'
+                  }
+                ]
+              },
+              {
+                'destType' => 'array',
+                'exprSingleValue' => [
+                  {
+                    'locationType' => 'systemvariable',
+                    'name' => 'V'
+                  },
+                  {
+                    'singleValueMod' => {
+                      'exprKeyAdd' => {
+                        'key' => {
+                          'exprStringValue' => {
+                            'exprStringQuoted' => 'order'
+                          }
+                        },
+                        'value' => {
+                          'exprSingleValue' => [
+                            {
+                              'locationType' => 'systemvariable',
+                              'name' => 'K'
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                ],
+                'kind' => 'exprMapping',
+                'location' => {
+                  'column' => 1,
+                  'line' => 2
+                },
+                'sourceType' => 'array'
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

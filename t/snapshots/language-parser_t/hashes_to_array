@@ -1,0 +1,48 @@
+{
+  'transforms' => [
+    {
+      'transformation' => {
+        'exprImpliedDest' => [
+          {
+            'locationType' => 'jsonpointer',
+            'value' => ''
+          },
+          {
+            'destType' => 'array',
+            'exprSingleValue' => [
+              {
+                'locationType' => 'systemvariable',
+                'name' => 'V'
+              },
+              {
+                'singleValueMod' => {
+                  'exprKeyAdd' => {
+                    'key' => {
+                      'exprStringValue' => {
+                        'exprStringQuoted' => 'id'
+                      }
+                    },
+                    'value' => {
+                      'exprSingleValue' => [
+                        {
+                          'locationType' => 'systemvariable',
+                          'name' => 'K'
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ],
+            'kind' => 'exprMapping',
+            'location' => {
+              'column' => 1,
+              'line' => 2
+            },
+            'sourceType' => 'object'
+          }
+        ]
+      }
+    }
+  ]
+}

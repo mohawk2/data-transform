@@ -1,0 +1,29 @@
+{
+  'transforms' => [
+    {
+      'transformation' => {
+        'exprImpliedDest' => [
+          {
+            'locationType' => 'jsonpointer',
+            'value' => ''
+          },
+          {
+            'destType' => 'array',
+            'exprSingleValue' => [
+              {
+                'locationType' => 'systemvariable',
+                'name' => 'V'
+              }
+            ],
+            'kind' => 'exprMapping',
+            'location' => {
+              'column' => 1,
+              'line' => 2
+            },
+            'sourceType' => 'array'
+          }
+        ]
+      }
+    }
+  ]
+}

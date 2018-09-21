@@ -1,0 +1,18 @@
+{
+  'transforms' => [
+    {
+      'transformation' => {
+        'exprDestMove' => [
+          {
+            'locationType' => 'jsonpointer',
+            'value' => '/destination'
+          },
+          {
+            'locationType' => 'jsonpointer',
+            'value' => '/source'
+          }
+        ]
+      }
+    }
+  ]
+}

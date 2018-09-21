@@ -1,0 +1,112 @@
+# A simple grammar for JSON::Transform
+%grammar json-transform
+%version 0.01
+%include pegex-atoms
+
+# string and number from https://github.com/ingydotnet/json-pgx/blob/master/json.pgx
+
+transforms: transformation+
+
+transformation: .(/-/) (
+  exprImpliedDest
+|
+  exprDestCopy
+|
+  exprDestMove
+|
+  .ws2
+) .(/-/)
+
+exprImpliedDest: jsonPointer exprMapping
+
+exprDestCopy: destination .opCopyFrom source
+
+exprDestMove: jsonPointer .opMoveFrom jsonPointer
+
+destination: (jsonPointer | variableUser)
+
+opCopyFrom: /- LANGLE DASH -/
+
+opMoveFrom: /- LANGLE LANGLE -/
+
+opArrayFrom: /- LANGLE AT -/
+
+opObjectFrom: /- LANGLE PERCENT -/
+
+source: exprSingleValue exprMapping?
+
+exprMapping: (opArrayFrom | opObjectFrom) (exprArrayMapping | exprObjectMapping)
+
+exprArrayMapping: .(/- LSQUARE -/) exprSingleValue .(/- RSQUARE -/)
+
+exprObjectMapping: .(/- LCURLY -/) colonPair .(/- RCURLY -/)
+
+colonPair: exprStringValue .(/- COLON -/) exprSingleValue
+
+exprSingleValue: (jsonPointer | variableUser | variableSystem) singleValueMod?
+
+singleValueMod: (exprKeyAdd | exprKeyRemove)
+
+exprKeyAdd: .(/- PLUS -/) colonPair
+
+exprKeyRemove: .(/- DASH -/) exprStringValue
+
+exprStringValue: (jsonPointer | variableUser | variableSystem | exprStringQuoted)
+
+exprStringQuoted: /
+  GRAVE
+    (
+      (:
+        BACK (:     # Backslash escapes
+          [
+            GRAVE  # Double Quote
+            BACK    # Back Slash
+            SLASH   # Foreward Slash
+            'b'     # Back Space
+            'f'     # Form Feed
+            'n'     # New Line
+            'r'     # Carriage Return
+            't'     # Horizontal Tab
+          ]
+        |
+          'u' HEX{4}    # Unicode octet pair
+        )
+      |
+        [^ GRAVE CONTROLS BACK ]  # Anything else
+      )*
+    )
+  GRAVE
+/
+
+jsonPointer: /
+  DOUBLE
+    (
+      (:
+        BACK (:     # Backslash escapes
+          [
+            DOUBLE  # Double Quote
+            BACK    # Back Slash
+            SLASH   # Foreward Slash
+            'b'     # Back Space
+            'f'     # Form Feed
+            'n'     # New Line
+            'r'     # Carriage Return
+            't'     # Horizontal Tab
+          ]
+        |
+          'u' HEX{4}    # Unicode octet pair
+        )
+      |
+        [^ DOUBLE CONTROLS BACK ]  # Anything else
+      )*
+    )
+  DOUBLE
+/
+
+variableUser: .(/- DOLLAR/) /([ LOWERS ] [ ALPHAS ]*)/
+
+variableSystem: .(/- DOLLAR/) /([ UPPERS ]*)/
+
+ws: / (: WS | \x{FEFF} | comment ) /
+
+comment: / BLANK* HASH BLANK* ([^\r\n]*) (: EOL | CR !NL | EOS ) / # CR is because MacOS 9

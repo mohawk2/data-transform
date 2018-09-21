@@ -1,0 +1,52 @@
+{
+  'transforms' => [
+    {
+      'transformation' => {
+        'exprDestCopy' => [
+          {
+            'destination' => {
+              'locationType' => 'uservariable',
+              'name' => 'defs'
+            }
+          },
+          {
+            'source' => [
+              {
+                'exprSingleValue' => [
+                  {
+                    'locationType' => 'jsonpointer',
+                    'value' => '/definitions'
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      'transformation' => {
+        'exprDestCopy' => [
+          {
+            'destination' => {
+              'locationType' => 'jsonpointer',
+              'value' => ''
+            }
+          },
+          {
+            'source' => [
+              {
+                'exprSingleValue' => [
+                  {
+                    'locationType' => 'uservariable',
+                    'name' => 'defs'
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
