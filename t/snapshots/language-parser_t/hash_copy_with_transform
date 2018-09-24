@@ -32,65 +32,65 @@
                   ],
                   'nodename' => 'jsonPointer',
                   'type' => 'element'
-                },
+                }
+              ],
+              'nodename' => 'source',
+              'type' => 'element'
+            },
+            {
+              'attributes' => [
+                'opFrom',
+                '<@'
+              ],
+              'children' => [
                 {
-                  'attributes' => [
-                    'opFrom',
-                    '<@'
-                  ],
+                  'attributes' => [],
                   'children' => [
+                    {
+                      'attributes' => [],
+                      'children' => [
+                        'V'
+                      ],
+                      'nodename' => 'variableSystem',
+                      'type' => 'element'
+                    },
                     {
                       'attributes' => [],
                       'children' => [
                         {
                           'attributes' => [],
                           'children' => [
-                            'V'
-                          ],
-                          'nodename' => 'variableSystem',
-                          'type' => 'element'
-                        },
-                        {
-                          'attributes' => [],
-                          'children' => [
+                            {
+                              'attributes' => [
+                                'exprStringQuoted',
+                                'order'
+                              ],
+                              'children' => [],
+                              'nodename' => 'exprStringValue',
+                              'type' => 'element'
+                            },
                             {
                               'attributes' => [],
                               'children' => [
-                                {
-                                  'attributes' => [
-                                    'exprStringQuoted',
-                                    'order'
-                                  ],
-                                  'children' => [],
-                                  'nodename' => 'exprStringValue',
-                                  'type' => 'element'
-                                },
-                                {
-                                  'attributes' => [],
-                                  'children' => [
-                                    'K'
-                                  ],
-                                  'nodename' => 'variableSystem',
-                                  'type' => 'element'
-                                }
+                                'K'
                               ],
-                              'nodename' => 'colonPair',
+                              'nodename' => 'variableSystem',
                               'type' => 'element'
                             }
                           ],
-                          'nodename' => 'exprKeyAdd',
+                          'nodename' => 'colonPair',
                           'type' => 'element'
                         }
                       ],
-                      'nodename' => 'exprArrayMapping',
+                      'nodename' => 'exprKeyAdd',
                       'type' => 'element'
                     }
                   ],
-                  'nodename' => 'exprMapping',
+                  'nodename' => 'exprArrayMapping',
                   'type' => 'element'
                 }
               ],
-              'nodename' => 'source',
+              'nodename' => 'exprMapping',
               'type' => 'element'
             }
           ],

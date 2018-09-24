@@ -95,6 +95,10 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
         },
         {
           '.ref' => 'source'
+        },
+        {
+          '+max' => 1,
+          '.ref' => 'exprMapping'
         }
       ]
     },
@@ -266,16 +270,8 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
       ]
     },
     'source' => {
-      '.all' => [
-        {
-          '-flat' => 1,
-          '.ref' => 'exprSingleValue'
-        },
-        {
-          '+max' => 1,
-          '.ref' => 'exprMapping'
-        }
-      ]
+      '-flat' => 1,
+      '.ref' => 'exprSingleValue'
     },
     'transformation' => {
       '.all' => [

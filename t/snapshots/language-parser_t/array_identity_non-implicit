@@ -32,34 +32,34 @@
                   ],
                   'nodename' => 'jsonPointer',
                   'type' => 'element'
-                },
+                }
+              ],
+              'nodename' => 'source',
+              'type' => 'element'
+            },
+            {
+              'attributes' => [
+                'opFrom',
+                '<@'
+              ],
+              'children' => [
                 {
-                  'attributes' => [
-                    'opFrom',
-                    '<@'
-                  ],
+                  'attributes' => [],
                   'children' => [
                     {
                       'attributes' => [],
                       'children' => [
-                        {
-                          'attributes' => [],
-                          'children' => [
-                            'V'
-                          ],
-                          'nodename' => 'variableSystem',
-                          'type' => 'element'
-                        }
+                        'V'
                       ],
-                      'nodename' => 'exprArrayMapping',
+                      'nodename' => 'variableSystem',
                       'type' => 'element'
                     }
                   ],
-                  'nodename' => 'exprMapping',
+                  'nodename' => 'exprArrayMapping',
                   'type' => 'element'
                 }
               ],
-              'nodename' => 'source',
+              'nodename' => 'exprMapping',
               'type' => 'element'
             }
           ],
