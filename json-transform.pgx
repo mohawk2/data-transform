@@ -45,7 +45,7 @@ exprMapping: +opFrom (exprArrayMapping | exprObjectMapping)
 
 exprArrayMapping: .(/- LSQUARE -/) -exprSingleValue .(/- RSQUARE -/)
 
-exprObjectMapping: .(/- LCURLY -/) colonPair .(/- RCURLY -/)
+exprObjectMapping: .(/- LCURLY -/) -colonPair .(/- RCURLY -/)
 
 colonPair: exprStringValue .(/- COLON -/) -exprSingleValue
 
@@ -53,7 +53,7 @@ exprSingleValue: (jsonPointer | variableUser | variableSystem) -singleValueMod?
 
 singleValueMod: (exprKeyAdd | exprKeyRemove)
 
-exprKeyAdd: .(/- PLUS -/) colonPair
+exprKeyAdd: .(/- PLUS -/) -colonPair
 
 exprKeyRemove: .(/- DASH -/) exprStringValue
 

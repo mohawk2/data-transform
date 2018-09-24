@@ -25,27 +25,20 @@
                   'attributes' => [],
                   'children' => [
                     {
+                      'attributes' => [
+                        'variableSystem',
+                        'K'
+                      ],
+                      'children' => [],
+                      'nodename' => 'exprStringValue',
+                      'type' => 'element'
+                    },
+                    {
                       'attributes' => [],
                       'children' => [
-                        {
-                          'attributes' => [
-                            'variableSystem',
-                            'K'
-                          ],
-                          'children' => [],
-                          'nodename' => 'exprStringValue',
-                          'type' => 'element'
-                        },
-                        {
-                          'attributes' => [],
-                          'children' => [
-                            'V'
-                          ],
-                          'nodename' => 'variableSystem',
-                          'type' => 'element'
-                        }
+                        'V'
                       ],
-                      'nodename' => 'colonPair',
+                      'nodename' => 'variableSystem',
                       'type' => 'element'
                     }
                   ],

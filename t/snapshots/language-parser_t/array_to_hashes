@@ -25,43 +25,36 @@
                   'attributes' => [],
                   'children' => [
                     {
+                      'attributes' => [
+                        'jsonPointer',
+                        '/$K/id'
+                      ],
+                      'children' => [],
+                      'nodename' => 'exprStringValue',
+                      'type' => 'element'
+                    },
+                    {
+                      'attributes' => [],
+                      'children' => [
+                        'V'
+                      ],
+                      'nodename' => 'variableSystem',
+                      'type' => 'element'
+                    },
+                    {
                       'attributes' => [],
                       'children' => [
                         {
                           'attributes' => [
-                            'jsonPointer',
-                            '/$K/id'
+                            'exprStringQuoted',
+                            'id'
                           ],
                           'children' => [],
                           'nodename' => 'exprStringValue',
                           'type' => 'element'
-                        },
-                        {
-                          'attributes' => [],
-                          'children' => [
-                            'V'
-                          ],
-                          'nodename' => 'variableSystem',
-                          'type' => 'element'
-                        },
-                        {
-                          'attributes' => [],
-                          'children' => [
-                            {
-                              'attributes' => [
-                                'exprStringQuoted',
-                                'id'
-                              ],
-                              'children' => [],
-                              'nodename' => 'exprStringValue',
-                              'type' => 'element'
-                            }
-                          ],
-                          'nodename' => 'exprKeyRemove',
-                          'type' => 'element'
                         }
                       ],
-                      'nodename' => 'colonPair',
+                      'nodename' => 'exprKeyRemove',
                       'type' => 'element'
                     }
                   ],
