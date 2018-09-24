@@ -1,17 +1,12 @@
 {
-  'attributes' => [],
   'children' => [
     {
-      'attributes' => [],
       'children' => [
         {
-          'attributes' => [],
           'children' => [
             {
-              'attributes' => [],
               'children' => [
                 {
-                  'attributes' => [],
                   'children' => [
                     '/destination'
                   ],
@@ -23,10 +18,8 @@
               'type' => 'element'
             },
             {
-              'attributes' => [],
               'children' => [
                 {
-                  'attributes' => [],
                   'children' => [
                     '/source'
                   ],

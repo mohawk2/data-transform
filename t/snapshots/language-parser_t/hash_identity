@@ -1,14 +1,10 @@
 {
-  'attributes' => [],
   'children' => [
     {
-      'attributes' => [],
       'children' => [
         {
-          'attributes' => [],
           'children' => [
             {
-              'attributes' => [],
               'children' => [
                 ''
               ],
@@ -22,19 +18,16 @@
               ],
               'children' => [
                 {
-                  'attributes' => [],
                   'children' => [
                     {
                       'attributes' => [
                         'variableSystem',
                         'K'
                       ],
-                      'children' => [],
                       'nodename' => 'exprStringValue',
                       'type' => 'element'
                     },
                     {
-                      'attributes' => [],
                       'children' => [
                         'V'
                       ],

@@ -1,14 +1,10 @@
 {
-  'attributes' => [],
   'children' => [
     {
-      'attributes' => [],
       'children' => [
         {
-          'attributes' => [],
           'children' => [
             {
-              'attributes' => [],
               'children' => [
                 ''
               ],
@@ -22,19 +18,16 @@
               ],
               'children' => [
                 {
-                  'attributes' => [],
                   'children' => [
                     {
                       'attributes' => [
                         'jsonPointer',
                         '/$K/id'
                       ],
-                      'children' => [],
                       'nodename' => 'exprStringValue',
                       'type' => 'element'
                     },
                     {
-                      'attributes' => [],
                       'children' => [
                         'V'
                       ],
@@ -42,14 +35,12 @@
                       'type' => 'element'
                     },
                     {
-                      'attributes' => [],
                       'children' => [
                         {
                           'attributes' => [
                             'exprStringQuoted',
                             'id'
                           ],
-                          'children' => [],
                           'nodename' => 'exprStringValue',
                           'type' => 'element'
                         }

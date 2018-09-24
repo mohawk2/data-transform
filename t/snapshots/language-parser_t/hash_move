@@ -1,18 +1,14 @@
 {
-  'attributes' => [],
   'children' => [
     {
-      'attributes' => [],
       'children' => [
         {
-          'attributes' => [],
           'children' => [
             {
               'attributes' => [
                 'jsonPointer',
                 '/destination'
               ],
-              'children' => [],
               'nodename' => 'movedestination',
               'type' => 'element'
             },
@@ -21,7 +17,6 @@
                 'jsonPointer',
                 '/source'
               ],
-              'children' => [],
               'nodename' => 'movesource',
               'type' => 'element'
             }

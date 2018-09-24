@@ -1,17 +1,12 @@
 {
-  'attributes' => [],
   'children' => [
     {
-      'attributes' => [],
       'children' => [
         {
-          'attributes' => [],
           'children' => [
             {
-              'attributes' => [],
               'children' => [
                 {
-                  'attributes' => [],
                   'children' => [
                     ''
                   ],
@@ -23,10 +18,8 @@
               'type' => 'element'
             },
             {
-              'attributes' => [],
               'children' => [
                 {
-                  'attributes' => [],
                   'children' => [
                     ''
                   ],
@@ -44,10 +37,8 @@
               ],
               'children' => [
                 {
-                  'attributes' => [],
                   'children' => [
                     {
-                      'attributes' => [],
                       'children' => [
                         'V'
                       ],

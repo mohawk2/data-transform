@@ -1,17 +1,12 @@
 {
-  'attributes' => [],
   'children' => [
     {
-      'attributes' => [],
       'children' => [
         {
-          'attributes' => [],
           'children' => [
             {
-              'attributes' => [],
               'children' => [
                 {
-                  'attributes' => [],
                   'children' => [
                     '/destination'
                   ],
@@ -23,10 +18,8 @@
               'type' => 'element'
             },
             {
-              'attributes' => [],
               'children' => [
                 {
-                  'attributes' => [],
                   'children' => [
                     '/source'
                   ],
@@ -44,10 +37,8 @@
               ],
               'children' => [
                 {
-                  'attributes' => [],
                   'children' => [
                     {
-                      'attributes' => [],
                       'children' => [
                         'V'
                       ],
@@ -55,19 +46,16 @@
                       'type' => 'element'
                     },
                     {
-                      'attributes' => [],
                       'children' => [
                         {
                           'attributes' => [
                             'exprStringQuoted',
                             'order'
                           ],
-                          'children' => [],
                           'nodename' => 'exprStringValue',
                           'type' => 'element'
                         },
                         {
-                          'attributes' => [],
                           'children' => [
                             'K'
                           ],

@@ -1,17 +1,12 @@
 {
-  'attributes' => [],
   'children' => [
     {
-      'attributes' => [],
       'children' => [
         {
-          'attributes' => [],
           'children' => [
             {
-              'attributes' => [],
               'children' => [
                 {
-                  'attributes' => [],
                   'children' => [
                     'defs'
                   ],
@@ -23,10 +18,8 @@
               'type' => 'element'
             },
             {
-              'attributes' => [],
               'children' => [
                 {
-                  'attributes' => [],
                   'children' => [
                     '/definitions'
                   ],
@@ -46,16 +39,12 @@
       'type' => 'element'
     },
     {
-      'attributes' => [],
       'children' => [
         {
-          'attributes' => [],
           'children' => [
             {
-              'attributes' => [],
               'children' => [
                 {
-                  'attributes' => [],
                   'children' => [
                     ''
                   ],
@@ -67,10 +56,8 @@
               'type' => 'element'
             },
             {
-              'attributes' => [],
               'children' => [
                 {
-                  'attributes' => [],
                   'children' => [
                     'defs'
                   ],
