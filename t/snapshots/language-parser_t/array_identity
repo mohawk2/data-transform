@@ -21,9 +21,7 @@
                 {
                   'attributes' => [],
                   'children' => [
-                    undef,
-                    '<@',
-                    undef
+                    '<@'
                   ],
                   'nodename' => 'opArrayFrom',
                   'type' => 'element'

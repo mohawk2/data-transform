@@ -109,4 +109,4 @@ variableSystem: .(/- DOLLAR/) /([ UPPERS ]*)/
 
 ws: / (: WS | \x{FEFF} | comment ) /
 
-comment: / BLANK* HASH BLANK* ([^\r\n]*) (: EOL | CR !NL | EOS ) / # CR is because MacOS 9
+comment: / BLANK* HASH BLANK* [^\r\n]* (: EOL | CR !NL | EOS ) / # CR is because MacOS 9
