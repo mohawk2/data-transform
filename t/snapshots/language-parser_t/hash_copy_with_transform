@@ -28,16 +28,9 @@
                 {
                   'attributes' => [],
                   'children' => [
-                    {
-                      'attributes' => [],
-                      'children' => [
-                        '/source'
-                      ],
-                      'nodename' => 'jsonPointer',
-                      'type' => 'element'
-                    }
+                    '/source'
                   ],
-                  'nodename' => 'exprSingleValue',
+                  'nodename' => 'jsonPointer',
                   'type' => 'element'
                 },
                 {
@@ -57,14 +50,14 @@
                         {
                           'attributes' => [],
                           'children' => [
-                            {
-                              'attributes' => [],
-                              'children' => [
-                                'V'
-                              ],
-                              'nodename' => 'variableSystem',
-                              'type' => 'element'
-                            },
+                            'V'
+                          ],
+                          'nodename' => 'variableSystem',
+                          'type' => 'element'
+                        },
+                        {
+                          'attributes' => [],
+                          'children' => [
                             {
                               'attributes' => [],
                               'children' => [
@@ -77,47 +70,33 @@
                                         {
                                           'attributes' => [],
                                           'children' => [
-                                            {
-                                              'attributes' => [],
-                                              'children' => [
-                                                'order'
-                                              ],
-                                              'nodename' => 'exprStringQuoted',
-                                              'type' => 'element'
-                                            }
+                                            'order'
                                           ],
-                                          'nodename' => 'exprStringValue',
-                                          'type' => 'element'
-                                        },
-                                        {
-                                          'attributes' => [],
-                                          'children' => [
-                                            {
-                                              'attributes' => [],
-                                              'children' => [
-                                                'K'
-                                              ],
-                                              'nodename' => 'variableSystem',
-                                              'type' => 'element'
-                                            }
-                                          ],
-                                          'nodename' => 'exprSingleValue',
+                                          'nodename' => 'exprStringQuoted',
                                           'type' => 'element'
                                         }
                                       ],
-                                      'nodename' => 'colonPair',
+                                      'nodename' => 'exprStringValue',
+                                      'type' => 'element'
+                                    },
+                                    {
+                                      'attributes' => [],
+                                      'children' => [
+                                        'K'
+                                      ],
+                                      'nodename' => 'variableSystem',
                                       'type' => 'element'
                                     }
                                   ],
-                                  'nodename' => 'exprKeyAdd',
+                                  'nodename' => 'colonPair',
                                   'type' => 'element'
                                 }
                               ],
-                              'nodename' => 'singleValueMod',
+                              'nodename' => 'exprKeyAdd',
                               'type' => 'element'
                             }
                           ],
-                          'nodename' => 'exprSingleValue',
+                          'nodename' => 'singleValueMod',
                           'type' => 'element'
                         }
                       ],

@@ -33,15 +33,15 @@ opArrayFrom: /- ( LANGLE AT ) -/
 
 opObjectFrom: /- ( LANGLE PERCENT ) -/
 
-source: exprSingleValue exprMapping?
+source: -exprSingleValue exprMapping?
 
 exprMapping: (opArrayFrom | opObjectFrom) (exprArrayMapping | exprObjectMapping)
 
-exprArrayMapping: .(/- LSQUARE -/) exprSingleValue .(/- RSQUARE -/)
+exprArrayMapping: .(/- LSQUARE -/) -exprSingleValue .(/- RSQUARE -/)
 
 exprObjectMapping: .(/- LCURLY -/) colonPair .(/- RCURLY -/)
 
-colonPair: exprStringValue .(/- COLON -/) exprSingleValue
+colonPair: exprStringValue .(/- COLON -/) -exprSingleValue
 
 exprSingleValue: (jsonPointer | variableUser | variableSystem) singleValueMod?
 

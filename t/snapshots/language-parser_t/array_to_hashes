@@ -50,14 +50,14 @@
                         {
                           'attributes' => [],
                           'children' => [
-                            {
-                              'attributes' => [],
-                              'children' => [
-                                'V'
-                              ],
-                              'nodename' => 'variableSystem',
-                              'type' => 'element'
-                            },
+                            'V'
+                          ],
+                          'nodename' => 'variableSystem',
+                          'type' => 'element'
+                        },
+                        {
+                          'attributes' => [],
+                          'children' => [
                             {
                               'attributes' => [],
                               'children' => [
@@ -67,28 +67,21 @@
                                     {
                                       'attributes' => [],
                                       'children' => [
-                                        {
-                                          'attributes' => [],
-                                          'children' => [
-                                            'id'
-                                          ],
-                                          'nodename' => 'exprStringQuoted',
-                                          'type' => 'element'
-                                        }
+                                        'id'
                                       ],
-                                      'nodename' => 'exprStringValue',
+                                      'nodename' => 'exprStringQuoted',
                                       'type' => 'element'
                                     }
                                   ],
-                                  'nodename' => 'exprKeyRemove',
+                                  'nodename' => 'exprStringValue',
                                   'type' => 'element'
                                 }
                               ],
-                              'nodename' => 'singleValueMod',
+                              'nodename' => 'exprKeyRemove',
                               'type' => 'element'
                             }
                           ],
-                          'nodename' => 'exprSingleValue',
+                          'nodename' => 'singleValueMod',
                           'type' => 'element'
                         }
                       ],

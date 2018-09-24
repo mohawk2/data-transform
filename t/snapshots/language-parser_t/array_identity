@@ -32,16 +32,9 @@
                     {
                       'attributes' => [],
                       'children' => [
-                        {
-                          'attributes' => [],
-                          'children' => [
-                            'V'
-                          ],
-                          'nodename' => 'variableSystem',
-                          'type' => 'element'
-                        }
+                        'V'
                       ],
-                      'nodename' => 'exprSingleValue',
+                      'nodename' => 'variableSystem',
                       'type' => 'element'
                     }
                   ],

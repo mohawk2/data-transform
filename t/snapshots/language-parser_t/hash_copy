@@ -28,16 +28,9 @@
                 {
                   'attributes' => [],
                   'children' => [
-                    {
-                      'attributes' => [],
-                      'children' => [
-                        '/source'
-                      ],
-                      'nodename' => 'jsonPointer',
-                      'type' => 'element'
-                    }
+                    '/source'
                   ],
-                  'nodename' => 'exprSingleValue',
+                  'nodename' => 'jsonPointer',
                   'type' => 'element'
                 }
               ],

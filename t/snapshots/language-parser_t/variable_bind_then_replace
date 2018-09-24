@@ -28,16 +28,9 @@
                 {
                   'attributes' => [],
                   'children' => [
-                    {
-                      'attributes' => [],
-                      'children' => [
-                        '/definitions'
-                      ],
-                      'nodename' => 'jsonPointer',
-                      'type' => 'element'
-                    }
+                    '/definitions'
                   ],
-                  'nodename' => 'exprSingleValue',
+                  'nodename' => 'jsonPointer',
                   'type' => 'element'
                 }
               ],
@@ -79,16 +72,9 @@
                 {
                   'attributes' => [],
                   'children' => [
-                    {
-                      'attributes' => [],
-                      'children' => [
-                        'defs'
-                      ],
-                      'nodename' => 'variableUser',
-                      'type' => 'element'
-                    }
+                    'defs'
                   ],
-                  'nodename' => 'exprSingleValue',
+                  'nodename' => 'variableUser',
                   'type' => 'element'
                 }
               ],
