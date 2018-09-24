@@ -28,17 +28,11 @@
                       'attributes' => [],
                       'children' => [
                         {
-                          'attributes' => [],
-                          'children' => [
-                            {
-                              'attributes' => [],
-                              'children' => [
-                                'K'
-                              ],
-                              'nodename' => 'variableSystem',
-                              'type' => 'element'
-                            }
+                          'attributes' => [
+                            'variableSystem',
+                            'K'
                           ],
+                          'children' => [],
                           'nodename' => 'exprStringValue',
                           'type' => 'element'
                         },

@@ -204,15 +204,19 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
     'exprStringValue' => {
       '.any' => [
         {
+          '-wrap' => 1,
           '.ref' => 'jsonPointer'
         },
         {
+          '-wrap' => 1,
           '.ref' => 'variableUser'
         },
         {
+          '-wrap' => 1,
           '.ref' => 'variableSystem'
         },
         {
+          '-wrap' => 1,
           '.ref' => 'exprStringQuoted'
         }
       ]

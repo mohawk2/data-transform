@@ -28,17 +28,11 @@
                       'attributes' => [],
                       'children' => [
                         {
-                          'attributes' => [],
-                          'children' => [
-                            {
-                              'attributes' => [],
-                              'children' => [
-                                '/$K/id'
-                              ],
-                              'nodename' => 'jsonPointer',
-                              'type' => 'element'
-                            }
+                          'attributes' => [
+                            'jsonPointer',
+                            '/$K/id'
                           ],
+                          'children' => [],
                           'nodename' => 'exprStringValue',
                           'type' => 'element'
                         },
@@ -57,17 +51,11 @@
                               'attributes' => [],
                               'children' => [
                                 {
-                                  'attributes' => [],
-                                  'children' => [
-                                    {
-                                      'attributes' => [],
-                                      'children' => [
-                                        'id'
-                                      ],
-                                      'nodename' => 'exprStringQuoted',
-                                      'type' => 'element'
-                                    }
+                                  'attributes' => [
+                                    'exprStringQuoted',
+                                    'id'
                                   ],
+                                  'children' => [],
                                   'nodename' => 'exprStringValue',
                                   'type' => 'element'
                                 }

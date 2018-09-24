@@ -57,7 +57,7 @@ exprKeyAdd: .(/- PLUS -/) colonPair
 
 exprKeyRemove: .(/- DASH -/) exprStringValue
 
-exprStringValue: (jsonPointer | variableUser | variableSystem | exprStringQuoted)
+exprStringValue: (+jsonPointer | +variableUser | +variableSystem | +exprStringQuoted)
 
 exprStringQuoted: /
   GRAVE

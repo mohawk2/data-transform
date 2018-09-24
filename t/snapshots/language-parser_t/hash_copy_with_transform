@@ -60,17 +60,11 @@
                                   'attributes' => [],
                                   'children' => [
                                     {
-                                      'attributes' => [],
-                                      'children' => [
-                                        {
-                                          'attributes' => [],
-                                          'children' => [
-                                            'order'
-                                          ],
-                                          'nodename' => 'exprStringQuoted',
-                                          'type' => 'element'
-                                        }
+                                      'attributes' => [
+                                        'exprStringQuoted',
+                                        'order'
                                       ],
+                                      'children' => [],
                                       'nodename' => 'exprStringValue',
                                       'type' => 'element'
                                     },
