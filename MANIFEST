@@ -6,7 +6,6 @@ lib/JSON/Transform/Error.pm
 lib/JSON/Transform/Grammar.pm
 lib/JSON/Transform/Library.pm
 lib/JSON/Transform/Parser.pm
-lib/JSON/Transform/Receiver.pm
 Makefile.PL
 MANIFEST			This list of files
 MANIFEST.SKIP
@@ -15,6 +14,7 @@ t/00-report-prereqs.t
 t/language-parser.t
 t/lib/JTTest.pm
 t/snapshots/language-parser_t/array_identity
+t/snapshots/language-parser_t/array_identity_non-implicit
 t/snapshots/language-parser_t/array_to_hashes
 t/snapshots/language-parser_t/hash_copy
 t/snapshots/language-parser_t/hash_copy_with_transform

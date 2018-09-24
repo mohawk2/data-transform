@@ -1,18 +1,37 @@
 {
-  'transforms' => [
+  'attributes' => [],
+  'children' => [
     {
-      'transformation' => {
-        'exprDestMove' => [
-          {
-            'locationType' => 'jsonpointer',
-            'value' => '/destination'
-          },
-          {
-            'locationType' => 'jsonpointer',
-            'value' => '/source'
-          }
-        ]
-      }
+      'attributes' => [],
+      'children' => [
+        {
+          'attributes' => [],
+          'children' => [
+            {
+              'attributes' => [],
+              'children' => [
+                '/destination'
+              ],
+              'nodename' => 'jsonPointer',
+              'type' => 'element'
+            },
+            {
+              'attributes' => [],
+              'children' => [
+                '/source'
+              ],
+              'nodename' => 'jsonPointer',
+              'type' => 'element'
+            }
+          ],
+          'nodename' => 'exprDestMove',
+          'type' => 'element'
+        }
+      ],
+      'nodename' => 'transformation',
+      'type' => 'element'
     }
-  ]
+  ],
+  'nodename' => 'transforms',
+  'type' => 'element'
 }

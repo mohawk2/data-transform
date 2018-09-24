@@ -25,13 +25,13 @@ exprDestMove: jsonPointer .opMoveFrom jsonPointer
 
 destination: (jsonPointer | variableUser)
 
-opCopyFrom: /- LANGLE DASH -/
+opCopyFrom: /- ( LANGLE DASH ) -/
 
-opMoveFrom: /- LANGLE LANGLE -/
+opMoveFrom: /- ( LANGLE LANGLE ) -/
 
-opArrayFrom: /- LANGLE AT -/
+opArrayFrom: /- ( LANGLE AT ) -/
 
-opObjectFrom: /- LANGLE PERCENT -/
+opObjectFrom: /- ( LANGLE PERCENT ) -/
 
 source: exprSingleValue exprMapping?
 

@@ -1,52 +1,109 @@
 {
-  'transforms' => [
+  'attributes' => [],
+  'children' => [
     {
-      'transformation' => {
-        'exprDestCopy' => [
-          {
-            'destination' => {
-              'locationType' => 'uservariable',
-              'name' => 'defs'
+      'attributes' => [],
+      'children' => [
+        {
+          'attributes' => [],
+          'children' => [
+            {
+              'attributes' => [],
+              'children' => [
+                {
+                  'attributes' => [],
+                  'children' => [
+                    'defs'
+                  ],
+                  'nodename' => 'variableUser',
+                  'type' => 'element'
+                }
+              ],
+              'nodename' => 'destination',
+              'type' => 'element'
+            },
+            {
+              'attributes' => [],
+              'children' => [
+                {
+                  'attributes' => [],
+                  'children' => [
+                    {
+                      'attributes' => [],
+                      'children' => [
+                        '/definitions'
+                      ],
+                      'nodename' => 'jsonPointer',
+                      'type' => 'element'
+                    }
+                  ],
+                  'nodename' => 'exprSingleValue',
+                  'type' => 'element'
+                }
+              ],
+              'nodename' => 'source',
+              'type' => 'element'
             }
-          },
-          {
-            'source' => [
-              {
-                'exprSingleValue' => [
-                  {
-                    'locationType' => 'jsonpointer',
-                    'value' => '/definitions'
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
+          ],
+          'nodename' => 'exprDestCopy',
+          'type' => 'element'
+        }
+      ],
+      'nodename' => 'transformation',
+      'type' => 'element'
     },
     {
-      'transformation' => {
-        'exprDestCopy' => [
-          {
-            'destination' => {
-              'locationType' => 'jsonpointer',
-              'value' => ''
+      'attributes' => [],
+      'children' => [
+        {
+          'attributes' => [],
+          'children' => [
+            {
+              'attributes' => [],
+              'children' => [
+                {
+                  'attributes' => [],
+                  'children' => [
+                    ''
+                  ],
+                  'nodename' => 'jsonPointer',
+                  'type' => 'element'
+                }
+              ],
+              'nodename' => 'destination',
+              'type' => 'element'
+            },
+            {
+              'attributes' => [],
+              'children' => [
+                {
+                  'attributes' => [],
+                  'children' => [
+                    {
+                      'attributes' => [],
+                      'children' => [
+                        'defs'
+                      ],
+                      'nodename' => 'variableUser',
+                      'type' => 'element'
+                    }
+                  ],
+                  'nodename' => 'exprSingleValue',
+                  'type' => 'element'
+                }
+              ],
+              'nodename' => 'source',
+              'type' => 'element'
             }
-          },
-          {
-            'source' => [
-              {
-                'exprSingleValue' => [
-                  {
-                    'locationType' => 'uservariable',
-                    'name' => 'defs'
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
+          ],
+          'nodename' => 'exprDestCopy',
+          'type' => 'element'
+        }
+      ],
+      'nodename' => 'transformation',
+      'type' => 'element'
     }
-  ]
+  ],
+  'nodename' => 'transforms',
+  'type' => 'element'
 }

@@ -1,48 +1,119 @@
 {
-  'transforms' => [
+  'attributes' => [],
+  'children' => [
     {
-      'transformation' => {
-        'exprImpliedDest' => [
-          {
-            'locationType' => 'jsonpointer',
-            'value' => ''
-          },
-          {
-            'destType' => 'array',
-            'exprSingleValue' => [
-              {
-                'locationType' => 'systemvariable',
-                'name' => 'V'
-              },
-              {
-                'singleValueMod' => {
-                  'exprKeyAdd' => {
-                    'key' => {
-                      'exprStringValue' => {
-                        'exprStringQuoted' => 'id'
-                      }
-                    },
-                    'value' => {
-                      'exprSingleValue' => [
-                        {
-                          'locationType' => 'systemvariable',
-                          'name' => 'K'
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            ],
-            'kind' => 'exprMapping',
-            'location' => {
-              'column' => 1,
-              'line' => 2
+      'attributes' => [],
+      'children' => [
+        {
+          'attributes' => [],
+          'children' => [
+            {
+              'attributes' => [],
+              'children' => [
+                ''
+              ],
+              'nodename' => 'jsonPointer',
+              'type' => 'element'
             },
-            'sourceType' => 'object'
-          }
-        ]
-      }
+            {
+              'attributes' => [],
+              'children' => [
+                {
+                  'attributes' => [],
+                  'children' => [
+                    undef,
+                    '<%',
+                    undef
+                  ],
+                  'nodename' => 'opObjectFrom',
+                  'type' => 'element'
+                },
+                {
+                  'attributes' => [],
+                  'children' => [
+                    {
+                      'attributes' => [],
+                      'children' => [
+                        {
+                          'attributes' => [],
+                          'children' => [
+                            'V'
+                          ],
+                          'nodename' => 'variableSystem',
+                          'type' => 'element'
+                        },
+                        {
+                          'attributes' => [],
+                          'children' => [
+                            {
+                              'attributes' => [],
+                              'children' => [
+                                {
+                                  'attributes' => [],
+                                  'children' => [
+                                    {
+                                      'attributes' => [],
+                                      'children' => [
+                                        {
+                                          'attributes' => [],
+                                          'children' => [
+                                            'id'
+                                          ],
+                                          'nodename' => 'exprStringQuoted',
+                                          'type' => 'element'
+                                        }
+                                      ],
+                                      'nodename' => 'exprStringValue',
+                                      'type' => 'element'
+                                    },
+                                    {
+                                      'attributes' => [],
+                                      'children' => [
+                                        {
+                                          'attributes' => [],
+                                          'children' => [
+                                            'K'
+                                          ],
+                                          'nodename' => 'variableSystem',
+                                          'type' => 'element'
+                                        }
+                                      ],
+                                      'nodename' => 'exprSingleValue',
+                                      'type' => 'element'
+                                    }
+                                  ],
+                                  'nodename' => 'colonPair',
+                                  'type' => 'element'
+                                }
+                              ],
+                              'nodename' => 'exprKeyAdd',
+                              'type' => 'element'
+                            }
+                          ],
+                          'nodename' => 'singleValueMod',
+                          'type' => 'element'
+                        }
+                      ],
+                      'nodename' => 'exprSingleValue',
+                      'type' => 'element'
+                    }
+                  ],
+                  'nodename' => 'exprArrayMapping',
+                  'type' => 'element'
+                }
+              ],
+              'nodename' => 'exprMapping',
+              'type' => 'element'
+            }
+          ],
+          'nodename' => 'exprImpliedDest',
+          'type' => 'element'
+        }
+      ],
+      'nodename' => 'transformation',
+      'type' => 'element'
     }
-  ]
+  ],
+  'nodename' => 'transforms',
+  'type' => 'element'
 }

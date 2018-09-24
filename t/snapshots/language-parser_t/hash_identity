@@ -1,37 +1,90 @@
 {
-  'transforms' => [
+  'attributes' => [],
+  'children' => [
     {
-      'transformation' => {
-        'exprImpliedDest' => [
-          {
-            'locationType' => 'jsonpointer',
-            'value' => ''
-          },
-          {
-            'destType' => 'object',
-            'key' => {
-              'exprStringValue' => {
-                'locationType' => 'systemvariable',
-                'name' => 'K'
-              }
+      'attributes' => [],
+      'children' => [
+        {
+          'attributes' => [],
+          'children' => [
+            {
+              'attributes' => [],
+              'children' => [
+                ''
+              ],
+              'nodename' => 'jsonPointer',
+              'type' => 'element'
             },
-            'kind' => 'exprMapping',
-            'location' => {
-              'column' => 1,
-              'line' => 2
-            },
-            'sourceType' => 'object',
-            'value' => {
-              'exprSingleValue' => [
+            {
+              'attributes' => [],
+              'children' => [
                 {
-                  'locationType' => 'systemvariable',
-                  'name' => 'V'
+                  'attributes' => [],
+                  'children' => [
+                    undef,
+                    '<%',
+                    undef
+                  ],
+                  'nodename' => 'opObjectFrom',
+                  'type' => 'element'
+                },
+                {
+                  'attributes' => [],
+                  'children' => [
+                    {
+                      'attributes' => [],
+                      'children' => [
+                        {
+                          'attributes' => [],
+                          'children' => [
+                            {
+                              'attributes' => [],
+                              'children' => [
+                                'K'
+                              ],
+                              'nodename' => 'variableSystem',
+                              'type' => 'element'
+                            }
+                          ],
+                          'nodename' => 'exprStringValue',
+                          'type' => 'element'
+                        },
+                        {
+                          'attributes' => [],
+                          'children' => [
+                            {
+                              'attributes' => [],
+                              'children' => [
+                                'V'
+                              ],
+                              'nodename' => 'variableSystem',
+                              'type' => 'element'
+                            }
+                          ],
+                          'nodename' => 'exprSingleValue',
+                          'type' => 'element'
+                        }
+                      ],
+                      'nodename' => 'colonPair',
+                      'type' => 'element'
+                    }
+                  ],
+                  'nodename' => 'exprObjectMapping',
+                  'type' => 'element'
                 }
-              ]
+              ],
+              'nodename' => 'exprMapping',
+              'type' => 'element'
             }
-          }
-        ]
-      }
+          ],
+          'nodename' => 'exprImpliedDest',
+          'type' => 'element'
+        }
+      ],
+      'nodename' => 'transformation',
+      'type' => 'element'
     }
-  ]
+  ],
+  'nodename' => 'transforms',
+  'type' => 'element'
 }

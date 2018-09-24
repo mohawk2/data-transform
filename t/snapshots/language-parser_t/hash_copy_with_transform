@@ -1,62 +1,148 @@
 {
-  'transforms' => [
+  'attributes' => [],
+  'children' => [
     {
-      'transformation' => {
-        'exprDestCopy' => [
-          {
-            'destination' => {
-              'locationType' => 'jsonpointer',
-              'value' => '/destination'
-            }
-          },
-          {
-            'source' => [
-              {
-                'exprSingleValue' => [
-                  {
-                    'locationType' => 'jsonpointer',
-                    'value' => '/source'
-                  }
-                ]
-              },
-              {
-                'destType' => 'array',
-                'exprSingleValue' => [
-                  {
-                    'locationType' => 'systemvariable',
-                    'name' => 'V'
-                  },
-                  {
-                    'singleValueMod' => {
-                      'exprKeyAdd' => {
-                        'key' => {
-                          'exprStringValue' => {
-                            'exprStringQuoted' => 'order'
-                          }
-                        },
-                        'value' => {
-                          'exprSingleValue' => [
-                            {
-                              'locationType' => 'systemvariable',
-                              'name' => 'K'
-                            }
-                          ]
-                        }
-                      }
+      'attributes' => [],
+      'children' => [
+        {
+          'attributes' => [],
+          'children' => [
+            {
+              'attributes' => [],
+              'children' => [
+                {
+                  'attributes' => [],
+                  'children' => [
+                    '/destination'
+                  ],
+                  'nodename' => 'jsonPointer',
+                  'type' => 'element'
+                }
+              ],
+              'nodename' => 'destination',
+              'type' => 'element'
+            },
+            {
+              'attributes' => [],
+              'children' => [
+                {
+                  'attributes' => [],
+                  'children' => [
+                    {
+                      'attributes' => [],
+                      'children' => [
+                        '/source'
+                      ],
+                      'nodename' => 'jsonPointer',
+                      'type' => 'element'
                     }
-                  }
-                ],
-                'kind' => 'exprMapping',
-                'location' => {
-                  'column' => 1,
-                  'line' => 2
+                  ],
+                  'nodename' => 'exprSingleValue',
+                  'type' => 'element'
                 },
-                'sourceType' => 'array'
-              }
-            ]
-          }
-        ]
-      }
+                {
+                  'attributes' => [],
+                  'children' => [
+                    {
+                      'attributes' => [],
+                      'children' => [
+                        undef,
+                        '<@',
+                        undef
+                      ],
+                      'nodename' => 'opArrayFrom',
+                      'type' => 'element'
+                    },
+                    {
+                      'attributes' => [],
+                      'children' => [
+                        {
+                          'attributes' => [],
+                          'children' => [
+                            {
+                              'attributes' => [],
+                              'children' => [
+                                'V'
+                              ],
+                              'nodename' => 'variableSystem',
+                              'type' => 'element'
+                            },
+                            {
+                              'attributes' => [],
+                              'children' => [
+                                {
+                                  'attributes' => [],
+                                  'children' => [
+                                    {
+                                      'attributes' => [],
+                                      'children' => [
+                                        {
+                                          'attributes' => [],
+                                          'children' => [
+                                            {
+                                              'attributes' => [],
+                                              'children' => [
+                                                'order'
+                                              ],
+                                              'nodename' => 'exprStringQuoted',
+                                              'type' => 'element'
+                                            }
+                                          ],
+                                          'nodename' => 'exprStringValue',
+                                          'type' => 'element'
+                                        },
+                                        {
+                                          'attributes' => [],
+                                          'children' => [
+                                            {
+                                              'attributes' => [],
+                                              'children' => [
+                                                'K'
+                                              ],
+                                              'nodename' => 'variableSystem',
+                                              'type' => 'element'
+                                            }
+                                          ],
+                                          'nodename' => 'exprSingleValue',
+                                          'type' => 'element'
+                                        }
+                                      ],
+                                      'nodename' => 'colonPair',
+                                      'type' => 'element'
+                                    }
+                                  ],
+                                  'nodename' => 'exprKeyAdd',
+                                  'type' => 'element'
+                                }
+                              ],
+                              'nodename' => 'singleValueMod',
+                              'type' => 'element'
+                            }
+                          ],
+                          'nodename' => 'exprSingleValue',
+                          'type' => 'element'
+                        }
+                      ],
+                      'nodename' => 'exprArrayMapping',
+                      'type' => 'element'
+                    }
+                  ],
+                  'nodename' => 'exprMapping',
+                  'type' => 'element'
+                }
+              ],
+              'nodename' => 'source',
+              'type' => 'element'
+            }
+          ],
+          'nodename' => 'exprDestCopy',
+          'type' => 'element'
+        }
+      ],
+      'nodename' => 'transformation',
+      'type' => 'element'
     }
-  ]
+  ],
+  'nodename' => 'transforms',
+  'type' => 'element'
 }

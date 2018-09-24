@@ -37,7 +37,7 @@ Override method from L<Pegex::Grammar>.
 
 =cut
 
-sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.64)
+sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
   {
     '+grammar' => 'json-transform',
     '+include' => 'pegex-atoms',
@@ -225,16 +225,16 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.64)
       '.rgx' => qr/\G"((?:\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})|[^"\x00-\x1f\\])*)"/
     },
     'opArrayFrom' => {
-      '.rgx' => qr/\G(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*([^\r\n]*)(?:\r?\n|\r!NL|\z))*<\@(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*([^\r\n]*)(?:\r?\n|\r!NL|\z))*/u
+      '.rgx' => qr/\G(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*([^\r\n]*)(?:\r?\n|\r!NL|\z))*(<\@)(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*([^\r\n]*)(?:\r?\n|\r!NL|\z))*/u
     },
     'opCopyFrom' => {
-      '.rgx' => qr/\G(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*([^\r\n]*)(?:\r?\n|\r!NL|\z))*<\-(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*([^\r\n]*)(?:\r?\n|\r!NL|\z))*/u
+      '.rgx' => qr/\G(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*([^\r\n]*)(?:\r?\n|\r!NL|\z))*(<\-)(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*([^\r\n]*)(?:\r?\n|\r!NL|\z))*/u
     },
     'opMoveFrom' => {
-      '.rgx' => qr/\G(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*([^\r\n]*)(?:\r?\n|\r!NL|\z))*<<(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*([^\r\n]*)(?:\r?\n|\r!NL|\z))*/u
+      '.rgx' => qr/\G(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*([^\r\n]*)(?:\r?\n|\r!NL|\z))*(<<)(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*([^\r\n]*)(?:\r?\n|\r!NL|\z))*/u
     },
     'opObjectFrom' => {
-      '.rgx' => qr/\G(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*([^\r\n]*)(?:\r?\n|\r!NL|\z))*<%(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*([^\r\n]*)(?:\r?\n|\r!NL|\z))*/u
+      '.rgx' => qr/\G(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*([^\r\n]*)(?:\r?\n|\r!NL|\z))*(<%)(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*([^\r\n]*)(?:\r?\n|\r!NL|\z))*/u
     },
     'singleValueMod' => {
       '.any' => [

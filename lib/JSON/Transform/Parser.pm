@@ -9,7 +9,7 @@ use Return::Type;
 use Types::Standard -all;
 use Function::Parameters;
 use JSON::Transform::Grammar;
-use JSON::Transform::Receiver;
+use XML::Invisible::Receiver;
 use JSON::Transform::Error;
 
 use constant DEBUG => $ENV{JSON_TRANSFORM_DEBUG};
@@ -52,7 +52,7 @@ fun parse(
 ) :ReturnType(ArrayRef[HashRef]) {
   my $parser = __PACKAGE__->SUPER::new(
     grammar => $GRAMMAR,
-    receiver => JSON::Transform::Receiver->new,
+    receiver => XML::Invisible::Receiver->new,
     debug => DEBUG,
   );
   my $input = Pegex::Input->new(string => $source);

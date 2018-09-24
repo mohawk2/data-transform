@@ -1,28 +1,58 @@
 {
-  'transforms' => [
+  'attributes' => [],
+  'children' => [
     {
-      'transformation' => {
-        'exprDestCopy' => [
-          {
-            'destination' => {
-              'locationType' => 'jsonpointer',
-              'value' => '/destination'
+      'attributes' => [],
+      'children' => [
+        {
+          'attributes' => [],
+          'children' => [
+            {
+              'attributes' => [],
+              'children' => [
+                {
+                  'attributes' => [],
+                  'children' => [
+                    '/destination'
+                  ],
+                  'nodename' => 'jsonPointer',
+                  'type' => 'element'
+                }
+              ],
+              'nodename' => 'destination',
+              'type' => 'element'
+            },
+            {
+              'attributes' => [],
+              'children' => [
+                {
+                  'attributes' => [],
+                  'children' => [
+                    {
+                      'attributes' => [],
+                      'children' => [
+                        '/source'
+                      ],
+                      'nodename' => 'jsonPointer',
+                      'type' => 'element'
+                    }
+                  ],
+                  'nodename' => 'exprSingleValue',
+                  'type' => 'element'
+                }
+              ],
+              'nodename' => 'source',
+              'type' => 'element'
             }
-          },
-          {
-            'source' => [
-              {
-                'exprSingleValue' => [
-                  {
-                    'locationType' => 'jsonpointer',
-                    'value' => '/source'
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
+          ],
+          'nodename' => 'exprDestCopy',
+          'type' => 'element'
+        }
+      ],
+      'nodename' => 'transformation',
+      'type' => 'element'
     }
-  ]
+  ],
+  'nodename' => 'transforms',
+  'type' => 'element'
 }
