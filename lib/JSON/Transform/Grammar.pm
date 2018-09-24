@@ -194,6 +194,7 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
         },
         {
           '+max' => 1,
+          '-flat' => 1,
           '.ref' => 'singleValueMod'
         }
       ]

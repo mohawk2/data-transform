@@ -48,23 +48,16 @@
                           'attributes' => [],
                           'children' => [
                             {
-                              'attributes' => [],
-                              'children' => [
-                                {
-                                  'attributes' => [
-                                    'exprStringQuoted',
-                                    'id'
-                                  ],
-                                  'children' => [],
-                                  'nodename' => 'exprStringValue',
-                                  'type' => 'element'
-                                }
+                              'attributes' => [
+                                'exprStringQuoted',
+                                'id'
                               ],
-                              'nodename' => 'exprKeyRemove',
+                              'children' => [],
+                              'nodename' => 'exprStringValue',
                               'type' => 'element'
                             }
                           ],
-                          'nodename' => 'singleValueMod',
+                          'nodename' => 'exprKeyRemove',
                           'type' => 'element'
                         }
                       ],

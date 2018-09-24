@@ -57,35 +57,28 @@
                               'attributes' => [],
                               'children' => [
                                 {
+                                  'attributes' => [
+                                    'exprStringQuoted',
+                                    'order'
+                                  ],
+                                  'children' => [],
+                                  'nodename' => 'exprStringValue',
+                                  'type' => 'element'
+                                },
+                                {
                                   'attributes' => [],
                                   'children' => [
-                                    {
-                                      'attributes' => [
-                                        'exprStringQuoted',
-                                        'order'
-                                      ],
-                                      'children' => [],
-                                      'nodename' => 'exprStringValue',
-                                      'type' => 'element'
-                                    },
-                                    {
-                                      'attributes' => [],
-                                      'children' => [
-                                        'K'
-                                      ],
-                                      'nodename' => 'variableSystem',
-                                      'type' => 'element'
-                                    }
+                                    'K'
                                   ],
-                                  'nodename' => 'colonPair',
+                                  'nodename' => 'variableSystem',
                                   'type' => 'element'
                                 }
                               ],
-                              'nodename' => 'exprKeyAdd',
+                              'nodename' => 'colonPair',
                               'type' => 'element'
                             }
                           ],
-                          'nodename' => 'singleValueMod',
+                          'nodename' => 'exprKeyAdd',
                           'type' => 'element'
                         }
                       ],
