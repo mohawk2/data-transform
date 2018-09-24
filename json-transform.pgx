@@ -29,13 +29,15 @@ opCopyFrom: /- ( LANGLE DASH ) -/
 
 opMoveFrom: /- ( LANGLE LANGLE ) -/
 
+opFrom: opArrayFrom | opObjectFrom
+
 opArrayFrom: /- ( LANGLE AT ) -/
 
 opObjectFrom: /- ( LANGLE PERCENT ) -/
 
 source: -exprSingleValue exprMapping?
 
-exprMapping: (opArrayFrom | opObjectFrom) (exprArrayMapping | exprObjectMapping)
+exprMapping: +opFrom (exprArrayMapping | exprObjectMapping)
 
 exprArrayMapping: .(/- LSQUARE -/) -exprSingleValue .(/- RSQUARE -/)
 

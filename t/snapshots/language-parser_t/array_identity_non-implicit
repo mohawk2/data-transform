@@ -34,16 +34,11 @@
                   'type' => 'element'
                 },
                 {
-                  'attributes' => [],
+                  'attributes' => [
+                    'opFrom',
+                    '<@'
+                  ],
                   'children' => [
-                    {
-                      'attributes' => [],
-                      'children' => [
-                        '<@'
-                      ],
-                      'nodename' => 'opArrayFrom',
-                      'type' => 'element'
-                    },
                     {
                       'attributes' => [],
                       'children' => [

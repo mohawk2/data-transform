@@ -147,14 +147,8 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
     'exprMapping' => {
       '.all' => [
         {
-          '.any' => [
-            {
-              '.ref' => 'opArrayFrom'
-            },
-            {
-              '.ref' => 'opObjectFrom'
-            }
-          ]
+          '-wrap' => 1,
+          '.ref' => 'opFrom'
         },
         {
           '.any' => [
@@ -231,6 +225,16 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
     },
     'opCopyFrom' => {
       '.rgx' => qr/\G(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*[^\r\n]*(?:\r?\n|\r!NL|\z))*(<\-)(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*[^\r\n]*(?:\r?\n|\r!NL|\z))*/u
+    },
+    'opFrom' => {
+      '.any' => [
+        {
+          '.ref' => 'opArrayFrom'
+        },
+        {
+          '.ref' => 'opObjectFrom'
+        }
+      ]
     },
     'opMoveFrom' => {
       '.rgx' => qr/\G(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*[^\r\n]*(?:\r?\n|\r!NL|\z))*(<<)(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*[^\r\n]*(?:\r?\n|\r!NL|\z))*/u
