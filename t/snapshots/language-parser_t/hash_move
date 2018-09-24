@@ -8,19 +8,21 @@
           'attributes' => [],
           'children' => [
             {
-              'attributes' => [],
-              'children' => [
+              'attributes' => [
+                'jsonPointer',
                 '/destination'
               ],
-              'nodename' => 'jsonPointer',
+              'children' => [],
+              'nodename' => 'movedestination',
               'type' => 'element'
             },
             {
-              'attributes' => [],
-              'children' => [
+              'attributes' => [
+                'jsonPointer',
                 '/source'
               ],
-              'nodename' => 'jsonPointer',
+              'children' => [],
+              'nodename' => 'movesource',
               'type' => 'element'
             }
           ],

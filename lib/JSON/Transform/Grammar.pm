@@ -101,14 +101,14 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
     'exprDestMove' => {
       '.all' => [
         {
-          '.ref' => 'jsonPointer'
+          '.ref' => 'movedestination'
         },
         {
           '-skip' => 1,
           '.ref' => 'opMoveFrom'
         },
         {
-          '.ref' => 'jsonPointer'
+          '.ref' => 'movesource'
         }
       ]
     },
@@ -219,6 +219,14 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
     },
     'jsonPointer' => {
       '.rgx' => qr/\G"((?:\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})|[^"\x00-\x1f\\])*)"/
+    },
+    'movedestination' => {
+      '-wrap' => 1,
+      '.ref' => 'jsonPointer'
+    },
+    'movesource' => {
+      '-wrap' => 1,
+      '.ref' => 'jsonPointer'
     },
     'opArrayFrom' => {
       '.rgx' => qr/\G(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*[^\r\n]*(?:\r?\n|\r!NL|\z))*(<\@)(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*[^\r\n]*(?:\r?\n|\r!NL|\z))*/u

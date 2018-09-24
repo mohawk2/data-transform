@@ -21,7 +21,11 @@ exprImpliedDest: jsonPointer exprMapping
 
 exprDestCopy: destination .opCopyFrom source
 
-exprDestMove: jsonPointer .opMoveFrom jsonPointer
+exprDestMove: movedestination .opMoveFrom movesource
+
+movedestination: +jsonPointer
+
+movesource: +jsonPointer
 
 destination: (jsonPointer | variableUser)
 
