@@ -6,28 +6,16 @@
           'children' => [
             {
               'children' => [
-                {
-                  'children' => [
-                    'defs'
-                  ],
-                  'nodename' => 'variableUser',
-                  'type' => 'element'
-                }
+                'defs'
               ],
-              'nodename' => 'destination',
+              'nodename' => 'variableUser',
               'type' => 'element'
             },
             {
               'children' => [
-                {
-                  'children' => [
-                    '/definitions'
-                  ],
-                  'nodename' => 'jsonPointer',
-                  'type' => 'element'
-                }
+                '/definitions'
               ],
-              'nodename' => 'source',
+              'nodename' => 'jsonPointer',
               'type' => 'element'
             }
           ],
@@ -44,28 +32,16 @@
           'children' => [
             {
               'children' => [
-                {
-                  'children' => [
-                    ''
-                  ],
-                  'nodename' => 'jsonPointer',
-                  'type' => 'element'
-                }
+                ''
               ],
-              'nodename' => 'destination',
+              'nodename' => 'jsonPointer',
               'type' => 'element'
             },
             {
               'children' => [
-                {
-                  'children' => [
-                    'defs'
-                  ],
-                  'nodename' => 'variableUser',
-                  'type' => 'element'
-                }
+                'defs'
               ],
-              'nodename' => 'source',
+              'nodename' => 'variableUser',
               'type' => 'element'
             }
           ],

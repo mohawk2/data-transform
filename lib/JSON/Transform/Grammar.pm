@@ -58,16 +58,6 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
         }
       ]
     },
-    'destination' => {
-      '.any' => [
-        {
-          '.ref' => 'jsonPointer'
-        },
-        {
-          '.ref' => 'variableUser'
-        }
-      ]
-    },
     'exprArrayMapping' => {
       '.all' => [
         {
@@ -87,14 +77,22 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
     'exprDestCopy' => {
       '.all' => [
         {
-          '.ref' => 'destination'
+          '.any' => [
+            {
+              '.ref' => 'jsonPointer'
+            },
+            {
+              '.ref' => 'variableUser'
+            }
+          ]
         },
         {
           '-skip' => 1,
           '.ref' => 'opCopyFrom'
         },
         {
-          '.ref' => 'source'
+          '-flat' => 1,
+          '.ref' => 'exprSingleValue'
         },
         {
           '+max' => 1,
@@ -105,14 +103,14 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
     'exprDestMove' => {
       '.all' => [
         {
-          '.ref' => 'movedestination'
+          '.ref' => 'jsonPointer'
         },
         {
           '-skip' => 1,
           '.ref' => 'opMoveFrom'
         },
         {
-          '.ref' => 'movesource'
+          '.ref' => 'jsonPointer'
         }
       ]
     },
@@ -231,14 +229,6 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
     'jsonPointer' => {
       '.rgx' => qr/\G"((?:\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})|[^"\x00-\x1f\\])*)"/
     },
-    'movedestination' => {
-      '-wrap' => 1,
-      '.ref' => 'jsonPointer'
-    },
-    'movesource' => {
-      '-wrap' => 1,
-      '.ref' => 'jsonPointer'
-    },
     'opArrayFrom' => {
       '.rgx' => qr/\G(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*[^\r\n]*(?:\r?\n|\r!NL|\z))*(<\@)(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*[^\r\n]*(?:\r?\n|\r!NL|\z))*/u
     },
@@ -270,10 +260,6 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
           '.ref' => 'exprKeyRemove'
         }
       ]
-    },
-    'source' => {
-      '-flat' => 1,
-      '.ref' => 'exprSingleValue'
     },
     'transformation' => {
       '.all' => [

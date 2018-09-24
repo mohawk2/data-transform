@@ -6,28 +6,16 @@
           'children' => [
             {
               'children' => [
-                {
-                  'children' => [
-                    ''
-                  ],
-                  'nodename' => 'jsonPointer',
-                  'type' => 'element'
-                }
+                ''
               ],
-              'nodename' => 'destination',
+              'nodename' => 'jsonPointer',
               'type' => 'element'
             },
             {
               'children' => [
-                {
-                  'children' => [
-                    ''
-                  ],
-                  'nodename' => 'jsonPointer',
-                  'type' => 'element'
-                }
+                ''
               ],
-              'nodename' => 'source',
+              'nodename' => 'jsonPointer',
               'type' => 'element'
             },
             {

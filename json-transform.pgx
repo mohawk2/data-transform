@@ -19,15 +19,9 @@ transformation: .(/-/) (
 
 exprImpliedDest: jsonPointer exprMapping
 
-exprDestCopy: destination .opCopyFrom source exprMapping?
+exprDestCopy: (jsonPointer | variableUser) .opCopyFrom -exprSingleValue exprMapping?
 
-exprDestMove: movedestination .opMoveFrom movesource
-
-movedestination: +jsonPointer
-
-movesource: +jsonPointer
-
-destination: (jsonPointer | variableUser)
+exprDestMove: jsonPointer .opMoveFrom jsonPointer
 
 opCopyFrom: /- ( LANGLE DASH ) -/
 
@@ -38,8 +32,6 @@ opFrom: opArrayFrom | opObjectFrom
 opArrayFrom: /- ( LANGLE AT ) -/
 
 opObjectFrom: /- ( LANGLE PERCENT ) -/
-
-source: -exprSingleValue
 
 exprMapping: +opFrom (exprArrayMapping | exprObjectMapping)
 
