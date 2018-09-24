@@ -28,10 +28,10 @@
                     {
                       'children' => [
                         {
-                          'attributes' => {
-                            'exprStringQuoted' => 'id'
-                          },
-                          'nodename' => 'exprStringValue',
+                          'children' => [
+                            'id'
+                          ],
+                          'nodename' => 'exprStringQuoted',
                           'type' => 'element'
                         },
                         {

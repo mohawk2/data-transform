@@ -39,7 +39,7 @@ exprArrayMapping: .(/- LSQUARE -/) -exprSingleValue .(/- RSQUARE -/)
 
 exprObjectMapping: .(/- LCURLY -/) -colonPair .(/- RCURLY -/)
 
-colonPair: exprStringValue .(/- COLON -/) -exprSingleValue
+colonPair: -exprStringValue .(/- COLON -/) -exprSingleValue
 
 exprSingleValue: (jsonPointer | variableUser | variableSystem) -singleValueMod?
 
@@ -47,9 +47,9 @@ singleValueMod: (exprKeyAdd | exprKeyRemove)
 
 exprKeyAdd: .(/- PLUS -/) -colonPair
 
-exprKeyRemove: .(/- DASH -/) exprStringValue
+exprKeyRemove: .(/- DASH -/) -exprStringValue
 
-exprStringValue: (+jsonPointer | +variableUser | +variableSystem | +exprStringQuoted)
+exprStringValue: (jsonPointer | variableUser | variableSystem | exprStringQuoted)
 
 exprStringQuoted: /
   GRAVE

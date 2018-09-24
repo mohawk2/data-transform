@@ -19,10 +19,10 @@
                 {
                   'children' => [
                     {
-                      'attributes' => {
-                        'variableSystem' => 'K'
-                      },
-                      'nodename' => 'exprStringValue',
+                      'children' => [
+                        'K'
+                      ],
+                      'nodename' => 'variableSystem',
                       'type' => 'element'
                     },
                     {

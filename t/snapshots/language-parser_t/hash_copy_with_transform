@@ -35,10 +35,10 @@
                     {
                       'children' => [
                         {
-                          'attributes' => {
-                            'exprStringQuoted' => 'order'
-                          },
-                          'nodename' => 'exprStringValue',
+                          'children' => [
+                            'order'
+                          ],
+                          'nodename' => 'exprStringQuoted',
                           'type' => 'element'
                         },
                         {

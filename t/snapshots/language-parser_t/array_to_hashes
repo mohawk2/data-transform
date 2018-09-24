@@ -19,10 +19,10 @@
                 {
                   'children' => [
                     {
-                      'attributes' => {
-                        'jsonPointer' => '/$K/id'
-                      },
-                      'nodename' => 'exprStringValue',
+                      'children' => [
+                        '/$K/id'
+                      ],
+                      'nodename' => 'jsonPointer',
                       'type' => 'element'
                     },
                     {
@@ -35,10 +35,10 @@
                     {
                       'children' => [
                         {
-                          'attributes' => {
-                            'exprStringQuoted' => 'id'
-                          },
-                          'nodename' => 'exprStringValue',
+                          'children' => [
+                            'id'
+                          ],
+                          'nodename' => 'exprStringQuoted',
                           'type' => 'element'
                         }
                       ],

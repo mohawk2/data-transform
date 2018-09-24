@@ -46,6 +46,7 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
     'colonPair' => {
       '.all' => [
         {
+          '-flat' => 1,
           '.ref' => 'exprStringValue'
         },
         {
@@ -143,6 +144,7 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
           '.rgx' => qr/\G(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*[^\r\n]*(?:\r?\n|\r!NL|\z))*\-(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*[^\r\n]*(?:\r?\n|\r!NL|\z))*/u
         },
         {
+          '-flat' => 1,
           '.ref' => 'exprStringValue'
         }
       ]
@@ -209,19 +211,15 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
     'exprStringValue' => {
       '.any' => [
         {
-          '-wrap' => 1,
           '.ref' => 'jsonPointer'
         },
         {
-          '-wrap' => 1,
           '.ref' => 'variableUser'
         },
         {
-          '-wrap' => 1,
           '.ref' => 'variableSystem'
         },
         {
-          '-wrap' => 1,
           '.ref' => 'exprStringQuoted'
         }
       ]
