@@ -12,10 +12,9 @@
               'type' => 'element'
             },
             {
-              'attributes' => [
-                'opFrom',
-                '<%'
-              ],
+              'attributes' => {
+                'opFrom' => '<%'
+              },
               'children' => [
                 {
                   'children' => [
@@ -29,10 +28,9 @@
                     {
                       'children' => [
                         {
-                          'attributes' => [
-                            'exprStringQuoted',
-                            'id'
-                          ],
+                          'attributes' => {
+                            'exprStringQuoted' => 'id'
+                          },
                           'nodename' => 'exprStringValue',
                           'type' => 'element'
                         },

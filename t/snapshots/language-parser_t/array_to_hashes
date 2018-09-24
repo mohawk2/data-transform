@@ -12,18 +12,16 @@
               'type' => 'element'
             },
             {
-              'attributes' => [
-                'opFrom',
-                '<@'
-              ],
+              'attributes' => {
+                'opFrom' => '<@'
+              },
               'children' => [
                 {
                   'children' => [
                     {
-                      'attributes' => [
-                        'jsonPointer',
-                        '/$K/id'
-                      ],
+                      'attributes' => {
+                        'jsonPointer' => '/$K/id'
+                      },
                       'nodename' => 'exprStringValue',
                       'type' => 'element'
                     },
@@ -37,10 +35,9 @@
                     {
                       'children' => [
                         {
-                          'attributes' => [
-                            'exprStringQuoted',
-                            'id'
-                          ],
+                          'attributes' => {
+                            'exprStringQuoted' => 'id'
+                          },
                           'nodename' => 'exprStringValue',
                           'type' => 'element'
                         }

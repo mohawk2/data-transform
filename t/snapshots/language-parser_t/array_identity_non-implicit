@@ -31,10 +31,9 @@
               'type' => 'element'
             },
             {
-              'attributes' => [
-                'opFrom',
-                '<@'
-              ],
+              'attributes' => {
+                'opFrom' => '<@'
+              },
               'children' => [
                 {
                   'children' => [

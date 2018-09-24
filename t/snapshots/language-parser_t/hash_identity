@@ -12,18 +12,16 @@
               'type' => 'element'
             },
             {
-              'attributes' => [
-                'opFrom',
-                '<%'
-              ],
+              'attributes' => {
+                'opFrom' => '<%'
+              },
               'children' => [
                 {
                   'children' => [
                     {
-                      'attributes' => [
-                        'variableSystem',
-                        'K'
-                      ],
+                      'attributes' => {
+                        'variableSystem' => 'K'
+                      },
                       'nodename' => 'exprStringValue',
                       'type' => 'element'
                     },

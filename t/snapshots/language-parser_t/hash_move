@@ -5,18 +5,16 @@
         {
           'children' => [
             {
-              'attributes' => [
-                'jsonPointer',
-                '/destination'
-              ],
+              'attributes' => {
+                'jsonPointer' => '/destination'
+              },
               'nodename' => 'movedestination',
               'type' => 'element'
             },
             {
-              'attributes' => [
-                'jsonPointer',
-                '/source'
-              ],
+              'attributes' => {
+                'jsonPointer' => '/source'
+              },
               'nodename' => 'movesource',
               'type' => 'element'
             }

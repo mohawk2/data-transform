@@ -31,10 +31,9 @@
               'type' => 'element'
             },
             {
-              'attributes' => [
-                'opFrom',
-                '<@'
-              ],
+              'attributes' => {
+                'opFrom' => '<@'
+              },
               'children' => [
                 {
                   'children' => [
@@ -48,10 +47,9 @@
                     {
                       'children' => [
                         {
-                          'attributes' => [
-                            'exprStringQuoted',
-                            'order'
-                          ],
+                          'attributes' => {
+                            'exprStringQuoted' => 'order'
+                          },
                           'nodename' => 'exprStringValue',
                           'type' => 'element'
                         },
