@@ -27,16 +27,28 @@
                   'children' => [
                     {
                       'children' => [
-                        'id'
+                        {
+                          'children' => [
+                            'id'
+                          ],
+                          'nodename' => 'exprStringQuoted',
+                          'type' => 'element'
+                        }
                       ],
-                      'nodename' => 'exprStringQuoted',
+                      'nodename' => 'exprStringValue',
                       'type' => 'element'
                     },
                     {
                       'children' => [
-                        'K'
+                        {
+                          'children' => [
+                            'K'
+                          ],
+                          'nodename' => 'variableSystem',
+                          'type' => 'element'
+                        }
                       ],
-                      'nodename' => 'variableSystem',
+                      'nodename' => 'exprSingleValue',
                       'type' => 'element'
                     }
                   ],

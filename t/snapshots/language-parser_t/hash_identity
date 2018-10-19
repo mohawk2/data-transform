@@ -18,16 +18,28 @@
               'children' => [
                 {
                   'children' => [
-                    'K'
+                    {
+                      'children' => [
+                        'K'
+                      ],
+                      'nodename' => 'variableSystem',
+                      'type' => 'element'
+                    }
                   ],
-                  'nodename' => 'variableSystem',
+                  'nodename' => 'exprStringValue',
                   'type' => 'element'
                 },
                 {
                   'children' => [
-                    'V'
+                    {
+                      'children' => [
+                        'V'
+                      ],
+                      'nodename' => 'variableSystem',
+                      'type' => 'element'
+                    }
                   ],
-                  'nodename' => 'variableSystem',
+                  'nodename' => 'exprSingleValue',
                   'type' => 'element'
                 }
               ],

@@ -18,29 +18,41 @@
               'children' => [
                 {
                   'children' => [
-                    '/$K/id'
+                    {
+                      'children' => [
+                        '/$K/id'
+                      ],
+                      'nodename' => 'jsonPointer',
+                      'type' => 'element'
+                    }
                   ],
-                  'nodename' => 'jsonPointer',
-                  'type' => 'element'
-                },
-                {
-                  'children' => [
-                    'V'
-                  ],
-                  'nodename' => 'variableSystem',
+                  'nodename' => 'exprStringValue',
                   'type' => 'element'
                 },
                 {
                   'children' => [
                     {
                       'children' => [
-                        'id'
+                        'V'
                       ],
-                      'nodename' => 'exprStringQuoted',
+                      'nodename' => 'variableSystem',
+                      'type' => 'element'
+                    },
+                    {
+                      'children' => [
+                        {
+                          'children' => [
+                            'id'
+                          ],
+                          'nodename' => 'exprStringQuoted',
+                          'type' => 'element'
+                        }
+                      ],
+                      'nodename' => 'exprKeyRemove',
                       'type' => 'element'
                     }
                   ],
-                  'nodename' => 'exprKeyRemove',
+                  'nodename' => 'exprSingleValue',
                   'type' => 'element'
                 }
               ],
