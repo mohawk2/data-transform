@@ -109,7 +109,7 @@ These terms are used here interchangeably.
 JSON pointers are surrounded by C<"">. JSON pointer syntax gives special
 meaning to the C<~> character, as well as to C</>. To quote a C<~>,
 say C<~0>. To quote a C</>, say C<~1>. Since a C<$> has special meaning,
-to use a literal one, say C<~2>.
+to use a literal one, quote it with a preceding C<\>.
 
 The output type of a JSON pointer is whatever the pointed-at value is.
 

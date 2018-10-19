@@ -59,7 +59,8 @@ exprStringQuoted: /
           [
             GRAVE  # Double Quote
             BACK    # Back Slash
-            SLASH   # Foreward Slash
+            SLASH   # Forward Slash
+            DOLLAR  # Dollar
             'b'     # Back Space
             'f'     # Form Feed
             'n'     # New Line
@@ -84,7 +85,8 @@ jsonPointer: /
           [
             DOUBLE  # Double Quote
             BACK    # Back Slash
-            SLASH   # Foreward Slash
+            SLASH   # Forward Slash
+            DOLLAR  # Dollar
             'b'     # Back Space
             'f'     # Form Feed
             'n'     # New Line

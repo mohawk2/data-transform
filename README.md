@@ -86,7 +86,7 @@ To bind a variable, then replace the whole data structure:
 JSON pointers are surrounded by `""`. JSON pointer syntax gives special
 meaning to the `~` character, as well as to `/`. To quote a `~`,
 say `~0`. To quote a `/`, say `~1`. Since a `$` has special meaning,
-to use a literal one, say `~2`.
+to use a literal one, quote it with a preceding `\`.
 
 The output type of a JSON pointer is whatever the pointed-at value is.
 
