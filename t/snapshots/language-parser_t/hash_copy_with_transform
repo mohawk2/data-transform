@@ -4,68 +4,62 @@
       'children' => [
         {
           'children' => [
+            '/destination'
+          ],
+          'nodename' => 'jsonPointer',
+          'type' => 'element'
+        },
+        {
+          'children' => [
+            '/source'
+          ],
+          'nodename' => 'jsonPointer',
+          'type' => 'element'
+        },
+        {
+          'attributes' => {
+            'opFrom' => '<@'
+          },
+          'children' => [
             {
               'children' => [
-                '/destination'
-              ],
-              'nodename' => 'jsonPointer',
-              'type' => 'element'
-            },
-            {
-              'children' => [
-                '/source'
-              ],
-              'nodename' => 'jsonPointer',
-              'type' => 'element'
-            },
-            {
-              'attributes' => {
-                'opFrom' => '<@'
-              },
-              'children' => [
+                {
+                  'children' => [
+                    'V'
+                  ],
+                  'nodename' => 'variableSystem',
+                  'type' => 'element'
+                },
                 {
                   'children' => [
                     {
                       'children' => [
-                        'V'
+                        'order'
                       ],
-                      'nodename' => 'variableSystem',
+                      'nodename' => 'exprStringQuoted',
                       'type' => 'element'
                     },
                     {
                       'children' => [
-                        {
-                          'children' => [
-                            'order'
-                          ],
-                          'nodename' => 'exprStringQuoted',
-                          'type' => 'element'
-                        },
-                        {
-                          'children' => [
-                            'K'
-                          ],
-                          'nodename' => 'variableSystem',
-                          'type' => 'element'
-                        }
+                        'K'
                       ],
-                      'nodename' => 'exprKeyAdd',
+                      'nodename' => 'variableSystem',
                       'type' => 'element'
                     }
                   ],
-                  'nodename' => 'exprArrayMapping',
+                  'nodename' => 'exprKeyAdd',
                   'type' => 'element'
                 }
               ],
-              'nodename' => 'exprMapping',
+              'nodename' => 'exprArrayMapping',
               'type' => 'element'
             }
           ],
-          'nodename' => 'exprDestCopy',
+          'nodename' => 'exprMapping',
           'type' => 'element'
         }
       ],
-      'nodename' => 'transformation',
+      'nodename' => 'transformCopy',
       'type' => 'element'
     }
   ],

@@ -4,48 +4,42 @@
       'children' => [
         {
           'children' => [
+            ''
+          ],
+          'nodename' => 'jsonPointer',
+          'type' => 'element'
+        },
+        {
+          'children' => [
+            ''
+          ],
+          'nodename' => 'jsonPointer',
+          'type' => 'element'
+        },
+        {
+          'attributes' => {
+            'opFrom' => '<@'
+          },
+          'children' => [
             {
-              'children' => [
-                ''
-              ],
-              'nodename' => 'jsonPointer',
-              'type' => 'element'
-            },
-            {
-              'children' => [
-                ''
-              ],
-              'nodename' => 'jsonPointer',
-              'type' => 'element'
-            },
-            {
-              'attributes' => {
-                'opFrom' => '<@'
-              },
               'children' => [
                 {
                   'children' => [
-                    {
-                      'children' => [
-                        'V'
-                      ],
-                      'nodename' => 'variableSystem',
-                      'type' => 'element'
-                    }
+                    'V'
                   ],
-                  'nodename' => 'exprArrayMapping',
+                  'nodename' => 'variableSystem',
                   'type' => 'element'
                 }
               ],
-              'nodename' => 'exprMapping',
+              'nodename' => 'exprArrayMapping',
               'type' => 'element'
             }
           ],
-          'nodename' => 'exprDestCopy',
+          'nodename' => 'exprMapping',
           'type' => 'element'
         }
       ],
-      'nodename' => 'transformation',
+      'nodename' => 'transformCopy',
       'type' => 'element'
     }
   ],

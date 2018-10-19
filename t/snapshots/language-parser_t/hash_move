@@ -4,26 +4,20 @@
       'children' => [
         {
           'children' => [
-            {
-              'children' => [
-                '/destination'
-              ],
-              'nodename' => 'jsonPointer',
-              'type' => 'element'
-            },
-            {
-              'children' => [
-                '/source'
-              ],
-              'nodename' => 'jsonPointer',
-              'type' => 'element'
-            }
+            '/destination'
           ],
-          'nodename' => 'exprDestMove',
+          'nodename' => 'jsonPointer',
+          'type' => 'element'
+        },
+        {
+          'children' => [
+            '/source'
+          ],
+          'nodename' => 'jsonPointer',
           'type' => 'element'
         }
       ],
-      'nodename' => 'transformation',
+      'nodename' => 'transformMove',
       'type' => 'element'
     }
   ],

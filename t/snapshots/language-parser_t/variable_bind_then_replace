@@ -4,52 +4,40 @@
       'children' => [
         {
           'children' => [
-            {
-              'children' => [
-                'defs'
-              ],
-              'nodename' => 'variableUser',
-              'type' => 'element'
-            },
-            {
-              'children' => [
-                '/definitions'
-              ],
-              'nodename' => 'jsonPointer',
-              'type' => 'element'
-            }
+            'defs'
           ],
-          'nodename' => 'exprDestCopy',
+          'nodename' => 'variableUser',
+          'type' => 'element'
+        },
+        {
+          'children' => [
+            '/definitions'
+          ],
+          'nodename' => 'jsonPointer',
           'type' => 'element'
         }
       ],
-      'nodename' => 'transformation',
+      'nodename' => 'transformCopy',
       'type' => 'element'
     },
     {
       'children' => [
         {
           'children' => [
-            {
-              'children' => [
-                ''
-              ],
-              'nodename' => 'jsonPointer',
-              'type' => 'element'
-            },
-            {
-              'children' => [
-                'defs'
-              ],
-              'nodename' => 'variableUser',
-              'type' => 'element'
-            }
+            ''
           ],
-          'nodename' => 'exprDestCopy',
+          'nodename' => 'jsonPointer',
+          'type' => 'element'
+        },
+        {
+          'children' => [
+            'defs'
+          ],
+          'nodename' => 'variableUser',
           'type' => 'element'
         }
       ],
-      'nodename' => 'transformation',
+      'nodename' => 'transformCopy',
       'type' => 'element'
     }
   ],

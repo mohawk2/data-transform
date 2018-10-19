@@ -28,7 +28,7 @@ WriteMakefile(
     'MooX::Thunking' => '0.07', # takes care of Thunk in isa
     'JSON::MaybeXS' => '1.003009', # is_bool, also . @INC
     'JSON::PP' => '2.92', # number detection
-    'XML::Invisible' => '0.03', # attributes are hash
+    'XML::Invisible' => '0.04', # flatten works right
   },
   dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
   clean => { FILES => 'JSON-Transform-*' },

@@ -4,61 +4,55 @@
       'children' => [
         {
           'children' => [
+            ''
+          ],
+          'nodename' => 'jsonPointer',
+          'type' => 'element'
+        },
+        {
+          'attributes' => {
+            'opFrom' => '<@'
+          },
+          'children' => [
             {
               'children' => [
-                ''
-              ],
-              'nodename' => 'jsonPointer',
-              'type' => 'element'
-            },
-            {
-              'attributes' => {
-                'opFrom' => '<@'
-              },
-              'children' => [
+                {
+                  'children' => [
+                    '/$K/id'
+                  ],
+                  'nodename' => 'jsonPointer',
+                  'type' => 'element'
+                },
+                {
+                  'children' => [
+                    'V'
+                  ],
+                  'nodename' => 'variableSystem',
+                  'type' => 'element'
+                },
                 {
                   'children' => [
                     {
                       'children' => [
-                        '/$K/id'
+                        'id'
                       ],
-                      'nodename' => 'jsonPointer',
-                      'type' => 'element'
-                    },
-                    {
-                      'children' => [
-                        'V'
-                      ],
-                      'nodename' => 'variableSystem',
-                      'type' => 'element'
-                    },
-                    {
-                      'children' => [
-                        {
-                          'children' => [
-                            'id'
-                          ],
-                          'nodename' => 'exprStringQuoted',
-                          'type' => 'element'
-                        }
-                      ],
-                      'nodename' => 'exprKeyRemove',
+                      'nodename' => 'exprStringQuoted',
                       'type' => 'element'
                     }
                   ],
-                  'nodename' => 'exprObjectMapping',
+                  'nodename' => 'exprKeyRemove',
                   'type' => 'element'
                 }
               ],
-              'nodename' => 'exprMapping',
+              'nodename' => 'exprObjectMapping',
               'type' => 'element'
             }
           ],
-          'nodename' => 'exprImpliedDest',
+          'nodename' => 'exprMapping',
           'type' => 'element'
         }
       ],
-      'nodename' => 'transformation',
+      'nodename' => 'transformImpliedDest',
       'type' => 'element'
     }
   ],

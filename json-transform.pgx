@@ -5,23 +5,23 @@
 
 # string and number from https://github.com/ingydotnet/json-pgx/blob/master/json.pgx
 
-transforms: transformation+
+transforms: -transformation+
 
 transformation: .(/-/) (
-  exprImpliedDest
+  transformImpliedDest
 |
-  exprDestCopy
+  transformCopy
 |
-  exprDestMove
+  transformMove
 |
   .ws2
 ) .(/-/)
 
-exprImpliedDest: jsonPointer exprMapping
+transformImpliedDest: jsonPointer exprMapping
 
-exprDestCopy: (jsonPointer | variableUser) .opCopyFrom -exprSingleValue exprMapping?
+transformCopy: (jsonPointer | variableUser) .opCopyFrom -exprSingleValue exprMapping?
 
-exprDestMove: jsonPointer .opMoveFrom jsonPointer
+transformMove: jsonPointer .opMoveFrom jsonPointer
 
 opCopyFrom: /- ( LANGLE DASH ) -/
 

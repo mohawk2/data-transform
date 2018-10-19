@@ -75,56 +75,6 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
         }
       ]
     },
-    'exprDestCopy' => {
-      '.all' => [
-        {
-          '.any' => [
-            {
-              '.ref' => 'jsonPointer'
-            },
-            {
-              '.ref' => 'variableUser'
-            }
-          ]
-        },
-        {
-          '-skip' => 1,
-          '.ref' => 'opCopyFrom'
-        },
-        {
-          '-flat' => 1,
-          '.ref' => 'exprSingleValue'
-        },
-        {
-          '+max' => 1,
-          '.ref' => 'exprMapping'
-        }
-      ]
-    },
-    'exprDestMove' => {
-      '.all' => [
-        {
-          '.ref' => 'jsonPointer'
-        },
-        {
-          '-skip' => 1,
-          '.ref' => 'opMoveFrom'
-        },
-        {
-          '.ref' => 'jsonPointer'
-        }
-      ]
-    },
-    'exprImpliedDest' => {
-      '.all' => [
-        {
-          '.ref' => 'jsonPointer'
-        },
-        {
-          '.ref' => 'exprMapping'
-        }
-      ]
-    },
     'exprKeyAdd' => {
       '.all' => [
         {
@@ -259,6 +209,56 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
         }
       ]
     },
+    'transformCopy' => {
+      '.all' => [
+        {
+          '.any' => [
+            {
+              '.ref' => 'jsonPointer'
+            },
+            {
+              '.ref' => 'variableUser'
+            }
+          ]
+        },
+        {
+          '-skip' => 1,
+          '.ref' => 'opCopyFrom'
+        },
+        {
+          '-flat' => 1,
+          '.ref' => 'exprSingleValue'
+        },
+        {
+          '+max' => 1,
+          '.ref' => 'exprMapping'
+        }
+      ]
+    },
+    'transformImpliedDest' => {
+      '.all' => [
+        {
+          '.ref' => 'jsonPointer'
+        },
+        {
+          '.ref' => 'exprMapping'
+        }
+      ]
+    },
+    'transformMove' => {
+      '.all' => [
+        {
+          '.ref' => 'jsonPointer'
+        },
+        {
+          '-skip' => 1,
+          '.ref' => 'opMoveFrom'
+        },
+        {
+          '.ref' => 'jsonPointer'
+        }
+      ]
+    },
     'transformation' => {
       '.all' => [
         {
@@ -268,13 +268,13 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
         {
           '.any' => [
             {
-              '.ref' => 'exprImpliedDest'
+              '.ref' => 'transformImpliedDest'
             },
             {
-              '.ref' => 'exprDestCopy'
+              '.ref' => 'transformCopy'
             },
             {
-              '.ref' => 'exprDestMove'
+              '.ref' => 'transformMove'
             },
             {
               '-skip' => 1,
@@ -290,6 +290,7 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
     },
     'transforms' => {
       '+min' => 1,
+      '-flat' => 1,
       '.ref' => 'transformation'
     },
     'variableSystem' => {
