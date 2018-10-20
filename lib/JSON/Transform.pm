@@ -2,10 +2,147 @@ package JSON::Transform;
 
 use strict;
 use warnings;
+use Exporter 'import';
+use JSON::Transform::Parser qw(parse);
+use Storable qw(dclone);
 
 use constant DEBUG => $ENV{JSON_TRANSFORM_DEBUG};
 
 our $VERSION = '0.01';
+our @EXPORT_OK = qw(
+  parse_transform
+);
+
+sub parse_transform {
+  my ($input_text) = @_;
+  my $transforms = parse $input_text;
+  sub {
+    my ($data) = @_;
+    $data = dclone $data; # now can mutate away
+    for (@{$transforms->{children}}) {
+      my $name = $_->{nodename};
+      if ($name eq 'transformImpliedDest') {
+        my ($srcptr, $mapping) = @{$_->{children}};
+        $srcptr = $srcptr->{children}[0];
+        die "invalid src pointer '$srcptr'" if !_pointer(1, $data, $srcptr);
+        my $srcdata = _pointer(0, $data, $srcptr);
+        my $opFrom = $mapping->{attributes}{opFrom};
+        die "Expected '$srcptr' to point to hash"
+          if $opFrom eq '<%' and ref $srcdata ne 'HASH';
+        die "Expected '$srcptr' to point to array"
+          if $opFrom eq '<@' and ref $srcdata ne 'ARRAY';
+        my $destptr = $srcptr;
+        my $newdata = _apply_mapping($data, $mapping->{children}[0], $srcdata);
+        $data = _pointer(0, $data, $destptr, $newdata);
+      } else {
+        die "Unknown transform type '$name'";
+      }
+    }
+    $data;
+  };
+}
+
+sub _apply_mapping {
+  my ($topdata, $mapping, $thisdata) = @_;
+  my $name = $mapping->{nodename};
+  my @pairs = _data2pairs($thisdata);
+  if ($name eq 'exprObjectMapping') {
+    my ($keyexpr, $valueexpr) = @{$mapping->{children}};
+    my %data;
+    for (@pairs) {
+      my $sysvals = _make_sysvals($_);
+      my $key = _eval_expr($topdata, $keyexpr, $sysvals);
+      my $value = _eval_expr($topdata, $valueexpr, $sysvals);
+      $data{$key} = $value;
+    }
+    return \%data;
+  } else {
+    die "Unknown mapping type '$name'";
+  }
+}
+
+sub _make_sysvals {
+  my ($pair) = @_;
+  { K => $pair->[0], V => $pair->[1] };
+}
+
+sub _sub_sysvals {
+  my ($text, $sysvals) = @_;
+  $text =~ s#\$$_\b#$sysvals->{$_}#g for sort keys %$sysvals;
+  $text;
+}
+
+sub _eval_expr {
+  my ($topdata, $expr, $sysvals) = @_;
+  my $name = $expr->{nodename};
+  if ($name eq 'jsonPointer') {
+    my $text = _sub_sysvals($expr->{children}[0], $sysvals);
+    return _pointer(0, $topdata, $text);
+  } elsif ($name eq 'variableSystem') {
+    my $var = $expr->{children}[0];
+    die "Unknown system variable '$var'" if !exists $sysvals->{$var};
+    return $sysvals->{$var};
+  } elsif ($name eq 'exprStringQuoted') {
+    my $var = $expr->{children}[0];
+    return $var;
+  } elsif ($name eq 'exprStringValue') {
+    return _eval_expr($topdata, $expr->{children}[0], $sysvals);
+  } elsif ($name eq 'exprSingleValue') {
+    my ($mainexpr, @other) = @{$expr->{children}};
+    my $value = _eval_expr($topdata, $mainexpr, $sysvals);
+    for (@other) {
+      my $othername = $_->{nodename};
+      if ($othername eq 'exprKeyRemove') {
+        my ($keyexpr) = @{$_->{children}};
+        my $whichkey = _eval_expr($topdata, $keyexpr, $sysvals);
+        delete $value->{$whichkey};
+      } else {
+        die "Unknown expression modifier '$othername'";
+      }
+    }
+    return $value;
+  } else {
+    die "Unknown expr type '$name'";
+  }
+}
+
+sub _data2pairs {
+  my ($data) = @_;
+  if (ref $data eq 'HASH') {
+    return map [ $_, $data->{$_} ], sort keys %$data;
+  } elsif (ref $data eq 'ARRAY') {
+    my $count = 0;
+    return map [ $count++, $_ ], @$data;
+  } else {
+    die "Given data '$data' neither array nor hash";
+  }
+}
+
+# based on heart of Mojo::JSON::Pointer
+# could be more memory-efficient by shallow-copy/replacing data at each level
+sub _pointer {
+  my ($contains, $data, $pointer, $set_to) = @_;
+  my $is_set = @_ > 3; # if 4th arg supplied, even if false
+  return $set_to if $is_set and !length $pointer;
+  return $contains ? 1 : $data unless $pointer =~ s!^/!!;
+  my $lastptr;
+  for my $p (length $pointer ? (split '/', $pointer, -1) : ($pointer)) {
+    $p =~ s!~1!/!g;
+    $p =~ s/~0/~/g;
+    # Hash
+    if (ref $data eq 'HASH' && exists $data->{$p}) {
+      $data = ${ $lastptr = \$data->{$p} };
+    }
+    # Array
+    elsif (ref $data eq 'ARRAY' && $p =~ /^\d+$/ && @$data > $p) {
+      $data = ${ $lastptr = \$data->[$p] };
+    }
+    # Nothing
+    else { return undef }
+  }
+  $$lastptr = $set_to if defined $$lastptr and $is_set;
+  return $contains ? 1 : $data;
+}
 
 =head1 NAME
 

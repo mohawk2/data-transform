@@ -22,6 +22,7 @@ t/snapshots/language-parser_t/hash_identity
 t/snapshots/language-parser_t/hash_move
 t/snapshots/language-parser_t/hashes_to_array
 t/snapshots/language-parser_t/variable_bind_then_replace
+t/transform.t
 xt/manifest.t
 xt/pod-coverage.t
 xt/pod.t
