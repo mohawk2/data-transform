@@ -1,16 +1,15 @@
 package JSON::Transform;
 
-use 5.014;
 use strict;
 use warnings;
+
+use constant DEBUG => $ENV{JSON_TRANSFORM_DEBUG};
+
+our $VERSION = '0.01';
 
 =head1 NAME
 
 JSON::Transform - arbitrary transformation of JSON-able data
-
-=cut
-
-our $VERSION = '0.01';
 
 =begin markdown
 
