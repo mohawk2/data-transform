@@ -17,6 +17,7 @@ WriteMakefile(
     'Test::Exception' => '0.42',
     'Test::Deep' => '1.127',
     'Import::Into' => '0',
+    'Test::Snapshot' => '0.02', # better snapshot filenames
   },
   PREREQ_PM => {
     'Moo' => '0',
