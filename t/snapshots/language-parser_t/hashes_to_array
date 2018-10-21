@@ -26,19 +26,13 @@
                       'children' => [
                         {
                           'children' => [
-                            {
-                              'children' => [
-                                'id'
-                              ],
-                              'nodename' => 'jsonOtherNotGrave',
-                              'type' => 'element'
-                            }
+                            'id'
                           ],
-                          'nodename' => 'exprStringQuoted',
+                          'nodename' => 'jsonOtherNotGrave',
                           'type' => 'element'
                         }
                       ],
-                      'nodename' => 'exprStringValue',
+                      'nodename' => 'exprStringQuoted',
                       'type' => 'element'
                     },
                     {

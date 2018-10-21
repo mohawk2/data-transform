@@ -17,19 +17,27 @@
                   'children' => [
                     {
                       'children' => [
-                        {
-                          'children' => [
-                            '/$K/id'
-                          ],
-                          'nodename' => 'jsonOtherNotDouble',
-                          'type' => 'element'
-                        }
+                        '/'
                       ],
-                      'nodename' => 'jsonPointer',
+                      'nodename' => 'jsonOtherNotDouble',
+                      'type' => 'element'
+                    },
+                    {
+                      'children' => [
+                        'K'
+                      ],
+                      'nodename' => 'variableSystem',
+                      'type' => 'element'
+                    },
+                    {
+                      'children' => [
+                        '/id'
+                      ],
+                      'nodename' => 'jsonOtherNotDouble',
                       'type' => 'element'
                     }
                   ],
-                  'nodename' => 'exprStringValue',
+                  'nodename' => 'jsonPointer',
                   'type' => 'element'
                 },
                 {

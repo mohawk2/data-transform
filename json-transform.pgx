@@ -39,7 +39,7 @@ exprArrayMapping: .(/- LSQUARE -/) -exprSingleValue .(/- RSQUARE -/)
 
 exprObjectMapping: .(/- LCURLY -/) -colonPair .(/- RCURLY -/)
 
-colonPair: exprStringValue .(/- COLON -/) exprSingleValue
+colonPair: -exprStringValue .(/- COLON -/) exprSingleValue
 
 exprSingleValue: (jsonPointer | variableUser | variableSystem) -singleValueMod?
 
@@ -62,11 +62,15 @@ exprStringQuoted:
       |
     jsonBackslashGrave
       |
+    variableUser
+      |
+    variableSystem
+      |
     jsonOtherNotGrave
   )*
   .(/ GRAVE /)
 
-jsonOtherNotGrave: /( [^ GRAVE CONTROLS BACK ]+ )/ # Anything else
+jsonOtherNotGrave: /( [^ GRAVE CONTROLS BACK DOLLAR ]+ )/ # Anything else
 
 jsonBackslashGrave: /( BACK GRAVE )/
 
@@ -81,11 +85,15 @@ jsonPointer:
       |
     jsonBackslashDouble
       |
+    variableUser
+      |
+    variableSystem
+      |
     jsonOtherNotDouble
   )*
   .(/ DOUBLE /)
 
-jsonOtherNotDouble: /( [^ DOUBLE CONTROLS BACK ]+ )/ # Anything else
+jsonOtherNotDouble: /( [^ DOUBLE CONTROLS BACK DOLLAR ]+ )/ # Anything else
 
 jsonBackslashDouble: /( BACK DOUBLE )/
 

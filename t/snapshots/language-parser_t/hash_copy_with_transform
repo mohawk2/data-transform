@@ -48,19 +48,13 @@
                       'children' => [
                         {
                           'children' => [
-                            {
-                              'children' => [
-                                'order'
-                              ],
-                              'nodename' => 'jsonOtherNotGrave',
-                              'type' => 'element'
-                            }
+                            'order'
                           ],
-                          'nodename' => 'exprStringQuoted',
+                          'nodename' => 'jsonOtherNotGrave',
                           'type' => 'element'
                         }
                       ],
-                      'nodename' => 'exprStringValue',
+                      'nodename' => 'exprStringQuoted',
                       'type' => 'element'
                     },
                     {

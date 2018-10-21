@@ -15,15 +15,9 @@
               'children' => [
                 {
                   'children' => [
-                    {
-                      'children' => [
-                        'K'
-                      ],
-                      'nodename' => 'variableSystem',
-                      'type' => 'element'
-                    }
+                    'K'
                   ],
-                  'nodename' => 'exprStringValue',
+                  'nodename' => 'variableSystem',
                   'type' => 'element'
                 },
                 {

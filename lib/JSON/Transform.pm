@@ -23,15 +23,13 @@ sub parse_transform {
       my $name = $_->{nodename};
       if ($name eq 'transformImpliedDest') {
         my ($srcptr, $mapping) = @{$_->{children}};
-        $srcptr = $srcptr->{children}[0];
-        die "invalid src pointer '$srcptr'" if !_pointer(1, $data, $srcptr);
-        my $srcdata = _pointer(0, $data, $srcptr);
+        my $srcdata = _eval_expr($data, $srcptr, _make_sysvals());
         my $opFrom = $mapping->{attributes}{opFrom};
         die "Expected '$srcptr' to point to hash"
           if $opFrom eq '<%' and ref $srcdata ne 'HASH';
         die "Expected '$srcptr' to point to array"
           if $opFrom eq '<@' and ref $srcdata ne 'ARRAY';
-        my $destptr = $srcptr;
+        my $destptr = _eval_expr($data, $srcptr, _make_sysvals(), 1);
         my $newdata = _apply_mapping($data, $mapping->{children}[0], $srcdata);
         $data = _pointer(0, $data, $destptr, $newdata);
       } else {
@@ -63,39 +61,29 @@ sub _apply_mapping {
 
 sub _make_sysvals {
   my ($pair) = @_;
+  return {} if !$pair;
   { K => $pair->[0], V => $pair->[1] };
 }
 
-sub _sub_sysvals {
-  my ($text, $sysvals) = @_;
-  $text =~ s#\$$_\b#$sysvals->{$_}#g for sort keys %$sysvals;
-  $text;
-}
-
 sub _eval_expr {
-  my ($topdata, $expr, $sysvals) = @_;
+  my ($topdata, $expr, $sysvals, $as_location) = @_;
   my $name = $expr->{nodename};
   if ($name eq 'jsonPointer') {
     my $text = join '', '', map _eval_expr($topdata, $_, $sysvals),
-      @{$expr->{children}};
+      @{$expr->{children} || []};
+    die "invalid src pointer '$text'" if !_pointer(1, $topdata, $text);
+    return $text if $as_location;
     return _pointer(0, $topdata, $text);
   } elsif ($name eq 'variableSystem') {
     my $var = $expr->{children}[0];
     die "Unknown system variable '$var'" if !exists $sysvals->{$var};
     return $sysvals->{$var};
-  } elsif ($name eq 'jsonOtherNotDouble') {
-    my $var = $expr->{children}[0];
-    return _sub_sysvals($var, $sysvals);
-  } elsif ($name eq 'jsonOtherNotGrave') {
-    my $var = $expr->{children}[0];
-    return _sub_sysvals($var, $sysvals);
+  } elsif ($name eq 'jsonOtherNotDouble' or $name eq 'jsonOtherNotGrave') {
+    return $expr->{children}[0];
   } elsif ($name eq 'exprStringQuoted') {
     my $text = join '', '', map _eval_expr($topdata, $_, $sysvals),
-      @{$expr->{children}};
+      @{$expr->{children} || []};
     return $text;
-  } elsif ($name eq 'exprStringValue') {
-    return join '', '', map _eval_expr($topdata, $_, $sysvals),
-      @{$expr->{children}};
   } elsif ($name eq 'exprSingleValue') {
     my ($mainexpr, @other) = @{$expr->{children}};
     my $value = _eval_expr($topdata, $mainexpr, $sysvals);

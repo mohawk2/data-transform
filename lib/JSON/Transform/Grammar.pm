@@ -46,6 +46,7 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
     'colonPair' => {
       '.all' => [
         {
+          '-flat' => 1,
           '.ref' => 'exprStringValue'
         },
         {
@@ -175,6 +176,12 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
               '.ref' => 'jsonBackslashGrave'
             },
             {
+              '.ref' => 'variableUser'
+            },
+            {
+              '.ref' => 'variableSystem'
+            },
+            {
               '.ref' => 'jsonOtherNotGrave'
             }
           ]
@@ -214,10 +221,10 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
       '.rgx' => qr/\G(\\[\\\/bfnrt])/
     },
     'jsonOtherNotDouble' => {
-      '.rgx' => qr/\G([^"\x00-\x1f\\]+)/
+      '.rgx' => qr/\G([^"\x00-\x1f\\\$]+)/
     },
     'jsonOtherNotGrave' => {
-      '.rgx' => qr/\G([^`\x00-\x1f\\]+)/
+      '.rgx' => qr/\G([^`\x00-\x1f\\\$]+)/
     },
     'jsonPointer' => {
       '.all' => [
@@ -239,6 +246,12 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
             },
             {
               '.ref' => 'jsonBackslashDouble'
+            },
+            {
+              '.ref' => 'variableUser'
+            },
+            {
+              '.ref' => 'variableSystem'
             },
             {
               '.ref' => 'jsonOtherNotDouble'
