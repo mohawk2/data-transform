@@ -71,8 +71,8 @@ sub _eval_expr {
   if ($name eq 'jsonPointer') {
     my $text = join '', '', map _eval_expr($topdata, $_, $sysvals),
       @{$expr->{children} || []};
-    die "invalid src pointer '$text'" if !_pointer(1, $topdata, $text);
     return $text if $as_location;
+    die "invalid src pointer '$text'" if !_pointer(1, $topdata, $text);
     return _pointer(0, $topdata, $text);
   } elsif ($name eq 'variableSystem') {
     my $var = $expr->{children}[0];
