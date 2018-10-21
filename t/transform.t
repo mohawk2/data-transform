@@ -51,6 +51,12 @@ my @OPS = (
     { a => {k=>'va'}, b => {k=>'vb'} },
     { a => {k=>'va'}, b => {k=>'vb'}, c => {k=>'va'} },
   ],
+  [
+    'hash keys',
+    '"" <% [ $K ]',
+    { a => {k=>'va'}, b => {k=>'vb'} },
+    [ qw(a b) ],
+  ],
 );
 
 for (@OPS) {
@@ -75,10 +81,6 @@ EOF
 
 is_deeply_snapshot parse(<<'EOF'), 'hash count';
   "" <% $C
-EOF
-
-is_deeply_snapshot parse(<<'EOF'), 'hash keys';
-  "" <% [ $K ]
 EOF
 }
 
