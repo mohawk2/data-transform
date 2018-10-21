@@ -6,9 +6,6 @@ BEGIN {
   strict
   warnings
   Test::More
-  Test::Exception
-  Test::Deep
-  JSON::MaybeXS
   Test::Snapshot
 );
 do { eval "use $_; 1" or die $@ } for @IMPORT;
