@@ -15,6 +15,12 @@ my @OPS = (
     { a => {k=>'va'}, b => {k=>'vb'} },
     [{id=>'a', k=>'va'}, {id=>'b', k=>'vb'}],
   ],
+  [
+    'array identity non-implicit',
+    '"" <- "" <@ [ $V ]',
+    [ 1, 'a', 4 ],
+    [ 1, 'a', 4 ],
+  ],
 );
 
 for (@OPS) {
@@ -23,10 +29,6 @@ for (@OPS) {
 }
 
 if (0) {
-is_deeply_snapshot parse(<<'EOF'), 'array identity non-implicit';
-  "" <- "" <@ [ $V ]
-EOF
-
 is_deeply_snapshot parse(<<'EOF'), 'array identity';
   "" <@ [ $V ]
 EOF

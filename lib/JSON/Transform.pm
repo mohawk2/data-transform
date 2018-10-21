@@ -21,20 +21,23 @@ sub parse_transform {
     $data = dclone $data; # now can mutate away
     for (@{$transforms->{children}}) {
       my $name = $_->{nodename};
+      my ($srcptr, $destptr, $mapping);
       if ($name eq 'transformImpliedDest') {
-        my ($srcptr, $mapping) = @{$_->{children}};
-        my $srcdata = _eval_expr($data, $srcptr, _make_sysvals());
-        my $opFrom = $mapping->{attributes}{opFrom};
-        die "Expected '$srcptr' to point to hash"
-          if $opFrom eq '<%' and ref $srcdata ne 'HASH';
-        die "Expected '$srcptr' to point to array"
-          if $opFrom eq '<@' and ref $srcdata ne 'ARRAY';
-        my $destptr = _eval_expr($data, $srcptr, _make_sysvals(), 1);
-        my $newdata = _apply_mapping($data, $mapping->{children}[0], $srcdata);
-        $data = _pointer(0, $data, $destptr, $newdata);
+        ($srcptr, $mapping) = @{$_->{children}};
+        $destptr = _eval_expr($data, $srcptr, _make_sysvals(), 1);
+      } elsif ($name eq 'transformCopy') {
+        ($destptr, $srcptr, $mapping) = @{$_->{children}};
       } else {
         die "Unknown transform type '$name'";
       }
+      my $srcdata = _eval_expr($data, $srcptr, _make_sysvals());
+      my $opFrom = $mapping->{attributes}{opFrom};
+      die "Expected '$srcptr' to point to hash"
+        if $opFrom eq '<%' and ref $srcdata ne 'HASH';
+      die "Expected '$srcptr' to point to array"
+        if $opFrom eq '<@' and ref $srcdata ne 'ARRAY';
+      my $newdata = _apply_mapping($data, $mapping->{children}[0], $srcdata);
+      $data = _pointer(0, $data, $destptr, $newdata);
     }
     $data;
   };
