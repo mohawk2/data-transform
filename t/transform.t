@@ -27,6 +27,12 @@ my @OPS = (
     [ 1, 'a', 4 ],
     [ 1, 'a', 4 ],
   ],
+  [
+    'hash identity',
+    '"" <% { $K:$V }',
+    { a => {k=>'va'}, b => {k=>'vb'} },
+    { a => {k=>'va'}, b => {k=>'vb'} },
+  ],
 );
 
 for (@OPS) {
@@ -35,10 +41,6 @@ for (@OPS) {
 }
 
 if (0) {
-is_deeply_snapshot parse(<<'EOF'), 'hash identity';
-  "" <% { $K:$V }
-EOF
-
 is_deeply_snapshot parse(<<'EOF'), 'hash move';
   "/destination" << "/source"
 EOF
