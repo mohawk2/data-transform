@@ -57,17 +57,12 @@ exprStringQuoted: /
       (:
         jsonUnicode
           |
+        jsonBackslashQuote
+          |
         BACK (:     # Backslash escapes
           [
             DOLLAR  # Dollar
             GRAVE  # Double Quote
-            BACK    # Back Slash
-            SLASH   # Forward Slash
-            'b'     # Back Space
-            'f'     # Form Feed
-            'n'     # New Line
-            'r'     # Carriage Return
-            't'     # Horizontal Tab
           ]
         )
       |
@@ -83,17 +78,12 @@ jsonPointer: /
       (:
         jsonUnicode
           |
+        jsonBackslashQuote
+          |
         BACK (:     # Backslash escapes
           [
             DOLLAR  # Dollar
             DOUBLE  # Double Quote
-            BACK    # Back Slash
-            SLASH   # Forward Slash
-            'b'     # Back Space
-            'f'     # Form Feed
-            'n'     # New Line
-            'r'     # Carriage Return
-            't'     # Horizontal Tab
           ]
         )
       |
@@ -101,6 +91,18 @@ jsonPointer: /
       )*
     )
   DOUBLE
+/
+
+jsonBackslashQuote: /
+  BACK [
+    BACK    # Back Slash
+    SLASH   # Forward Slash
+    'b'     # Back Space
+    'f'     # Form Feed
+    'n'     # New Line
+    'r'     # Carriage Return
+    't'     # Horizontal Tab
+  ]
 /
 
 jsonUnicode: / BACK 'u' HEX{4} / # Unicode octet pair
