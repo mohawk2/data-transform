@@ -21,6 +21,12 @@ my @OPS = (
     [ 1, 'a', 4 ],
     [ 1, 'a', 4 ],
   ],
+  [
+    'array identity',
+    '"" <@ [ $V ]',
+    [ 1, 'a', 4 ],
+    [ 1, 'a', 4 ],
+  ],
 );
 
 for (@OPS) {
@@ -29,10 +35,6 @@ for (@OPS) {
 }
 
 if (0) {
-is_deeply_snapshot parse(<<'EOF'), 'array identity';
-  "" <@ [ $V ]
-EOF
-
 is_deeply_snapshot parse(<<'EOF'), 'hash identity';
   "" <% { $K:$V }
 EOF
