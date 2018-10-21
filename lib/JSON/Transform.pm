@@ -425,7 +425,7 @@ The return value will be the object/hash without that key.
 
 =head2 Comments
 
-Any C<#> character up to the end of that line will be a comment,
+Any C<--> sequence up to the end of that line will be a comment,
 and ignored.
 
 =head1 DEBUGGING

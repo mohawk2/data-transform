@@ -84,6 +84,15 @@ my @OPS = (
     { a => {k=>'va'}, b => {k=>'vb'} },
     {k=>'va'},
   ],
+  [
+    'comments',
+    q{
+      -- This is a comment
+      "" <% $C
+    },
+    { a => 1, b => 2 },
+    2
+  ],
 );
 
 for (@OPS) {

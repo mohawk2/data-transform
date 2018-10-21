@@ -202,7 +202,7 @@ The return value will be the object/hash without that key.
 
 ## Comments
 
-Any `#` character up to the end of that line will be a comment,
+Any `--` sequence up to the end of that line will be a comment,
 and ignored.
 
 # DEBUGGING
