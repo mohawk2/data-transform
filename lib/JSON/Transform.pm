@@ -27,6 +27,14 @@ sub parse_transform {
         $destptr = _eval_expr($data, $srcptr, _make_sysvals(), 1);
       } elsif ($name eq 'transformCopy') {
         ($destptr, $srcptr, $mapping) = @{$_->{children}};
+      } elsif ($name eq 'transformMove') {
+        ($destptr, $srcptr) = @{$_->{children}};
+        $destptr = _eval_expr($data, $destptr, _make_sysvals(), 1);
+        $srcptr = _eval_expr($data, $srcptr, _make_sysvals(), 1);
+        die "invalid src pointer '$srcptr'" if !_pointer(1, $data, $srcptr);
+        my $srcdata = _pointer(0, $data, $srcptr, 1);
+        _pointer(0, $data, $destptr, 0, $srcdata);
+        return $data;
       } else {
         die "Unknown transform type '$name'";
       }
@@ -37,7 +45,7 @@ sub parse_transform {
       die "Expected '$srcptr' to point to array"
         if $opFrom eq '<@' and ref $srcdata ne 'ARRAY';
       my $newdata = _apply_mapping($data, $mapping->{children}[0], $srcdata);
-      $data = _pointer(0, $data, $destptr, $newdata);
+      _pointer(0, $data, $destptr, 0, $newdata);
     }
     $data;
   };
@@ -135,23 +143,27 @@ sub _data2pairs {
 # based on heart of Mojo::JSON::Pointer
 # could be more memory-efficient by shallow-copy/replacing data at each level
 sub _pointer {
-  my ($contains, $data, $pointer, $set_to) = @_;
-  my $is_set = @_ > 3; # if 4th arg supplied, even if false
-  return $set_to if $is_set and !length $pointer;
+  my ($contains, $data, $pointer, $is_delete, $set_to) = @_;
+  my $is_set = @_ > 4; # if 5th arg supplied, even if false
+  return $_[1] = $set_to if $is_set and !length $pointer;
   return $contains ? 1 : $data unless $pointer =~ s!^/!!;
   my $lastptr;
-  for my $p (length $pointer ? (split '/', $pointer, -1) : ($pointer)) {
+  my @parts = length $pointer ? (split '/', $pointer, -1) : ($pointer);
+  while (defined(my $p = shift @parts)) {
     $p =~ s!~1!/!g;
     $p =~ s/~0/~/g;
-    # Hash
-    if (ref $data eq 'HASH' && exists $data->{$p}) {
-      $data = ${ $lastptr = \$data->{$p} };
+    if (ref $data eq 'HASH') {
+      return undef if !exists $data->{$p} and !$is_set;
+      $data = ${ $lastptr = \(
+        @parts == 0 && $is_delete ? delete $data->{$p} : $data->{$p}
+      )};
     }
-    # Array
-    elsif (ref $data eq 'ARRAY' && $p =~ /^\d+$/ && @$data > $p) {
-      $data = ${ $lastptr = \$data->[$p] };
+    elsif (ref $data eq 'ARRAY') {
+      return undef if !($p =~ /^\d+$/ || @$data > $p) and !$is_set;
+      $data = ${ $lastptr = \(
+        @parts == 0 && $is_delete ? delete $data->[$p] : $data->[$p]
+      )};
     }
-    # Nothing
     else { return undef }
   }
   $$lastptr = $set_to if defined $$lastptr and $is_set;

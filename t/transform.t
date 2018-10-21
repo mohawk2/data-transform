@@ -33,6 +33,12 @@ my @OPS = (
     { a => {k=>'va'}, b => {k=>'vb'} },
     { a => {k=>'va'}, b => {k=>'vb'} },
   ],
+  [
+    'hash move',
+    '"/b" << "/a"',
+    { a => {k=>'va'}, b => {k=>'vb'} },
+    { b => {k=>'va'} },
+  ],
 );
 
 for (@OPS) {
@@ -41,10 +47,6 @@ for (@OPS) {
 }
 
 if (0) {
-is_deeply_snapshot parse(<<'EOF'), 'hash move';
-  "/destination" << "/source"
-EOF
-
 is_deeply_snapshot parse(<<'EOF'), 'hash copy';
   "/destination" <- "/source"
 EOF
