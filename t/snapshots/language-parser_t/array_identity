@@ -15,9 +15,15 @@
               'children' => [
                 {
                   'children' => [
-                    'V'
+                    {
+                      'children' => [
+                        'V'
+                      ],
+                      'nodename' => 'variableSystem',
+                      'type' => 'element'
+                    }
                   ],
-                  'nodename' => 'variableSystem',
+                  'nodename' => 'exprSingleValue',
                   'type' => 'element'
                 }
               ],

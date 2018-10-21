@@ -54,6 +54,15 @@ sub _apply_mapping {
       $data{$key} = $value;
     }
     return \%data;
+  } elsif ($name eq 'exprArrayMapping') {
+    my ($valueexpr) = @{$mapping->{children}};
+    my @data;
+    for (@pairs) {
+      my $sysvals = _make_sysvals($_);
+      my $value = _eval_expr($topdata, $valueexpr, $sysvals);
+      push @data, $value;
+    }
+    return \@data;
   } else {
     die "Unknown mapping type '$name'";
   }
@@ -93,6 +102,11 @@ sub _eval_expr {
         my ($keyexpr) = @{$_->{children}};
         my $whichkey = _eval_expr($topdata, $keyexpr, $sysvals);
         delete $value->{$whichkey};
+      } elsif ($othername eq 'exprKeyAdd') {
+        my ($keyexpr, $valueexpr) = @{$_->{children}};
+        my $key = _eval_expr($topdata, $keyexpr, $sysvals);
+        my $addvalue = _eval_expr($topdata, $valueexpr, $sysvals);
+        $value->{$key} = $addvalue;
       } else {
         die "Unknown expression modifier '$othername'";
       }

@@ -35,7 +35,7 @@ opObjectFrom: /- ( LANGLE PERCENT ) -/
 
 exprMapping: +opFrom (exprArrayMapping | exprObjectMapping)
 
-exprArrayMapping: .(/- LSQUARE -/) -exprSingleValue .(/- RSQUARE -/)
+exprArrayMapping: .(/- LSQUARE -/) exprSingleValue .(/- RSQUARE -/)
 
 exprObjectMapping: .(/- LCURLY -/) -colonPair .(/- RCURLY -/)
 

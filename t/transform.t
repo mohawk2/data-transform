@@ -9,6 +9,12 @@ my @OPS = (
     [{id=>'a', k=>'va'}, {id=>'b', k=>'vb'}],
     { a => {k=>'va'}, b => {k=>'vb'} },
   ],
+  [
+    'hashes to array',
+    '"" <% [ $V@`id`:$K ]',
+    { a => {k=>'va'}, b => {k=>'vb'} },
+    [{id=>'a', k=>'va'}, {id=>'b', k=>'vb'}],
+  ],
 );
 
 for (@OPS) {
@@ -17,10 +23,6 @@ for (@OPS) {
 }
 
 if (0) {
-is_deeply_snapshot parse(<<'EOF'), 'hashes to array';
-  "" <% [ $V@`id`:$K ]
-EOF
-
 is_deeply_snapshot parse(<<'EOF'), 'array identity non-implicit';
   "" <- "" <@ [ $V ]
 EOF
