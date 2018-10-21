@@ -57,6 +57,12 @@ my @OPS = (
     { a => {k=>'va'}, b => {k=>'vb'} },
     [ qw(a b) ],
   ],
+  [
+    'array copy with hash transform',
+    '"/c" <- "/a" <@ [ $V@`order`:$K ]',
+    { a => [ {k=>'va'}, {k=>'vb'} ] },
+    { a => [ {k=>'va'}, {k=>'vb'} ], c => [ {k=>'va', order=>0}, {k=>'vb', order=>1}] },
+  ],
 );
 
 for (@OPS) {
@@ -66,10 +72,6 @@ for (@OPS) {
 }
 
 if (0) {
-is_deeply_snapshot parse(<<'EOF'), 'hash copy with transform';
-  "/destination" <- "/source" <@ [ $V@`order`:$K ]
-EOF
-
 is_deeply_snapshot parse(<<'EOF'), 'variable bind then replace';
   $defs <- "/definitions"
   "" <- $defs

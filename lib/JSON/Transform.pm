@@ -47,7 +47,7 @@ sub parse_transform {
           if $opFrom eq '<%' and ref $srcdata ne 'HASH';
         die "Expected '$srcptr' to point to array"
           if $opFrom eq '<@' and ref $srcdata ne 'ARRAY';
-        $newdata = _apply_mapping($data, $mapping->{children}[0], $srcdata);
+        $newdata = _apply_mapping($data, $mapping->{children}[0], dclone $srcdata);
       } else {
         $newdata = $srcdata;
       }
