@@ -239,13 +239,13 @@ key, to a hash mapping each C<id> to its hash:
 
   # [ { "id": 1, "name": "Alice" }, { "id": 2, "name": "Bob" } ]
   # ->
-  "" <@ { "/$K/id":$V-`id` }
+  "" <@ { "/$K/id":$V#`id` }
   # ->
   # { "1": { "name": "Alice" }, "2": { "name": "Bob" } }
 
 While to do the reverse transformation:
 
-  "" <% [ $V+`id`:$K ]
+  "" <% [ $V@`id`:$K ]
 
 The identity for an array:
 
