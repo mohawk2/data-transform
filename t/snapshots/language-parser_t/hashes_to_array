@@ -3,9 +3,6 @@
     {
       'children' => [
         {
-          'children' => [
-            ''
-          ],
           'nodename' => 'jsonPointer',
           'type' => 'element'
         },
@@ -29,7 +26,13 @@
                       'children' => [
                         {
                           'children' => [
-                            'id'
+                            {
+                              'children' => [
+                                'id'
+                              ],
+                              'nodename' => 'jsonOtherNotGrave',
+                              'type' => 'element'
+                            }
                           ],
                           'nodename' => 'exprStringQuoted',
                           'type' => 'element'

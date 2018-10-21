@@ -51,53 +51,47 @@ exprKeyRemove: .(/- DASH -/) -exprStringValue
 
 exprStringValue: (jsonPointer | variableUser | variableSystem | exprStringQuoted)
 
-exprStringQuoted: /
-  GRAVE
-    (
-      (:
-        jsonUnicode
-          |
-        jsonBackslashQuote
-          |
-        jsonBackslashDollar
-          |
-        jsonBackslashGrave
-          |
-        jsonOtherNotGrave
-      )*
-    )
-  GRAVE
-/
+exprStringQuoted:
+  .(/ GRAVE /)
+  (
+    jsonUnicode
+      |
+    jsonBackslashQuote
+      |
+    jsonBackslashDollar
+      |
+    jsonBackslashGrave
+      |
+    jsonOtherNotGrave
+  )*
+  .(/ GRAVE /)
 
-jsonOtherNotGrave: / [^ GRAVE CONTROLS BACK ] / # Anything else
+jsonOtherNotGrave: /( [^ GRAVE CONTROLS BACK ]+ )/ # Anything else
 
-jsonBackslashGrave: / BACK GRAVE /
+jsonBackslashGrave: /( BACK GRAVE )/
 
-jsonPointer: /
-  DOUBLE
-    (
-      (:
-        jsonUnicode
-          |
-        jsonBackslashQuote
-          |
-        jsonBackslashDollar
-          |
-        jsonBackslashDouble
-          |
-        jsonOtherNotDouble
-      )*
-    )
-  DOUBLE
-/
+jsonPointer:
+  .(/ DOUBLE /)
+  (
+    jsonUnicode
+      |
+    jsonBackslashQuote
+      |
+    jsonBackslashDollar
+      |
+    jsonBackslashDouble
+      |
+    jsonOtherNotDouble
+  )*
+  .(/ DOUBLE /)
 
-jsonOtherNotDouble: / [^ DOUBLE CONTROLS BACK ] / # Anything else
+jsonOtherNotDouble: /( [^ DOUBLE CONTROLS BACK ]+ )/ # Anything else
 
-jsonBackslashDouble: / BACK DOUBLE /
+jsonBackslashDouble: /( BACK DOUBLE )/
 
-jsonBackslashDollar: / BACK DOLLAR /
+jsonBackslashDollar: /( BACK DOLLAR )/
 
-jsonBackslashQuote: /
+jsonBackslashQuote: /(
   BACK [
     BACK    # Back Slash
     SLASH   # Forward Slash
@@ -107,9 +101,9 @@ jsonBackslashQuote: /
     'r'     # Carriage Return
     't'     # Horizontal Tab
   ]
-/
+)/
 
-jsonUnicode: / BACK 'u' HEX{4} / # Unicode octet pair
+jsonUnicode: /( BACK 'u' HEX{4} )/ # Unicode octet pair
 
 variableUser: .(/- DOLLAR/) /([ LOWERS ] [ ALPHAS ]*)/
 

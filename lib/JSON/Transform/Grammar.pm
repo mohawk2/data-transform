@@ -154,7 +154,36 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
       ]
     },
     'exprStringQuoted' => {
-      '.rgx' => qr/\G`((?:\\u[0-9a-fA-F]{4}|\\[\\\/bfnrt]|\\\$|\\`|[^`\x00-\x1f\\])*)`/
+      '.all' => [
+        {
+          '-skip' => 1,
+          '.rgx' => qr/\G`/
+        },
+        {
+          '+min' => 0,
+          '.any' => [
+            {
+              '.ref' => 'jsonUnicode'
+            },
+            {
+              '.ref' => 'jsonBackslashQuote'
+            },
+            {
+              '.ref' => 'jsonBackslashDollar'
+            },
+            {
+              '.ref' => 'jsonBackslashGrave'
+            },
+            {
+              '.ref' => 'jsonOtherNotGrave'
+            }
+          ]
+        },
+        {
+          '-skip' => 1,
+          '.rgx' => qr/\G`/
+        }
+      ]
     },
     'exprStringValue' => {
       '.any' => [
@@ -172,8 +201,58 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
         }
       ]
     },
+    'jsonBackslashDollar' => {
+      '.rgx' => qr/\G(\\\$)/
+    },
+    'jsonBackslashDouble' => {
+      '.rgx' => qr/\G(\\")/
+    },
+    'jsonBackslashGrave' => {
+      '.rgx' => qr/\G(\\`)/
+    },
+    'jsonBackslashQuote' => {
+      '.rgx' => qr/\G(\\[\\\/bfnrt])/
+    },
+    'jsonOtherNotDouble' => {
+      '.rgx' => qr/\G([^"\x00-\x1f\\]+)/
+    },
+    'jsonOtherNotGrave' => {
+      '.rgx' => qr/\G([^`\x00-\x1f\\]+)/
+    },
     'jsonPointer' => {
-      '.rgx' => qr/\G"((?:\\u[0-9a-fA-F]{4}|\\[\\\/bfnrt]|\\\$|\\"|[^"\x00-\x1f\\])*)"/
+      '.all' => [
+        {
+          '-skip' => 1,
+          '.rgx' => qr/\G"/
+        },
+        {
+          '+min' => 0,
+          '.any' => [
+            {
+              '.ref' => 'jsonUnicode'
+            },
+            {
+              '.ref' => 'jsonBackslashQuote'
+            },
+            {
+              '.ref' => 'jsonBackslashDollar'
+            },
+            {
+              '.ref' => 'jsonBackslashDouble'
+            },
+            {
+              '.ref' => 'jsonOtherNotDouble'
+            }
+          ]
+        },
+        {
+          '-skip' => 1,
+          '.rgx' => qr/\G"/
+        }
+      ]
+    },
+    'jsonUnicode' => {
+      '.rgx' => qr/\G(\\u[0-9a-fA-F]{4})/
     },
     'opArrayFrom' => {
       '.rgx' => qr/\G(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*[^\r\n]*(?:\r?\n|\r!NL|\z))*(<\@)(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*[^\r\n]*(?:\r?\n|\r!NL|\z))*/u

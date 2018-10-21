@@ -4,14 +4,26 @@
       'children' => [
         {
           'children' => [
-            '/destination'
+            {
+              'children' => [
+                '/destination'
+              ],
+              'nodename' => 'jsonOtherNotDouble',
+              'type' => 'element'
+            }
           ],
           'nodename' => 'jsonPointer',
           'type' => 'element'
         },
         {
           'children' => [
-            '/source'
+            {
+              'children' => [
+                '/source'
+              ],
+              'nodename' => 'jsonOtherNotDouble',
+              'type' => 'element'
+            }
           ],
           'nodename' => 'jsonPointer',
           'type' => 'element'
@@ -36,7 +48,13 @@
                       'children' => [
                         {
                           'children' => [
-                            'order'
+                            {
+                              'children' => [
+                                'order'
+                              ],
+                              'nodename' => 'jsonOtherNotGrave',
+                              'type' => 'element'
+                            }
                           ],
                           'nodename' => 'exprStringQuoted',
                           'type' => 'element'

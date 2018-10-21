@@ -4,14 +4,26 @@
       'children' => [
         {
           'children' => [
-            '/destination'
+            {
+              'children' => [
+                '/destination'
+              ],
+              'nodename' => 'jsonOtherNotDouble',
+              'type' => 'element'
+            }
           ],
           'nodename' => 'jsonPointer',
           'type' => 'element'
         },
         {
           'children' => [
-            '/source'
+            {
+              'children' => [
+                '/source'
+              ],
+              'nodename' => 'jsonOtherNotDouble',
+              'type' => 'element'
+            }
           ],
           'nodename' => 'jsonPointer',
           'type' => 'element'

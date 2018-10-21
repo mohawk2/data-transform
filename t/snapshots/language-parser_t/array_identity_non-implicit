@@ -3,16 +3,10 @@
     {
       'children' => [
         {
-          'children' => [
-            ''
-          ],
           'nodename' => 'jsonPointer',
           'type' => 'element'
         },
         {
-          'children' => [
-            ''
-          ],
           'nodename' => 'jsonPointer',
           'type' => 'element'
         },

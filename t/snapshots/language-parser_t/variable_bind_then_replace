@@ -11,7 +11,13 @@
         },
         {
           'children' => [
-            '/definitions'
+            {
+              'children' => [
+                '/definitions'
+              ],
+              'nodename' => 'jsonOtherNotDouble',
+              'type' => 'element'
+            }
           ],
           'nodename' => 'jsonPointer',
           'type' => 'element'
@@ -23,9 +29,6 @@
     {
       'children' => [
         {
-          'children' => [
-            ''
-          ],
           'nodename' => 'jsonPointer',
           'type' => 'element'
         },

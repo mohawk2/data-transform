@@ -76,17 +76,26 @@ sub _eval_expr {
   my ($topdata, $expr, $sysvals) = @_;
   my $name = $expr->{nodename};
   if ($name eq 'jsonPointer') {
-    my $text = _sub_sysvals($expr->{children}[0], $sysvals);
+    my $text = join '', '', map _eval_expr($topdata, $_, $sysvals),
+      @{$expr->{children}};
     return _pointer(0, $topdata, $text);
   } elsif ($name eq 'variableSystem') {
     my $var = $expr->{children}[0];
     die "Unknown system variable '$var'" if !exists $sysvals->{$var};
     return $sysvals->{$var};
-  } elsif ($name eq 'exprStringQuoted') {
+  } elsif ($name eq 'jsonOtherNotDouble') {
     my $var = $expr->{children}[0];
-    return $var;
+    return _sub_sysvals($var, $sysvals);
+  } elsif ($name eq 'jsonOtherNotGrave') {
+    my $var = $expr->{children}[0];
+    return _sub_sysvals($var, $sysvals);
+  } elsif ($name eq 'exprStringQuoted') {
+    my $text = join '', '', map _eval_expr($topdata, $_, $sysvals),
+      @{$expr->{children}};
+    return $text;
   } elsif ($name eq 'exprStringValue') {
-    return _eval_expr($topdata, $expr->{children}[0], $sysvals);
+    return join '', '', map _eval_expr($topdata, $_, $sysvals),
+      @{$expr->{children}};
   } elsif ($name eq 'exprSingleValue') {
     my ($mainexpr, @other) = @{$expr->{children}};
     my $value = _eval_expr($topdata, $mainexpr, $sysvals);
