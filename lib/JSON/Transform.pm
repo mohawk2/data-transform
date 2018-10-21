@@ -423,6 +423,21 @@ The operand value must be of type object/hash.
 The argument must be a string-value.
 The return value will be the object/hash without that key.
 
+=head2 Available system variables
+
+=head3 C<$K>
+
+Available in mapping expressions. For each data pair, set to either the
+zero-based index in an array, or the string key of an object/hash.
+
+=head3 C<$V>
+
+Available in mapping expressions. For each data pair, set to the value.
+
+=head3 C<$C>
+
+Available in mapping expressions. Set to the integer number of values.
+
 =head2 Comments
 
 Any C<--> sequence up to the end of that line will be a comment,
