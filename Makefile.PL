@@ -8,7 +8,7 @@ WriteMakefile(
   VERSION_FROM     => 'lib/JSON/Transform.pm',
   ABSTRACT_FROM    => 'lib/JSON/Transform.pm',
   LICENSE          => 'artistic_2',
-  MIN_PERL_VERSION => '5.014', # Function::Parameters
+  MIN_PERL_VERSION => '5.008003', # Test::Snapshot
   CONFIGURE_REQUIRES => {
     'ExtUtils::MakeMaker' => '6.64', # TEST_REQUIRES
   },
@@ -18,13 +18,7 @@ WriteMakefile(
     'Test::Snapshot' => '0.02', # better snapshot filenames
   },
   PREREQ_PM => {
-    'Moo' => '0',
-    'Type::Tiny' => '0',
-    'Module::Runtime' => '0',
-    'Function::Parameters' => '2.001001',
-    'Return::Type' => '0',
     'Pegex' => '0.64',
-    'MooX::Thunking' => '0.07', # takes care of Thunk in isa
     'JSON::MaybeXS' => '1.003009', # is_bool, also . @INC
     'JSON::PP' => '2.92', # number detection
     'XML::Invisible' => '0.04', # flatten works right
