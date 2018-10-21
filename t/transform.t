@@ -5,7 +5,7 @@ use JSON::Transform qw(parse_transform);
 my @OPS = (
   [
     'array to hashes',
-    '"" <@ { "/$K/id":$V-`id` }',
+    '"" <@ { "/$K/id":$V#`id` }',
     [{id=>'a', k=>'va'}, {id=>'b', k=>'vb'}],
     { a => {k=>'va'}, b => {k=>'vb'} },
   ],
@@ -18,7 +18,7 @@ for (@OPS) {
 
 if (0) {
 is_deeply_snapshot parse(<<'EOF'), 'hashes to array';
-  "" <% [ $V+`id`:$K ]
+  "" <% [ $V@`id`:$K ]
 EOF
 
 is_deeply_snapshot parse(<<'EOF'), 'array identity non-implicit';
@@ -42,7 +42,7 @@ is_deeply_snapshot parse(<<'EOF'), 'hash copy';
 EOF
 
 is_deeply_snapshot parse(<<'EOF'), 'hash copy with transform';
-  "/destination" <- "/source" <@ [ $V+`order`:$K ]
+  "/destination" <- "/source" <@ [ $V@`order`:$K ]
 EOF
 
 is_deeply_snapshot parse(<<'EOF'), 'variable bind then replace';

@@ -45,9 +45,9 @@ exprSingleValue: (jsonPointer | variableUser | variableSystem) -singleValueMod?
 
 singleValueMod: (exprKeyAdd | exprKeyRemove)
 
-exprKeyAdd: .(/- PLUS -/) -colonPair
+exprKeyAdd: .(/- AT -/) -colonPair
 
-exprKeyRemove: .(/- DASH -/) -exprStringValue
+exprKeyRemove: .(/- HASH -/) -exprStringValue
 
 exprStringValue: (jsonPointer | variableUser | variableSystem | exprStringQuoted)
 

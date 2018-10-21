@@ -220,7 +220,7 @@ To copy from one part of a structure to another:
 To do the same with a transformation (assumes C</source> is an array
 of hashes):
 
-  "/destination" <- "/source" <@ [ $V+`order`:$K ]
+  "/destination" <- "/source" <@ [ $V@`order`:$K ]
 
 To bind a variable, then replace the whole data structure:
 
@@ -354,13 +354,13 @@ Within C<[]>, the value expression will be an arbitrary value expression.
 
 A single value can have a modifier, followed by arguments.
 
-=head3 C<+>
+=head3 C<@>
 
 The operand value must be of type object/hash.
 The argument must be a pair of string-value, C<:>, any-value.
 The return value will be the object/hash with that additional key/value pair.
 
-=head3 C<->
+=head3 C<#>
 
 The operand value must be of type object/hash.
 The argument must be a string-value.
