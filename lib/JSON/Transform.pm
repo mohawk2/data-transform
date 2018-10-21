@@ -166,7 +166,7 @@ sub _pointer {
     }
     else { return undef }
   }
-  $$lastptr = $set_to if defined $$lastptr and $is_set;
+  $$lastptr = $set_to if defined $lastptr and $is_set;
   return $contains ? 1 : $data;
 }
 

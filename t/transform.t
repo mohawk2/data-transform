@@ -39,6 +39,12 @@ my @OPS = (
     { a => {k=>'va'}, b => {k=>'vb'} },
     { b => {k=>'va'} },
   ],
+  [
+    'hash move to new',
+    '"/c" << "/a"',
+    { a => {k=>'va'}, b => {k=>'vb'} },
+    { c => {k=>'va'}, b => {k=>'vb'} },
+  ],
 );
 
 for (@OPS) {
