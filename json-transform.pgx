@@ -55,20 +55,20 @@ exprStringQuoted: /
   GRAVE
     (
       (:
+        jsonUnicode
+          |
         BACK (:     # Backslash escapes
           [
+            DOLLAR  # Dollar
             GRAVE  # Double Quote
             BACK    # Back Slash
             SLASH   # Forward Slash
-            DOLLAR  # Dollar
             'b'     # Back Space
             'f'     # Form Feed
             'n'     # New Line
             'r'     # Carriage Return
             't'     # Horizontal Tab
           ]
-        |
-          'u' HEX{4}    # Unicode octet pair
         )
       |
         [^ GRAVE CONTROLS BACK ]  # Anything else
@@ -81,20 +81,20 @@ jsonPointer: /
   DOUBLE
     (
       (:
+        jsonUnicode
+          |
         BACK (:     # Backslash escapes
           [
+            DOLLAR  # Dollar
             DOUBLE  # Double Quote
             BACK    # Back Slash
             SLASH   # Forward Slash
-            DOLLAR  # Dollar
             'b'     # Back Space
             'f'     # Form Feed
             'n'     # New Line
             'r'     # Carriage Return
             't'     # Horizontal Tab
           ]
-        |
-          'u' HEX{4}    # Unicode octet pair
         )
       |
         [^ DOUBLE CONTROLS BACK ]  # Anything else
@@ -102,6 +102,8 @@ jsonPointer: /
     )
   DOUBLE
 /
+
+jsonUnicode: / BACK 'u' HEX{4} / # Unicode octet pair
 
 variableUser: .(/- DOLLAR/) /([ LOWERS ] [ ALPHAS ]*)/
 

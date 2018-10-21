@@ -154,7 +154,7 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
       ]
     },
     'exprStringQuoted' => {
-      '.rgx' => qr/\G`((?:\\(?:[`\\\/\$bfnrt]|u[0-9a-fA-F]{4})|[^`\x00-\x1f\\])*)`/
+      '.rgx' => qr/\G`((?:\\u[0-9a-fA-F]{4}|\\(?:[\$`\\\/bfnrt])|[^`\x00-\x1f\\])*)`/
     },
     'exprStringValue' => {
       '.any' => [
@@ -173,7 +173,7 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
       ]
     },
     'jsonPointer' => {
-      '.rgx' => qr/\G"((?:\\(?:["\\\/\$bfnrt]|u[0-9a-fA-F]{4})|[^"\x00-\x1f\\])*)"/
+      '.rgx' => qr/\G"((?:\\u[0-9a-fA-F]{4}|\\(?:[\$"\\\/bfnrt])|[^"\x00-\x1f\\])*)"/
     },
     'opArrayFrom' => {
       '.rgx' => qr/\G(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*[^\r\n]*(?:\r?\n|\r!NL|\z))*(<\@)(?:\s|\x{FEFF}|[\ \t]*\#[\ \t]*[^\r\n]*(?:\r?\n|\r!NL|\z))*/u
