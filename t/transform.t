@@ -49,6 +49,18 @@ is_deeply_snapshot parse(<<'EOF'), 'variable bind then replace';
   $defs <- "/definitions"
   "" <- $defs
 EOF
+
+is_deeply_snapshot parse(<<'EOF'), 'array count';
+  "" <@ $C
+EOF
+
+is_deeply_snapshot parse(<<'EOF'), 'hash count';
+  "" <% $C
+EOF
+
+is_deeply_snapshot parse(<<'EOF'), 'hash keys';
+  "" <% [ $K ]
+EOF
 }
 
 done_testing;

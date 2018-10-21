@@ -50,6 +50,18 @@ The identity for an object/hash:
 
     "" <% { $K:$V }
 
+To get the keys of a hash:
+
+    "" <% [ $K ]
+
+To get how many keys in a hash:
+
+    "" <% $C
+
+To get how many items in an array:
+
+    "" <@ $C
+
 To move from one part of a structure to another:
 
     "/destination" << "/source"
