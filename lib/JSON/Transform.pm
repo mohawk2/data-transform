@@ -24,17 +24,15 @@ sub parse_transform {
       my ($srcptr, $destptr, $mapping);
       if ($name eq 'transformImpliedDest') {
         ($srcptr, $mapping) = @{$_->{children}};
-        $destptr = _eval_expr($data, $srcptr, _make_sysvals(), 1);
+        $destptr = $srcptr;
       } elsif ($name eq 'transformCopy') {
         ($destptr, $srcptr, $mapping) = @{$_->{children}};
-        $destptr = _eval_expr($data, $destptr, _make_sysvals(), 1);
       } elsif ($name eq 'transformMove') {
         ($destptr, $srcptr) = @{$_->{children}};
-        $destptr = _eval_expr($data, $destptr, _make_sysvals(), 1);
         $srcptr = _eval_expr($data, $srcptr, _make_sysvals(), 1);
         die "invalid src pointer '$srcptr'" if !_pointer(1, $data, $srcptr);
         my $srcdata = _pointer(0, $data, $srcptr, 1);
-        _pointer(0, $data, $destptr, 0, $srcdata);
+        _apply_destination($data, $destptr, $srcdata);
         return $data;
       } else {
         die "Unknown transform type '$name'";
@@ -51,10 +49,16 @@ sub parse_transform {
       } else {
         $newdata = $srcdata;
       }
-      _pointer(0, $data, $destptr, 0, $newdata);
+      _apply_destination($data, $destptr, $newdata);
     }
     $data;
   };
+}
+
+sub _apply_destination {
+  my ($topdata, $destptr, $newdata) = @_;
+  $destptr = _eval_expr($topdata, $destptr, _make_sysvals(), 1);
+  _pointer(0, $_[0], $destptr, 0, $newdata);
 }
 
 sub _apply_mapping {
