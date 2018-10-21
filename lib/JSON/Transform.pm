@@ -27,6 +27,7 @@ sub parse_transform {
         $destptr = _eval_expr($data, $srcptr, _make_sysvals(), 1);
       } elsif ($name eq 'transformCopy') {
         ($destptr, $srcptr, $mapping) = @{$_->{children}};
+        $destptr = _eval_expr($data, $destptr, _make_sysvals(), 1);
       } elsif ($name eq 'transformMove') {
         ($destptr, $srcptr) = @{$_->{children}};
         $destptr = _eval_expr($data, $destptr, _make_sysvals(), 1);
@@ -39,12 +40,17 @@ sub parse_transform {
         die "Unknown transform type '$name'";
       }
       my $srcdata = _eval_expr($data, $srcptr, _make_sysvals());
-      my $opFrom = $mapping->{attributes}{opFrom};
-      die "Expected '$srcptr' to point to hash"
-        if $opFrom eq '<%' and ref $srcdata ne 'HASH';
-      die "Expected '$srcptr' to point to array"
-        if $opFrom eq '<@' and ref $srcdata ne 'ARRAY';
-      my $newdata = _apply_mapping($data, $mapping->{children}[0], $srcdata);
+      my $newdata;
+      if ($mapping) {
+        my $opFrom = $mapping->{attributes}{opFrom};
+        die "Expected '$srcptr' to point to hash"
+          if $opFrom eq '<%' and ref $srcdata ne 'HASH';
+        die "Expected '$srcptr' to point to array"
+          if $opFrom eq '<@' and ref $srcdata ne 'ARRAY';
+        $newdata = _apply_mapping($data, $mapping->{children}[0], $srcdata);
+      } else {
+        $newdata = $srcdata;
+      }
       _pointer(0, $data, $destptr, 0, $newdata);
     }
     $data;

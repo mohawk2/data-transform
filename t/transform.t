@@ -45,18 +45,21 @@ my @OPS = (
     { a => {k=>'va'}, b => {k=>'vb'} },
     { c => {k=>'va'}, b => {k=>'vb'} },
   ],
+  [
+    'hash copy',
+    '"/c" <- "/a"',
+    { a => {k=>'va'}, b => {k=>'vb'} },
+    { a => {k=>'va'}, b => {k=>'vb'}, c => {k=>'va'} },
+  ],
 );
 
 for (@OPS) {
   my ($desc, $transform, $in, $expect) = @$_;
-  is_deeply parse_transform($transform)->($in), $expect, $desc;
+  my $got = parse_transform($transform)->($in);
+  is_deeply $got, $expect, $desc or diag explain $got;
 }
 
 if (0) {
-is_deeply_snapshot parse(<<'EOF'), 'hash copy';
-  "/destination" <- "/source"
-EOF
-
 is_deeply_snapshot parse(<<'EOF'), 'hash copy with transform';
   "/destination" <- "/source" <@ [ $V@`order`:$K ]
 EOF
