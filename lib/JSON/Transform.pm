@@ -65,7 +65,7 @@ sub _apply_mapping {
     my ($keyexpr, $valueexpr) = @{$mapping->{children}};
     my %data;
     for (@pairs) {
-      my $sysvals = _make_sysvals($_);
+      my $sysvals = _make_sysvals($_, \@pairs);
       my $key = _eval_expr($topdata, $keyexpr, $sysvals);
       my $value = _eval_expr($topdata, $valueexpr, $sysvals);
       $data{$key} = $value;
@@ -75,20 +75,25 @@ sub _apply_mapping {
     my ($valueexpr) = @{$mapping->{children}};
     my @data;
     for (@pairs) {
-      my $sysvals = _make_sysvals($_);
+      my $sysvals = _make_sysvals($_, \@pairs);
       my $value = _eval_expr($topdata, $valueexpr, $sysvals);
       push @data, $value;
     }
     return \@data;
+  } elsif ($name eq 'exprSingleValue') {
+    my ($valueexpr) = $mapping;
+    my $sysvals = _make_sysvals(undef, \@pairs);
+    return _eval_expr($topdata, $valueexpr, $sysvals);
   } else {
     die "Unknown mapping type '$name'";
   }
 }
 
 sub _make_sysvals {
-  my ($pair) = @_;
-  return {} if !$pair;
-  { K => $pair->[0], V => $pair->[1] };
+  my ($pair, $pairs) = @_;
+  my %vals = (C => scalar @$pairs) if $pairs;
+  @vals{qw(K V)} = @$pair if $pair;
+  return \%vals;
 }
 
 sub _eval_expr {

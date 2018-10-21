@@ -63,6 +63,18 @@ my @OPS = (
     { a => [ {k=>'va'}, {k=>'vb'} ] },
     { a => [ {k=>'va'}, {k=>'vb'} ], c => [ {k=>'va', order=>0}, {k=>'vb', order=>1}] },
   ],
+  [
+    'array count',
+    '"" <@ $C',
+    [ qw(1 a 4 yo) ],
+    4
+  ],
+  [
+    'hash count',
+    '"" <% $C',
+    { a => 1, b => 2 },
+    2
+  ],
 );
 
 for (@OPS) {
@@ -75,14 +87,6 @@ if (0) {
 is_deeply_snapshot parse(<<'EOF'), 'variable bind then replace';
   $defs <- "/definitions"
   "" <- $defs
-EOF
-
-is_deeply_snapshot parse(<<'EOF'), 'array count';
-  "" <@ $C
-EOF
-
-is_deeply_snapshot parse(<<'EOF'), 'hash count';
-  "" <% $C
 EOF
 }
 

@@ -33,7 +33,7 @@ opArrayFrom: /- ( LANGLE AT ) -/
 
 opObjectFrom: /- ( LANGLE PERCENT ) -/
 
-exprMapping: +opFrom (exprArrayMapping | exprObjectMapping)
+exprMapping: +opFrom (exprArrayMapping | exprObjectMapping | exprSingleValue)
 
 exprArrayMapping: .(/- LSQUARE -/) exprSingleValue .(/- RSQUARE -/)
 
