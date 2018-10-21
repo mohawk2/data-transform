@@ -58,8 +58,16 @@ sub parse_transform {
 
 sub _apply_destination {
   my ($topdata, $destptr, $newdata, $uservals) = @_;
-  $destptr = _eval_expr($topdata, $destptr, _make_sysvals(), $uservals, 1);
-  _pointer(0, $_[0], $destptr, 0, $newdata);
+  my $name = $destptr->{nodename};
+  if ($name eq 'jsonPointer') {
+    $destptr = _eval_expr($topdata, $destptr, _make_sysvals(), $uservals, 1);
+    _pointer(0, $_[0], $destptr, 0, $newdata);
+  } elsif ($name eq 'variableUser') {
+    my $var = $destptr->{children}[0];
+    $uservals->{$var} = $newdata;
+  } else {
+    die "unknown destination type '$name'";
+  }
 }
 
 sub _apply_mapping {
@@ -110,6 +118,10 @@ sub _eval_expr {
     return $text if $as_location;
     die "invalid src pointer '$text'" if !_pointer(1, $topdata, $text);
     return _pointer(0, $topdata, $text);
+  } elsif ($name eq 'variableUser') {
+    my $var = $expr->{children}[0];
+    die "Unknown user variable '$var'" if !exists $uservals->{$var};
+    return $uservals->{$var};
   } elsif ($name eq 'variableSystem') {
     my $var = $expr->{children}[0];
     die "Unknown system variable '$var'" if !exists $sysvals->{$var};

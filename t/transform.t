@@ -75,19 +75,21 @@ my @OPS = (
     { a => 1, b => 2 },
     2
   ],
+  [
+    'variable bind then replace',
+    q{
+      $defs <- "/a"
+      "" <- $defs
+    },
+    { a => {k=>'va'}, b => {k=>'vb'} },
+    {k=>'va'},
+  ],
 );
 
 for (@OPS) {
   my ($desc, $transform, $in, $expect) = @$_;
   my $got = parse_transform($transform)->($in);
   is_deeply $got, $expect, $desc or diag explain $got;
-}
-
-if (0) {
-is_deeply_snapshot parse(<<'EOF'), 'variable bind then replace';
-  $defs <- "/definitions"
-  "" <- $defs
-EOF
 }
 
 done_testing;
