@@ -61,17 +61,15 @@ exprStringQuoted: /
           |
         jsonBackslashDollar
           |
-        BACK (:     # Backslash escapes
-          [
-            GRAVE  # Double Quote
-          ]
-        )
+        jsonBackslashGrave
       |
         [^ GRAVE CONTROLS BACK ]  # Anything else
       )*
     )
   GRAVE
 /
+
+jsonBackslashGrave: / BACK GRAVE /
 
 jsonPointer: /
   DOUBLE
@@ -83,17 +81,15 @@ jsonPointer: /
           |
         jsonBackslashDollar
           |
-        BACK (:     # Backslash escapes
-          [
-            DOUBLE  # Double Quote
-          ]
-        )
+        jsonBackslashDouble
       |
         [^ DOUBLE CONTROLS BACK ]  # Anything else
       )*
     )
   DOUBLE
 /
+
+jsonBackslashDouble: / BACK DOUBLE /
 
 jsonBackslashDollar: / BACK DOLLAR /
 
