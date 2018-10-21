@@ -19,6 +19,7 @@ sub parse_transform {
   sub {
     my ($data) = @_;
     $data = dclone $data; # now can mutate away
+    my $uservals = {};
     for (@{$transforms->{children}}) {
       my $name = $_->{nodename};
       my ($srcptr, $destptr, $mapping);
@@ -29,15 +30,15 @@ sub parse_transform {
         ($destptr, $srcptr, $mapping) = @{$_->{children}};
       } elsif ($name eq 'transformMove') {
         ($destptr, $srcptr) = @{$_->{children}};
-        $srcptr = _eval_expr($data, $srcptr, _make_sysvals(), 1);
+        $srcptr = _eval_expr($data, $srcptr, _make_sysvals(), $uservals, 1);
         die "invalid src pointer '$srcptr'" if !_pointer(1, $data, $srcptr);
         my $srcdata = _pointer(0, $data, $srcptr, 1);
-        _apply_destination($data, $destptr, $srcdata);
+        _apply_destination($data, $destptr, $srcdata, $uservals);
         return $data;
       } else {
         die "Unknown transform type '$name'";
       }
-      my $srcdata = _eval_expr($data, $srcptr, _make_sysvals());
+      my $srcdata = _eval_expr($data, $srcptr, _make_sysvals(), $uservals);
       my $newdata;
       if ($mapping) {
         my $opFrom = $mapping->{attributes}{opFrom};
@@ -45,24 +46,24 @@ sub parse_transform {
           if $opFrom eq '<%' and ref $srcdata ne 'HASH';
         die "Expected '$srcptr' to point to array"
           if $opFrom eq '<@' and ref $srcdata ne 'ARRAY';
-        $newdata = _apply_mapping($data, $mapping->{children}[0], dclone $srcdata);
+        $newdata = _apply_mapping($data, $mapping->{children}[0], dclone $srcdata, $uservals);
       } else {
         $newdata = $srcdata;
       }
-      _apply_destination($data, $destptr, $newdata);
+      _apply_destination($data, $destptr, $newdata, $uservals);
     }
     $data;
   };
 }
 
 sub _apply_destination {
-  my ($topdata, $destptr, $newdata) = @_;
-  $destptr = _eval_expr($topdata, $destptr, _make_sysvals(), 1);
+  my ($topdata, $destptr, $newdata, $uservals) = @_;
+  $destptr = _eval_expr($topdata, $destptr, _make_sysvals(), $uservals, 1);
   _pointer(0, $_[0], $destptr, 0, $newdata);
 }
 
 sub _apply_mapping {
-  my ($topdata, $mapping, $thisdata) = @_;
+  my ($topdata, $mapping, $thisdata, $uservals) = @_;
   my $name = $mapping->{nodename};
   my @pairs = _data2pairs($thisdata);
   if ($name eq 'exprObjectMapping') {
@@ -70,8 +71,8 @@ sub _apply_mapping {
     my %data;
     for (@pairs) {
       my $sysvals = _make_sysvals($_, \@pairs);
-      my $key = _eval_expr($topdata, $keyexpr, $sysvals);
-      my $value = _eval_expr($topdata, $valueexpr, $sysvals);
+      my $key = _eval_expr($topdata, $keyexpr, $sysvals, $uservals);
+      my $value = _eval_expr($topdata, $valueexpr, $sysvals, $uservals);
       $data{$key} = $value;
     }
     return \%data;
@@ -80,14 +81,14 @@ sub _apply_mapping {
     my @data;
     for (@pairs) {
       my $sysvals = _make_sysvals($_, \@pairs);
-      my $value = _eval_expr($topdata, $valueexpr, $sysvals);
+      my $value = _eval_expr($topdata, $valueexpr, $sysvals, $uservals);
       push @data, $value;
     }
     return \@data;
   } elsif ($name eq 'exprSingleValue') {
     my ($valueexpr) = $mapping;
     my $sysvals = _make_sysvals(undef, \@pairs);
-    return _eval_expr($topdata, $valueexpr, $sysvals);
+    return _eval_expr($topdata, $valueexpr, $sysvals, $uservals);
   } else {
     die "Unknown mapping type '$name'";
   }
@@ -101,10 +102,10 @@ sub _make_sysvals {
 }
 
 sub _eval_expr {
-  my ($topdata, $expr, $sysvals, $as_location) = @_;
+  my ($topdata, $expr, $sysvals, $uservals, $as_location) = @_;
   my $name = $expr->{nodename};
   if ($name eq 'jsonPointer') {
-    my $text = join '', '', map _eval_expr($topdata, $_, $sysvals),
+    my $text = join '', '', map _eval_expr($topdata, $_, $sysvals, $uservals),
       @{$expr->{children} || []};
     return $text if $as_location;
     die "invalid src pointer '$text'" if !_pointer(1, $topdata, $text);
@@ -116,22 +117,22 @@ sub _eval_expr {
   } elsif ($name eq 'jsonOtherNotDouble' or $name eq 'jsonOtherNotGrave') {
     return $expr->{children}[0];
   } elsif ($name eq 'exprStringQuoted') {
-    my $text = join '', '', map _eval_expr($topdata, $_, $sysvals),
+    my $text = join '', '', map _eval_expr($topdata, $_, $sysvals, $uservals),
       @{$expr->{children} || []};
     return $text;
   } elsif ($name eq 'exprSingleValue') {
     my ($mainexpr, @other) = @{$expr->{children}};
-    my $value = _eval_expr($topdata, $mainexpr, $sysvals);
+    my $value = _eval_expr($topdata, $mainexpr, $sysvals, $uservals);
     for (@other) {
       my $othername = $_->{nodename};
       if ($othername eq 'exprKeyRemove') {
         my ($keyexpr) = @{$_->{children}};
-        my $whichkey = _eval_expr($topdata, $keyexpr, $sysvals);
+        my $whichkey = _eval_expr($topdata, $keyexpr, $sysvals, $uservals);
         delete $value->{$whichkey};
       } elsif ($othername eq 'exprKeyAdd') {
         my ($keyexpr, $valueexpr) = @{$_->{children}};
-        my $key = _eval_expr($topdata, $keyexpr, $sysvals);
-        my $addvalue = _eval_expr($topdata, $valueexpr, $sysvals);
+        my $key = _eval_expr($topdata, $keyexpr, $sysvals, $uservals);
+        my $addvalue = _eval_expr($topdata, $valueexpr, $sysvals, $uservals);
         $value->{$key} = $addvalue;
       } else {
         die "Unknown expression modifier '$othername'";
