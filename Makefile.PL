@@ -23,6 +23,7 @@ WriteMakefile(
     'JSON::PP' => '2.92', # number detection
     'XML::Invisible' => '0.04', # flatten works right
   },
+  EXE_FILES => [ qw(scripts/jt) ],
   dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
   clean => { FILES => 'JSON-Transform-*' },
   META_MERGE => {
