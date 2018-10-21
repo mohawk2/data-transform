@@ -104,7 +104,8 @@ sub _apply_mapping {
 
 sub _make_sysvals {
   my ($pair, $pairs) = @_;
-  my %vals = (C => scalar @$pairs) if $pairs;
+  my %vals = (EO => {}, EA => []);
+  $vals{C} = scalar @$pairs if $pairs;
   @vals{qw(K V)} = @$pair if $pair;
   return \%vals;
 }
@@ -437,6 +438,14 @@ Available in mapping expressions. For each data pair, set to the value.
 =head3 C<$C>
 
 Available in mapping expressions. Set to the integer number of values.
+
+=head3 C<$EO>
+
+An empty object/hash.
+
+=head3 C<$EA>
+
+An empty array.
 
 =head2 Comments
 

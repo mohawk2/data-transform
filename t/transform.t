@@ -93,6 +93,20 @@ my @OPS = (
     { a => 1, b => 2 },
     2
   ],
+  [
+    'EA system variable',
+    q{
+      $a <- "/a"
+      $b <- "/b"
+      "" <- $EA
+      "/0" <- $b
+      "/1" <- $a
+      -- second use of EA ensures not mutating a global!
+      "/2" <- $EA
+    },
+    { a => {k=>'va'}, b => {k=>'vb'} },
+    [ {k=>'vb'}, {k=>'va'}, [] ],
+  ],
 );
 
 for (@OPS) {

@@ -215,6 +215,14 @@ Available in mapping expressions. For each data pair, set to the value.
 
 Available in mapping expressions. Set to the integer number of values.
 
+### `$EO`
+
+An empty object/hash.
+
+### `$EA`
+
+An empty array.
+
 ## Comments
 
 Any `--` sequence up to the end of that line will be a comment,
