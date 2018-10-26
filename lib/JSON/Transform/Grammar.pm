@@ -145,6 +145,9 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
             },
             {
               '.ref' => 'variableSystem'
+            },
+            {
+              '.ref' => 'exprStringQuoted'
             }
           ]
         },

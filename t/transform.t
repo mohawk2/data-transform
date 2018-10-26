@@ -107,6 +107,12 @@ my @OPS = (
     { a => {k=>'va'}, b => {k=>'vb'} },
     [ {k=>'vb'}, {k=>'va'}, [] ],
   ],
+  [
+    'other string tokens',
+    '"" <- `hi`',
+    { a => 1, b => 2 },
+    'hi',
+  ],
 );
 
 for (@OPS) {
