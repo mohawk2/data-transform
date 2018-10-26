@@ -72,7 +72,7 @@ exprStringQuoted:
 
 jsonOtherNotGrave: /( [^ GRAVE CONTROLS BACK DOLLAR ]+ )/ # Anything else
 
-jsonBackslashGrave: /( BACK GRAVE )/
+jsonBackslashGrave: .BACK /( GRAVE )/
 
 jsonPointer:
   .(/ DOUBLE /)
@@ -95,12 +95,12 @@ jsonPointer:
 
 jsonOtherNotDouble: /( [^ DOUBLE CONTROLS BACK DOLLAR ]+ )/ # Anything else
 
-jsonBackslashDouble: /( BACK DOUBLE )/
+jsonBackslashDouble: .BACK /( DOUBLE )/
 
-jsonBackslashDollar: /( BACK DOLLAR )/
+jsonBackslashDollar: .BACK /( DOLLAR )/
 
-jsonBackslashQuote: /(
-  BACK [
+jsonBackslashQuote: .BACK /(
+  [
     BACK    # Back Slash
     SLASH   # Forward Slash
     'b'     # Back Space

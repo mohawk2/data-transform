@@ -13,6 +13,25 @@ our @EXPORT_OK = qw(
   parse_transform
 );
 
+my %QUOTED2LITERAL = (
+  b => "\b",
+  f => "\f",
+  n => "\n",
+  r => "\r",
+  t => "\t",
+  '\\' => "\\",
+  '$' => "\$",
+  '`' => "`",
+  '"' => '"',
+  '/' => "/",
+);
+my %IS_BACKSLASH_ENTITY = map {$_=>1} qw(
+  jsonBackslashDouble
+  jsonBackslashDollar
+  jsonBackslashQuote
+  jsonBackslashGrave
+);
+
 sub parse_transform {
   my ($input_text) = @_;
   my $transforms = parse $input_text;
@@ -152,6 +171,11 @@ sub _eval_expr {
       }
     }
     return $value;
+  } elsif ($IS_BACKSLASH_ENTITY{$name}) {
+    my ($what) = @{$expr->{children}};
+    my $really = $QUOTED2LITERAL{$what};
+    die "Unknown $name '$what'" if !defined $really;
+    return $really;
   } else {
     die "Unknown expr type '$name'";
   }

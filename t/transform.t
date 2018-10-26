@@ -109,9 +109,9 @@ my @OPS = (
   ],
   [
     'other string tokens',
-    '"" <- `hi`',
+    '"" <- `hi\n`',
     { a => 1, b => 2 },
-    'hi',
+    "hi\n",
   ],
 );
 

@@ -42,6 +42,9 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
     '+include' => 'pegex-atoms',
     '+toprule' => 'transforms',
     '+version' => '0.01',
+    'BACK' => {
+      '.rgx' => qr/\G\\/
+    },
     'colonPair' => {
       '.all' => [
         {
@@ -213,16 +216,48 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
       ]
     },
     'jsonBackslashDollar' => {
-      '.rgx' => qr/\G(\\\$)/
+      '.all' => [
+        {
+          '-skip' => 1,
+          '.ref' => 'BACK'
+        },
+        {
+          '.rgx' => qr/\G(\$)/
+        }
+      ]
     },
     'jsonBackslashDouble' => {
-      '.rgx' => qr/\G(\\")/
+      '.all' => [
+        {
+          '-skip' => 1,
+          '.ref' => 'BACK'
+        },
+        {
+          '.rgx' => qr/\G(")/
+        }
+      ]
     },
     'jsonBackslashGrave' => {
-      '.rgx' => qr/\G(\\`)/
+      '.all' => [
+        {
+          '-skip' => 1,
+          '.ref' => 'BACK'
+        },
+        {
+          '.rgx' => qr/\G(`)/
+        }
+      ]
     },
     'jsonBackslashQuote' => {
-      '.rgx' => qr/\G(\\[\\\/bfnrt])/
+      '.all' => [
+        {
+          '-skip' => 1,
+          '.ref' => 'BACK'
+        },
+        {
+          '.rgx' => qr/\G([\\\/bfnrt])/
+        }
+      ]
     },
     'jsonOtherNotDouble' => {
       '.rgx' => qr/\G([^"\x00-\x1f\\\$]+)/
