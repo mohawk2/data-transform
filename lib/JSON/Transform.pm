@@ -176,6 +176,9 @@ sub _eval_expr {
     my $really = $QUOTED2LITERAL{$what};
     die "Unknown $name '$what'" if !defined $really;
     return $really;
+  } elsif ($name eq 'jsonUnicode') {
+    my ($what) = @{$expr->{children}};
+    return chr hex $what;
   } else {
     die "Unknown expr type '$name'";
   }

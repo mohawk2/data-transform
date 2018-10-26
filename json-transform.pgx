@@ -111,7 +111,7 @@ jsonBackslashQuote: .BACK /(
   ]
 )/
 
-jsonUnicode: /( BACK 'u' HEX{4} )/ # Unicode octet pair
+jsonUnicode: .(/ BACK 'u' /) /( HEX{4} )/ # Unicode octet pair
 
 variableUser: .(/- DOLLAR/) /([ LOWERS ] [ ALPHAS ]*)/
 

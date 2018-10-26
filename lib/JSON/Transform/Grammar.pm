@@ -304,7 +304,15 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
       ]
     },
     'jsonUnicode' => {
-      '.rgx' => qr/\G(\\u[0-9a-fA-F]{4})/
+      '.all' => [
+        {
+          '-skip' => 1,
+          '.rgx' => qr/\G\\u/
+        },
+        {
+          '.rgx' => qr/\G([0-9a-fA-F]{4})/
+        }
+      ]
     },
     'opArrayFrom' => {
       '.rgx' => qr/\G(?:\s|\x{FEFF}|[\ \t]*\-\-[\ \t]*[^\r\n]*(?:\r?\n|\r!NL|\z))*(<\@)(?:\s|\x{FEFF}|[\ \t]*\-\-[\ \t]*[^\r\n]*(?:\r?\n|\r!NL|\z))*/
