@@ -53,8 +53,7 @@ exprApplyJsonPointer: .(/- LANGLE -/) jsonPointer
 
 exprStringValue: (jsonPointer | variableUser | variableSystem | exprStringQuoted)
 
-exprStringQuoted:
-  .(/ GRAVE /)
+stringValueCommon:
   (
     jsonUnicode
       |
@@ -62,11 +61,17 @@ exprStringQuoted:
       |
     jsonBackslashDollar
       |
-    jsonBackslashGrave
-      |
     variableUser
       |
     variableSystem
+  )
+
+exprStringQuoted:
+  .(/ GRAVE /)
+  (
+    -stringValueCommon
+      |
+    jsonBackslashGrave
       |
     jsonOtherNotGrave
   )*
@@ -79,17 +84,9 @@ jsonBackslashGrave: .BACK /( GRAVE )/
 jsonPointer:
   .(/ DOUBLE /)
   (
-    jsonUnicode
-      |
-    jsonBackslashQuote
-      |
-    jsonBackslashDollar
+    -stringValueCommon
       |
     jsonBackslashDouble
-      |
-    variableUser
-      |
-    variableSystem
       |
     jsonOtherNotDouble
   )*

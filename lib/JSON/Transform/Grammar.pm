@@ -182,22 +182,11 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
           '+min' => 0,
           '.any' => [
             {
-              '.ref' => 'jsonUnicode'
-            },
-            {
-              '.ref' => 'jsonBackslashQuote'
-            },
-            {
-              '.ref' => 'jsonBackslashDollar'
+              '-flat' => 1,
+              '.ref' => 'stringValueCommon'
             },
             {
               '.ref' => 'jsonBackslashGrave'
-            },
-            {
-              '.ref' => 'variableUser'
-            },
-            {
-              '.ref' => 'variableSystem'
             },
             {
               '.ref' => 'jsonOtherNotGrave'
@@ -286,22 +275,11 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
           '+min' => 0,
           '.any' => [
             {
-              '.ref' => 'jsonUnicode'
-            },
-            {
-              '.ref' => 'jsonBackslashQuote'
-            },
-            {
-              '.ref' => 'jsonBackslashDollar'
+              '-flat' => 1,
+              '.ref' => 'stringValueCommon'
             },
             {
               '.ref' => 'jsonBackslashDouble'
-            },
-            {
-              '.ref' => 'variableUser'
-            },
-            {
-              '.ref' => 'variableSystem'
             },
             {
               '.ref' => 'jsonOtherNotDouble'
@@ -357,6 +335,25 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
         },
         {
           '.ref' => 'exprApplyJsonPointer'
+        }
+      ]
+    },
+    'stringValueCommon' => {
+      '.any' => [
+        {
+          '.ref' => 'jsonUnicode'
+        },
+        {
+          '.ref' => 'jsonBackslashQuote'
+        },
+        {
+          '.ref' => 'jsonBackslashDollar'
+        },
+        {
+          '.ref' => 'variableUser'
+        },
+        {
+          '.ref' => 'variableSystem'
         }
       ]
     },
