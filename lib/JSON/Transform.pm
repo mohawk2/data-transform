@@ -123,7 +123,7 @@ sub _apply_mapping {
 
 sub _make_sysvals {
   my ($pair, $pairs) = @_;
-  my %vals = (EO => {});
+  my %vals = ();
   $vals{C} = scalar @$pairs if $pairs;
   @vals{qw(K V)} = @$pair if $pair;
   return \%vals;
@@ -191,6 +191,17 @@ sub _eval_expr {
       push @data, $value;
     }
     return \@data;
+  } elsif ($name eq 'exprObjectLiteral') {
+    my @colonPairs = @{$expr->{children} || []};
+    my $sysvals = _make_sysvals();
+    my %data;
+    for (@colonPairs) {
+      my ($keyexpr, $valueexpr) = @{$_->{children}};
+      my $key = _eval_expr($topdata, $keyexpr, $sysvals, $uservals);
+      my $value = _eval_expr($topdata, $valueexpr, $sysvals, $uservals);
+      $data{$key} = $value;
+    }
+    return \%data;
   } else {
     die "Unknown expr type '$name'";
   }
@@ -408,6 +419,12 @@ C<[true]>, C<[false]>, C<[null]>.
 These are a single value of type array, expressed as surrounded by C<.[]>,
 with zero or more comma-separated single values.
 
+=head2 Literal objects/hashes
+
+These are a single value of type object/hash, expressed as surrounded
+by C<.{}>, with zero or more comma-separated colon pairs (see "Mapping
+to an object/hash", below).
+
 =head2 Mapping expressions
 
 A mapping expression has a source-value, a mapping operator, and a
@@ -488,10 +505,6 @@ Available in mapping expressions. For each data pair, set to the value.
 =head3 C<$C>
 
 Available in mapping expressions. Set to the integer number of values.
-
-=head3 C<$EO>
-
-An empty object/hash.
 
 =head2 Comments
 

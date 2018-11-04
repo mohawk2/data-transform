@@ -125,6 +125,12 @@ my @OPS = (
     { a => { b => 2 } },
     [ 'hi', 'there' ],
   ],
+  [
+    'hash literal',
+    '"" <- .{ `hi`: `there` }',
+    { a => { b => 2 } },
+    { 'hi' => 'there' },
+  ],
 );
 
 for (@OPS) {

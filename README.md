@@ -151,6 +151,12 @@ concatenated in the obvious way, and numbers will be coerced into strings
 These are a single value of type array, expressed as surrounded by `.[]`,
 with zero or more comma-separated single values.
 
+## Literal objects/hashes
+
+These are a single value of type object/hash, expressed as surrounded
+by `.{}`, with zero or more comma-separated colon pairs (see "Mapping
+to an object/hash", below).
+
 ## Mapping expressions
 
 A mapping expression has a source-value, a mapping operator, and a
@@ -225,10 +231,6 @@ Available in mapping expressions. For each data pair, set to the value.
 ### `$C`
 
 Available in mapping expressions. Set to the integer number of values.
-
-### `$EO`
-
-An empty object/hash.
 
 ## Comments
 

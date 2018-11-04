@@ -41,9 +41,11 @@ exprObjectMapping: .(/- LCURLY -/) -colonPair .(/- RCURLY -/)
 
 colonPair: -exprStringValue .(/- COLON -/) exprSingleValue
 
+exprObjectLiteral: .(/- DOT LCURLY -/) colonPair* %% .(/- COMMA -/) .(/- RCURLY -/)
+
 exprArrayLiteral: .(/- DOT LSQUARE -/) (exprSingleValue* %% .(/- COMMA -/)) .(/- RSQUARE -/)
 
-exprSingleValue: (jsonPointer | variableUser | variableSystem | exprStringQuoted | exprArrayLiteral) -singleValueMod?
+exprSingleValue: (jsonPointer | variableUser | variableSystem | exprStringQuoted | exprArrayLiteral | exprObjectLiteral) -singleValueMod?
 
 singleValueMod: (exprKeyAdd | exprKeyRemove | exprApplyJsonPointer)
 
