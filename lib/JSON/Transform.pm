@@ -185,7 +185,6 @@ sub _eval_expr {
   } elsif ($name eq 'exprArrayLiteral') {
     my @contents = @{$expr->{children} || []};
     my @data;
-    my $sysvals = _make_sysvals();
     for (@contents) {
       my $value = _eval_expr($topdata, $_, $sysvals, $uservals);
       push @data, $value;
@@ -193,7 +192,6 @@ sub _eval_expr {
     return \@data;
   } elsif ($name eq 'exprObjectLiteral') {
     my @colonPairs = @{$expr->{children} || []};
-    my $sysvals = _make_sysvals();
     my %data;
     for (@colonPairs) {
       my ($keyexpr, $valueexpr) = @{$_->{children}};
@@ -334,6 +332,23 @@ To bind a variable, then replace the whole data structure:
 
   $defs <- "/definitions"
   "" <- $defs
+
+A slightly complex transformation, using the L<jt> script:
+
+  $ cat <<EOF | jt '"" <- "/Time Series (Daily)" <% [ .{ `date`: $K, `close`: $V<"/4. close" } ]'
+  {
+    "Meta Data": {},
+    "Time Series (Daily)": {
+      "2018-10-26": { "1. open": "", "4. close": "106.9600" },
+      "2018-10-25": { "1. open": "", "4. close": "108.3000" }
+    }
+  }
+  EOF
+  # produces:
+  [
+    {"date":"2018-10-25","close":"108.3000"},
+    {"date":"2018-10-26","close":"106.9600"}
+  ]
 
 =head2 Expression types
 

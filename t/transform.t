@@ -131,6 +131,21 @@ my @OPS = (
     { a => { b => 2 } },
     { 'hi' => 'there' },
   ],
+  [
+    'complex transform',
+    '"" <- "/Time Series (Daily)" <% [ .{ `date`: $K, `close`: $V<"/4. close" } ]',
+    {
+      "Meta Data" => {},
+      "Time Series (Daily)" => {
+        "2018-10-26" => { "1. open" => "", "4. close" => "106.9600" },
+        "2018-10-25" => { "1. open" => "", "4. close" => "108.3000" },
+      }
+    },
+    [
+      { 'close' => '108.3000', 'date' => '2018-10-25' },
+      { 'close' => '106.9600', 'date' => '2018-10-26' },
+    ],
+  ],
 );
 
 for (@OPS) {

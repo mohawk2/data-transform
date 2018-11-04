@@ -80,6 +80,23 @@ To bind a variable, then replace the whole data structure:
     $defs <- "/definitions"
     "" <- $defs
 
+A slightly complex transformation, using the [jt](https://metacpan.org/pod/jt) script:
+
+    $ cat <<EOF | jt '"" <- "/Time Series (Daily)" <% [ .{ `date`: $K, `close`: $V<"/4. close" } ]'
+    {
+      "Meta Data": {},
+      "Time Series (Daily)": {
+        "2018-10-26": { "1. open": "", "4. close": "106.9600" },
+        "2018-10-25": { "1. open": "", "4. close": "108.3000" }
+      }
+    }
+    EOF
+    # produces:
+    [
+      {"date":"2018-10-25","close":"108.3000"},
+      {"date":"2018-10-26","close":"106.9600"}
+    ]
+
 ## Expression types
 
 - Object/hash
