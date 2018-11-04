@@ -8,7 +8,7 @@ use Storable qw(dclone);
 
 use constant DEBUG => $ENV{JSON_TRANSFORM_DEBUG};
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 our @EXPORT_OK = qw(
   parse_transform
 );
