@@ -363,7 +363,6 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
           '.ref' => 'opCopyFrom'
         },
         {
-          '-flat' => 1,
           '.ref' => 'exprSingleValue'
         },
         {

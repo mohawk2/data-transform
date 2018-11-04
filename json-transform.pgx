@@ -19,7 +19,7 @@ transformation: .(/-/) (
 
 transformImpliedDest: jsonPointer exprMapping
 
-transformCopy: (jsonPointer | variableUser) .opCopyFrom -exprSingleValue exprMapping?
+transformCopy: (jsonPointer | variableUser) .opCopyFrom exprSingleValue exprMapping?
 
 transformMove: jsonPointer .opMoveFrom jsonPointer
 
