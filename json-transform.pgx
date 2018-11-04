@@ -43,11 +43,13 @@ colonPair: -exprStringValue .(/- COLON -/) exprSingleValue
 
 exprSingleValue: (jsonPointer | variableUser | variableSystem | exprStringQuoted) -singleValueMod?
 
-singleValueMod: (exprKeyAdd | exprKeyRemove)
+singleValueMod: (exprKeyAdd | exprKeyRemove | exprApplyJsonPointer)
 
 exprKeyAdd: .(/- AT -/) -colonPair
 
 exprKeyRemove: .(/- HASH -/) -exprStringValue
+
+exprApplyJsonPointer: .(/- LANGLE -/) jsonPointer
 
 exprStringValue: (jsonPointer | variableUser | variableSystem | exprStringQuoted)
 

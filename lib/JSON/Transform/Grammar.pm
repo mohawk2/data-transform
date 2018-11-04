@@ -60,6 +60,17 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
         }
       ]
     },
+    'exprApplyJsonPointer' => {
+      '.all' => [
+        {
+          '-skip' => 1,
+          '.rgx' => qr/\G(?:\s|\x{FEFF}|[\ \t]*\-\-[\ \t]*[^\r\n]*(?:\r?\n|\r!NL|\z))*<(?:\s|\x{FEFF}|[\ \t]*\-\-[\ \t]*[^\r\n]*(?:\r?\n|\r!NL|\z))*/
+        },
+        {
+          '.ref' => 'jsonPointer'
+        }
+      ]
+    },
     'exprArrayMapping' => {
       '.all' => [
         {
@@ -343,6 +354,9 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
         },
         {
           '.ref' => 'exprKeyRemove'
+        },
+        {
+          '.ref' => 'exprApplyJsonPointer'
         }
       ]
     },

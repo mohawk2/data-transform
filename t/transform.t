@@ -113,6 +113,12 @@ my @OPS = (
     { a => 1, b => 2 },
     "hi!\n",
   ],
+  [
+    'apply JSON pointer to expression',
+    '"" <- "/a"<"/b"',
+    { a => { b => 2 } },
+    2,
+  ],
 );
 
 for (@OPS) {

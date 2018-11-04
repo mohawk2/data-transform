@@ -200,6 +200,12 @@ The operand value must be of type object/hash.
 The argument must be a string-value.
 The return value will be the object/hash without that key.
 
+### `<`
+
+The operand value must be of type object/hash or array.
+The argument must be a JSON pointer.
+The return value will be the value, but having had the JSON pointer applied.
+
 ## Available system variables
 
 ### `$K`

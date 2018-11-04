@@ -166,6 +166,9 @@ sub _eval_expr {
         my $key = _eval_expr($topdata, $keyexpr, $sysvals, $uservals);
         my $addvalue = _eval_expr($topdata, $valueexpr, $sysvals, $uservals);
         $value->{$key} = $addvalue;
+      } elsif ($othername eq 'exprApplyJsonPointer') {
+        my ($ptrexpr) = @{$_->{children}};
+        return _eval_expr($value, $ptrexpr, $sysvals, $uservals);
       } else {
         die "Unknown expression modifier '$othername'";
       }
@@ -450,6 +453,12 @@ The return value will be the object/hash with that additional key/value pair.
 The operand value must be of type object/hash.
 The argument must be a string-value.
 The return value will be the object/hash without that key.
+
+=head3 C<< < >>
+
+The operand value must be of type object/hash or array.
+The argument must be a JSON pointer.
+The return value will be the value, but having had the JSON pointer applied.
 
 =head2 Available system variables
 
