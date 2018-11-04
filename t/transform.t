@@ -94,15 +94,15 @@ my @OPS = (
     2
   ],
   [
-    'EA system variable',
+    'literal empty array',
     q{
       $a <- "/a"
       $b <- "/b"
-      "" <- $EA
+      "" <- .[]
       "/0" <- $b
       "/1" <- $a
-      -- second use of EA ensures not mutating a global!
-      "/2" <- $EA
+      -- second use of .[] ensures not mutating a global!
+      "/2" <- .[]
     },
     { a => {k=>'va'}, b => {k=>'vb'} },
     [ {k=>'vb'}, {k=>'va'}, [] ],
@@ -118,6 +118,12 @@ my @OPS = (
     '"" <- "/a"<"/b"',
     { a => { b => 2 } },
     2,
+  ],
+  [
+    'array literal',
+    '"" <- .[ `hi`, `there` ]',
+    { a => { b => 2 } },
+    [ 'hi', 'there' ],
   ],
 );
 

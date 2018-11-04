@@ -123,7 +123,7 @@ sub _apply_mapping {
 
 sub _make_sysvals {
   my ($pair, $pairs) = @_;
-  my %vals = (EO => {}, EA => []);
+  my %vals = (EO => {});
   $vals{C} = scalar @$pairs if $pairs;
   @vals{qw(K V)} = @$pair if $pair;
   return \%vals;
@@ -182,6 +182,15 @@ sub _eval_expr {
   } elsif ($name eq 'jsonUnicode') {
     my ($what) = @{$expr->{children}};
     return chr hex $what;
+  } elsif ($name eq 'exprArrayLiteral') {
+    my @contents = @{$expr->{children} || []};
+    my @data;
+    my $sysvals = _make_sysvals();
+    for (@contents) {
+      my $value = _eval_expr($topdata, $_, $sysvals, $uservals);
+      push @data, $value;
+    }
+    return \@data;
   } else {
     die "Unknown expr type '$name'";
   }
@@ -394,6 +403,11 @@ concatenated in the obvious way, and numbers will be coerced into strings
 (be careful of locale). Booleans and nulls will be stringified into
 C<[true]>, C<[false]>, C<[null]>.
 
+=head2 Literal arrays
+
+These are a single value of type array, expressed as surrounded by C<.[]>,
+with zero or more comma-separated single values.
+
 =head2 Mapping expressions
 
 A mapping expression has a source-value, a mapping operator, and a
@@ -478,10 +492,6 @@ Available in mapping expressions. Set to the integer number of values.
 =head3 C<$EO>
 
 An empty object/hash.
-
-=head3 C<$EA>
-
-An empty array.
 
 =head2 Comments
 

@@ -71,6 +71,44 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
         }
       ]
     },
+    'exprArrayLiteral' => {
+      '.all' => [
+        {
+          '-skip' => 1,
+          '.rgx' => qr/\G(?:\s|\x{FEFF}|[\ \t]*\-\-[\ \t]*[^\r\n]*(?:\r?\n|\r!NL|\z))*\.\[(?:\s|\x{FEFF}|[\ \t]*\-\-[\ \t]*[^\r\n]*(?:\r?\n|\r!NL|\z))*/
+        },
+        {
+          '+max' => 1,
+          '.all' => [
+            {
+              '.ref' => 'exprSingleValue'
+            },
+            {
+              '+min' => 0,
+              '-flat' => 1,
+              '.all' => [
+                {
+                  '-skip' => 1,
+                  '.rgx' => qr/\G(?:\s|\x{FEFF}|[\ \t]*\-\-[\ \t]*[^\r\n]*(?:\r?\n|\r!NL|\z))*,(?:\s|\x{FEFF}|[\ \t]*\-\-[\ \t]*[^\r\n]*(?:\r?\n|\r!NL|\z))*/
+                },
+                {
+                  '.ref' => 'exprSingleValue'
+                }
+              ]
+            },
+            {
+              '+max' => 1,
+              '-skip' => 1,
+              '.rgx' => qr/\G(?:\s|\x{FEFF}|[\ \t]*\-\-[\ \t]*[^\r\n]*(?:\r?\n|\r!NL|\z))*,(?:\s|\x{FEFF}|[\ \t]*\-\-[\ \t]*[^\r\n]*(?:\r?\n|\r!NL|\z))*/
+            }
+          ]
+        },
+        {
+          '-skip' => 1,
+          '.rgx' => qr/\G(?:\s|\x{FEFF}|[\ \t]*\-\-[\ \t]*[^\r\n]*(?:\r?\n|\r!NL|\z))*\](?:\s|\x{FEFF}|[\ \t]*\-\-[\ \t]*[^\r\n]*(?:\r?\n|\r!NL|\z))*/
+        }
+      ]
+    },
     'exprArrayMapping' => {
       '.all' => [
         {
@@ -162,6 +200,9 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.67)
             },
             {
               '.ref' => 'exprStringQuoted'
+            },
+            {
+              '.ref' => 'exprArrayLiteral'
             }
           ]
         },

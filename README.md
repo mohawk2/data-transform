@@ -146,6 +146,11 @@ concatenated in the obvious way, and numbers will be coerced into strings
 (be careful of locale). Booleans and nulls will be stringified into
 `[true]`, `[false]`, `[null]`.
 
+## Literal arrays
+
+These are a single value of type array, expressed as surrounded by `.[]`,
+with zero or more comma-separated single values.
+
 ## Mapping expressions
 
 A mapping expression has a source-value, a mapping operator, and a
@@ -224,10 +229,6 @@ Available in mapping expressions. Set to the integer number of values.
 ### `$EO`
 
 An empty object/hash.
-
-### `$EA`
-
-An empty array.
 
 ## Comments
 
