@@ -280,7 +280,10 @@ means only strings, booleans, nulls (Perl C<undef>), numbers, array-refs,
 hash-refs, with no circular references.
 
 A transformation is made up of an output expression, which can be composed
-of sub-expressions.
+of sub-expressions. The general concept is of expressions, and
+operations. Operations are generally "applied" to expressions, with
+the new value coming "from" the operation. That is why the C<< < >>
+character is used for "applying" syntax.
 
 For instance, to transform an array of hashes that each have an C<id>
 key, to a hash mapping each C<id> to its hash:
