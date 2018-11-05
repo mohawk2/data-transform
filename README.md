@@ -249,6 +249,11 @@ Available in mapping expressions. For each data pair, set to the value.
 
 Available in mapping expressions. Set to the integer number of values.
 
+### `$E`
+
+Set to an object/hash which is the Perl `%ENV`, i.e. the process
+environment.
+
 ## Comments
 
 Any `--` sequence up to the end of that line will be a comment,

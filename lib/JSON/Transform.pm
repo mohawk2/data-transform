@@ -123,7 +123,7 @@ sub _apply_mapping {
 
 sub _make_sysvals {
   my ($pair, $pairs) = @_;
-  my %vals = ();
+  my %vals = (E => \%ENV);
   $vals{C} = scalar @$pairs if $pairs;
   @vals{qw(K V)} = @$pair if $pair;
   return \%vals;
@@ -520,6 +520,11 @@ Available in mapping expressions. For each data pair, set to the value.
 =head3 C<$C>
 
 Available in mapping expressions. Set to the integer number of values.
+
+=head3 C<$E>
+
+Set to an object/hash which is the Perl C<%ENV>, i.e. the process
+environment.
 
 =head2 Comments
 
