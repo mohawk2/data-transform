@@ -1,3 +1,4 @@
+0.03 2020-01-01
 - use XML::Invisible::make_parser directly, zap JSON::Transform::Parser
 
 0.02 Sun  4 Nov 21:15:46 GMT 2018
