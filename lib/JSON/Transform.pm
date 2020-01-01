@@ -3,8 +3,9 @@ package JSON::Transform;
 use strict;
 use warnings;
 use Exporter 'import';
-use JSON::Transform::Parser qw(parse);
 use Storable qw(dclone);
+use JSON::Transform::Grammar;
+use XML::Invisible qw(make_parser);
 
 use constant DEBUG => $ENV{JSON_TRANSFORM_DEBUG};
 
@@ -32,9 +33,10 @@ my %IS_BACKSLASH_ENTITY = map {$_=>1} qw(
   jsonBackslashGrave
 );
 
+my $parser = make_parser(JSON::Transform::Grammar->new);
 sub parse_transform {
   my ($input_text) = @_;
-  my $transforms = parse $input_text;
+  my $transforms = $parser->($input_text);
   sub {
     my ($data) = @_;
     $data = dclone $data; # now can mutate away
@@ -247,6 +249,9 @@ sub _pointer {
   return $contains ? 1 : $data;
 }
 
+1;
+
+__END__
 =head1 NAME
 
 JSON::Transform - arbitrary transformation of JSON-able data
@@ -589,5 +594,3 @@ copy of the full license at:
 L<http://www.perlfoundation.org/artistic_license_2_0>
 
 =cut
-
-1;

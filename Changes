@@ -1,4 +1,4 @@
-Revision history for JSON::Transform
+- use XML::Invisible::make_parser directly, zap JSON::Transform::Parser
 
 0.02 Sun  4 Nov 21:15:46 GMT 2018
  - literal hashes and arrays, zap $EO and $EA
