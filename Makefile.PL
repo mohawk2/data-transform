@@ -21,7 +21,7 @@ WriteMakefile(
     'Pegex' => '0.64',
     'JSON::MaybeXS' => '1.003009', # is_bool, also . @INC
     'JSON::PP' => '2.92', # number detection
-    'XML::Invisible' => '0.04', # flatten works right
+    'XML::Invisible' => '0.06', # make_parser takes grammar obj
   },
   EXE_FILES => [ qw(scripts/jt) ],
   dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
